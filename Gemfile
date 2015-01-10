@@ -12,6 +12,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 
+# Devise with rails 4.2 compatibility.  Repo of devise author.
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', :branch => 'lm-rails-4-2'
+
 group :development, :test do
   gem 'byebug' 	
   gem 'web-console', '~> 2.0'
