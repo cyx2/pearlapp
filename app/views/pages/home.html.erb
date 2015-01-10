@@ -1,13 +1,14 @@
 <div class="jumbotron center">
-	<h1>Welcome to Pearl!</h1>
-	<h1>We're glad that you're here.</h1>
-	<p>Please feel free to look around our as of yet uncreated content.</p>
+	
 
 	<% if user_signed_in? %>
-		<p>
+		<h1>
 			Welcome to Pearl.
-		</p>
+		</h1>
 	<% else %>
+		<h1>Welcome to Pearl!</h1>
+		<h1>We're glad that you're here.</h1>
+		<p>Please feel free to look around our as of yet uncreated content.</p>
 		<p>
 		 <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
 		 <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
