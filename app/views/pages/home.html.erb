@@ -2,8 +2,11 @@
 	
 	<% if user_signed_in? %>
 		<h1>
-			Welcome in.
+			You're in!
 		</h1>
+		<p>
+			Now let's find some classes, shall we?
+		</p>
 	<% else %>
 		<h1>Welcome to Pearl!</h1>
 		<p>We're glad that you're here.</p>
@@ -32,7 +35,10 @@
 		  </div>
 			<div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="Search Courses!" class="btn btn-primary">Search Courses!</button>
+		      <button type="Search Courses!" class="btn btn-primary">
+		      	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		      	 Search <!-- Courses! -->
+		      </button>
 		    </div>
 		  </div>
 		</form>

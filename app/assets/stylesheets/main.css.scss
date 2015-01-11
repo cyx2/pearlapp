@@ -8,7 +8,8 @@ $brand-primary: #3498db;
 $jumbotron-bg: #bdc3c7;
 $navbar-default-link-hover-color: #f39c12;
 
-@import 'bootstrap';
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 .center {
 	text-align: center;
