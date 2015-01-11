@@ -79,6 +79,6 @@ Rails.application.configure do
 
   # Required for Heroku
   ####### Set as actual host #######
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'www.pearlcourses.com' }
 
 end
