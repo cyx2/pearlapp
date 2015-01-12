@@ -1,4 +1,4 @@
-# One Month Rails
+# Pearl Courses
 
 This is the repository for [*Pearl Courses*](http://www.pearlcourses.com)
 
