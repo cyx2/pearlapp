@@ -10,9 +10,16 @@
   <%= @rating.rating %>
 </p>
 
+<!--
 <p>
   <strong>Classid:</strong>
   <%= @rating.classid %>
+</p>
+-->
+
+<p>
+  <strong>Course:</strong><br/>
+  <%= @rating.prefix %><%= @rating.course_number %>
 </p>
 
 <p>
@@ -20,10 +27,12 @@
   <%= @rating.created_at %>
 </p>
 
+<!--
 <p>
   <strong>Updated at:</strong>
   <%= @rating.updated_at %>
 </p>
+-->
 
 <%= link_to 'Edit', edit_rating_path(@rating) %> |
 <%= link_to 'Back', ratings_path %>

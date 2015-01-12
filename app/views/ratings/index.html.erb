@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Ratings</h1>
 
 <table class="table table-hover">
@@ -7,9 +5,10 @@
     <tr>
       <th>Rater</th>
       <th>Rating</th>
-      <th>Classid</th>
-      <th>Created at</th>
-      <th>Updated at</th>
+      <th>Prefix</th>
+      <th>Course Number</th>
+      <!-- <th>Created at</th>
+      <th>Updated at</th> -->
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,12 +18,15 @@
       <tr>
         <td><%= rating.rater %></td>
         <td><%= rating.rating %></td>
-        <td><%= rating.classid %></td>
-        <td><%= rating.created_at %></td>
-        <td><%= rating.updated_at %></td>
+        <!-- <td><%= rating.classid %></td> -->
+        <td><%= rating.prefix %></td>
+        <td><%= rating.course_number %></td>
+        <!-- <td><%= rating.created_at %></td>
+        <td><%= rating.updated_at %></td> -->
         <td><%= link_to 'Show', rating %></td>
+
         <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
-        <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Rating', new_rating_path %>
+<%= link_to 'New Rating', new_rating_path, class: "btn btn-default" %>

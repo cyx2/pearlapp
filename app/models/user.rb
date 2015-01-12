@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :ratings
   # Validator requires these fields for a user.
   validates :name, presence: true
   validates :email, uniqueness: true

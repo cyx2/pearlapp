@@ -1,5 +1,7 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   respond_to :html
 
@@ -13,7 +15,8 @@ class RatingsController < ApplicationController
   end
 
   def new
-    @rating = Rating.new
+    #@rating = Rating.new
+    @rating = current_user.ratings.build
     respond_with(@rating)
   end
 
@@ -21,7 +24,7 @@ class RatingsController < ApplicationController
   end
 
   def create
-    @rating = Rating.new(rating_params)
+    @rating = current_user.ratings.build(rating_params)
     @rating.save
     respond_with(@rating)
   end
@@ -41,7 +44,12 @@ class RatingsController < ApplicationController
       @rating = Rating.find(params[:id])
     end
 
+    def correct_user
+      @pin = current_user.ratings.find_by(id: params[:id])
+      redirect_to ratings_path, notice: "Not authorized to edit this rating" if @rating.nil?
+    end
+
     def rating_params
-      params.require(:rating).permit(:rater, :rating, :classid, :created_at, :updated_at)
+      params.require(:rating).permit(:rater, :rating, :classid, :created_at, :updated_at, :prefix, :course_number)
     end
 end

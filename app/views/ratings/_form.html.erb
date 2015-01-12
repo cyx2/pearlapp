@@ -14,37 +14,43 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="panel-title">
-        <h1>New Rating</h1>
+        <h1>Rate a Class</h1>
       </div>
     </div>
 
-    <div class="panel-body">
-      <div class="form-group">
+    <div class="panel-body"> 
+      <div class="field form-inline">
         <%= f.label :rater %><br>
-
-        <%= current_user.name %>
-        <!--
-        <%= f.text_field :rater %>
-        -->
-
+        <!-- <%= current_user.name %> -->
+        <%= f.text_field :rater, class: "form-control", placeholder: @current_user.name %>
       </div>
-      <div class="form-group">
+      <div class="field form-inline">
         <%= f.label :rating %><br>
-        <%= f.number_field :rating %>
+        <%= f.number_field :rating, class: "form-control", placeholder: "0 to 5" %>
       </div>
+      <!--
       <div class="form-group">
         <%= f.label :classid %><br>
         <%= f.number_field :classid %>
       </div>
-      <div class="form-group">
+      -->
+      <div class="field form-inline">
+        <%= f.label :prefix %>,
+        <%= f.label :course_number %><br>
+        <%= f.text_field :prefix, class: "form-control", placeholder: "BEE" %>
+        <%= f.number_field :course_number, class: "form-control", placeholder: "3500" %>
+      </div>
+      <!--
+      <div class="field">
         <%= f.label :created_at %><br>
         <%= f.datetime_select :created_at %>
       </div>
-      <div class="form-group">
+      <div class="field">
         <%= f.label :updated_at %><br>
         <%= f.datetime_select :updated_at %>
       </div>
-      <div class="form-group">
+      -->
+      <div class="actions">
         <%= f.submit "Submit", class: "btn btn-primary" %>
         <%= link_to 'Back', ratings_path, class: "btn btn-default" %>
       </div>
