@@ -21,7 +21,12 @@
     <div class="panel-body">
       <div class="form-group">
         <%= f.label :rater %><br>
+
+        <%= current_user.name %>
+        <!--
         <%= f.text_field :rater %>
+        -->
+
       </div>
       <div class="form-group">
         <%= f.label :rating %><br>
