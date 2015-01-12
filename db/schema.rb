@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110150259) do
+ActiveRecord::Schema.define(version: 20150112132425) do
+
+  create_table "cornell_classes", force: :cascade do |t|
+    t.string   "title"
+    t.string   "subject"
+    t.integer  "number"
+    t.float    "avgrating"
+    t.integer  "numratings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "course_cornells", force: :cascade do |t|
+    t.string   "title"
+    t.string   "subject"
+    t.integer  "number"
+    t.float    "avgrating"
+    t.integer  "numratings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.string   "rater"
+    t.integer  "rating"
+    t.integer  "classid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

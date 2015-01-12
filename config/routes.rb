@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :cornell_classes
+
+  resources :ratings
+
   devise_for :users
   root "pages#home"
   get "team" => "pages#team" #about_path

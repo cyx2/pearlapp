@@ -1,0 +1,45 @@
+<%= form_for(@cornell_class) do |f| %>
+  <% if @cornell_class.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cornell_class.errors.count, "error") %> prohibited this cornell_class from being saved:</h2>
+
+      <ul>
+      <% @cornell_class.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.number_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :avgrating %><br>
+    <%= f.text_field :avgrating %>
+  </div>
+  <div class="field">
+    <%= f.label :numratings %><br>
+    <%= f.number_field :numratings %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br>
+    <%= f.datetime_select :created_at %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
