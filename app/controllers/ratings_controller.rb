@@ -15,7 +15,7 @@ class RatingsController < ApplicationController
   end
 
   def new
-    #@rating = Rating.new
+    # Append user_id to each rating
     @rating = current_user.ratings.build
     respond_with(@rating)
   end
