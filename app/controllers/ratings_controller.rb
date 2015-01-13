@@ -1,6 +1,6 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :verify_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   respond_to :html
@@ -44,9 +44,9 @@ class RatingsController < ApplicationController
       @rating = Rating.find(params[:id])
     end
 
-    def correct_user
+    def verify_user
       @rating = current_user.ratings.find_by(id: params[:id])
-      redirect_to ratings_path, notice: "You're not authorized to edit this rating" if @pin.nil?
+      redirect_to ratings_path, notice: "You're not authorized to edit this rating" if @rating.nil?
     end
 
     def rating_params

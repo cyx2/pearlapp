@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @teammember.name %>
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= image_tag @teammember.image.url(:medium) if @teammember.image %>
+  <strong>Position:</strong>
+  <%= @teammember.position %>
 </p>
 
 <p>
@@ -28,6 +26,11 @@
 <p>
   <strong>Quoted person:</strong>
   <%= @teammember.quoted_person %>
+</p>
+
+<p>
+  <strong>Image:</strong><br/>
+  <%= image_tag @teammember.image.url(:medium) if @teammember.image %>
 </p>
 
 <%= link_to 'Edit', edit_teammember_path(@teammember) %> |

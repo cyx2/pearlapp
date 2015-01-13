@@ -1,5 +1,6 @@
 class TeammembersController < ApplicationController
   before_action :set_teammember, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :show, :edit, :update, :destroy]
 
   respond_to :html
 
