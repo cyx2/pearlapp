@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Image:</strong>
+  <%= image_tag @teammember.image.url(:medium) if @teammember.image %>
+</p>
+
+<p>
   <strong>Email:</strong>
   <%= @teammember.email %>
 </p>

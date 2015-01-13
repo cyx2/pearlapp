@@ -16,7 +16,7 @@
   <tbody>
     <% @ratings.each do |rating| %>
       <tr>
-        <td><%= rating.rater %></td>
+        <td><%= rating.user.name %></td>
         <td><%= rating.rating %></td>
         <!-- <td><%= rating.classid %></td> -->
         <td><%= rating.prefix %></td>

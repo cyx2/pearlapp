@@ -45,8 +45,8 @@ class RatingsController < ApplicationController
     end
 
     def correct_user
-      @pin = current_user.ratings.find_by(id: params[:id])
-      redirect_to ratings_path, notice: "Not authorized to edit this rating" if @rating.nil?
+      @rating = current_user.ratings.find_by(id: params[:id])
+      redirect_to ratings_path, notice: "You're not authorized to edit this rating" if @pin.nil?
     end
 
     def rating_params

@@ -42,6 +42,6 @@ class TeammembersController < ApplicationController
     end
 
     def teammember_params
-      params.require(:teammember).permit(:name, :email, :website, :quote, :quoted_person, :position)
+      params.require(:teammember).permit(:name, :email, :website, :quote, :quoted_person, :position, :image)
     end
 end

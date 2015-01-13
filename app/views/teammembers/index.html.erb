@@ -7,6 +7,7 @@
 <div id="pins" class="transitions-enabled">
   <% @teammembers.each do |teammember| %>
     <div class="box panel panel-default">
+      <%= image_tag teammember.image.url(:medium) %>
       <div class="panel-heading center">
         <h2><%= teammember.name %></h2>
       </div>
