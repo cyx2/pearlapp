@@ -1,6 +1,7 @@
 class TeammembersController < ApplicationController
   before_action :set_teammember, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :show, :edit, :update, :destroy]
+  before_action :verify_user, only: [:new, :show, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -42,7 +43,12 @@ class TeammembersController < ApplicationController
       @teammember = Teammember.find(params[:id])
     end
 
+    def verify_user
+      redirect_to teammembers_path, notice: "You're not authorized to edit the Pearl courses team!" unless current_user.id == 1
+    end
+
     def teammember_params
       params.require(:teammember).permit(:name, :email, :website, :quote, :quoted_person, :position, :image)
     end
+
 end
