@@ -6,7 +6,7 @@ class RatingsController < ApplicationController
   respond_to :html
 
   def index
-    @ratings = Rating.all
+    @ratings = Rating.all.order("created_at DESC")
     respond_with(@ratings)
   end
 

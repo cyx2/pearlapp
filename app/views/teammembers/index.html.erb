@@ -1,4 +1,4 @@
-<h1>Our Team</h1>
+<h1 class="center" style="padding-bottom: 1em">Our Team</h1>
 
 <% if user_signed_in? && current_user.id == 1 %>
   <%= link_to 'New Team Member', new_teammember_path, class: "btn btn-default" %>
