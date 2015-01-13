@@ -30,3 +30,8 @@
     </div>
   <% end %>
 </div>
+
+<!-- Automatically paginates the team page -->
+<div class="center">
+   <%= will_paginate @teammembers, renderer: BootstrapPagination::Rails %>
+</div>
