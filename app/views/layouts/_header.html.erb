@@ -23,7 +23,12 @@
                 Home
               <% end %>
             </li>
-
+            <li>
+              <%= link_to team_path do %>
+                <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+                Team
+              <% end %>
+            </li>
           <!-- Right-hand logical nav links -->
           <% if user_signed_in? %>
 
@@ -74,13 +79,7 @@
                 </li>                
               </ul>
             </li>
-          <% else %>            
-            <li>
-              <%= link_to team_path do %>
-                <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
-                Team
-              <% end %>
-            </li>
+          <% else %>
             <li>
               <%= link_to new_user_session_path do %>
                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
