@@ -1,0 +1,29 @@
+<h1>Our Team</h1>
+
+<% if user_signed_in? && current_user.id == 1 %>
+  <%= link_to 'New Teammember', new_teammember_path %>
+<% end %>
+
+<div id="pins" class="transitions-enabled">
+  <% @teammembers.each do |teammember| %>
+    <div class="box panel panel-default">
+      <div class="panel-heading center">
+        <h2><%= teammember.name %></h2>
+      </div>
+      <div class="panel-body">
+        <h4><%= teammember.position %></h4>
+        <hr>
+        <p>
+          <em><%= teammember.quote %></em> - <%= teammember.quoted_person %>
+        </p>
+
+        <% if user_signed_in? && current_user.id == 1 %>
+          <hr>
+          <%= link_to 'Show', teammember %>
+          <%= link_to 'Edit', edit_teammember_path(teammember) %>
+          <%= link_to 'Destroy', teammember, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

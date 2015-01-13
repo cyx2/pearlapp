@@ -11,19 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112144940) do
+ActiveRecord::Schema.define(version: 20150113004947) do
 
   create_table "cornell_classes", force: :cascade do |t|
-    t.string   "title"
-    t.string   "subject"
-    t.integer  "number"
-    t.float    "avgrating"
-    t.integer  "numratings"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "course_cornells", force: :cascade do |t|
     t.string   "title"
     t.string   "subject"
     t.integer  "number"
@@ -45,6 +35,17 @@ ActiveRecord::Schema.define(version: 20150112144940) do
   end
 
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
+
+  create_table "teammembers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "website"
+    t.string   "quote"
+    t.string   "quoted_person"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "position"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

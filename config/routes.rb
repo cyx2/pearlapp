@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :teammembers
+
   resources :cornell_classes
 
   resources :ratings
