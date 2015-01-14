@@ -1,9 +1,10 @@
-class CreateCornellClasses < ActiveRecord::Migration
+class CreateCornellclasses < ActiveRecord::Migration
   def change
-    create_table :cornell_classes do |t|
+    create_table :cornellclasses do |t|
       t.string :title
       t.string :prefix
-      t.integer :course_number
+      t.integer :coursenumber
+      t.integer :courseid
       t.float :avgrating
       t.integer :numratings
       t.datetime :created_at

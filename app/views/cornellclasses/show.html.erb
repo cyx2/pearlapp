@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @cornellclass.title %>
+</p>
+
+<p>
+  <strong>Prefix:</strong>
+  <%= @cornellclass.prefix %>
+</p>
+
+<p>
+  <strong>Coursenumber:</strong>
+  <%= @cornellclass.coursenumber %>
+</p>
+
+<p>
+  <strong>Courseid:</strong>
+  <%= @cornellclass.courseid %>
+</p>
+
+<p>
+  <strong>Avgrating:</strong>
+  <%= @cornellclass.avgrating %>
+</p>
+
+<p>
+  <strong>Numratings:</strong>
+  <%= @cornellclass.numratings %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @cornellclass.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @cornellclass.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_cornellclass_path(@cornellclass) %> |
+<%= link_to 'Back', cornellclasses_path %>

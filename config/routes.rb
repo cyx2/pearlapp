@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :cornell_classes
+  resources :cornellclasses
 
   resources :teammembers
 

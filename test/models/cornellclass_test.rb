@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CornellClassTest < ActiveSupport::TestCase
+class CornellclassTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,10 +1,10 @@
-<%= form_for(@cornell_class) do |f| %>
-  <% if @cornell_class.errors.any? %>
+<%= form_for(@cornellclass) do |f| %>
+  <% if @cornellclass.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@cornell_class.errors.count, "error") %> prohibited this cornell_class from being saved:</h2>
+      <h2><%= pluralize(@cornellclass.errors.count, "error") %> prohibited this cornellclass from being saved:</h2>
 
       <ul>
-      <% @cornell_class.errors.full_messages.each do |message| %>
+      <% @cornellclass.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -20,8 +20,12 @@
     <%= f.text_field :prefix %>
   </div>
   <div class="field">
-    <%= f.label :course_number %><br>
-    <%= f.number_field :course_number %>
+    <%= f.label :coursenumber %><br>
+    <%= f.number_field :coursenumber %>
+  </div>
+  <div class="field">
+    <%= f.label :courseid %><br>
+    <%= f.number_field :courseid %>
   </div>
   <div class="field">
     <%= f.label :avgrating %><br>

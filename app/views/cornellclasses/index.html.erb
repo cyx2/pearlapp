@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Cornellclasses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Prefix</th>
+      <th>Coursenumber</th>
+      <th>Courseid</th>
+      <th>Avgrating</th>
+      <th>Numratings</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cornellclasses.each do |cornellclass| %>
+      <tr>
+        <td><%= cornellclass.title %></td>
+        <td><%= cornellclass.prefix %></td>
+        <td><%= cornellclass.coursenumber %></td>
+        <td><%= cornellclass.courseid %></td>
+        <td><%= cornellclass.avgrating %></td>
+        <td><%= cornellclass.numratings %></td>
+        <td><%= cornellclass.created_at %></td>
+        <td><%= cornellclass.updated_at %></td>
+        <td><%= link_to 'Show', cornellclass %></td>
+        <td><%= link_to 'Edit', edit_cornellclass_path(cornellclass) %></td>
+        <td><%= link_to 'Destroy', cornellclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cornellclass', new_cornellclass_path %>

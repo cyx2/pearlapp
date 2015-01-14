@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114080143) do
+ActiveRecord::Schema.define(version: 20150114090128) do
 
-  create_table "cornell_classes", force: :cascade do |t|
+  create_table "cornellclasses", force: :cascade do |t|
     t.string   "title"
     t.string   "prefix"
-    t.integer  "course_number"
+    t.integer  "coursenumber"
+    t.integer  "courseid"
     t.float    "avgrating"
     t.integer  "numratings"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "courseid"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "ratings", force: :cascade do |t|
