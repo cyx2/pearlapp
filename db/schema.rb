@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114090128) do
+ActiveRecord::Schema.define(version: 20150114091123) do
 
   create_table "cornellclasses", force: :cascade do |t|
     t.string   "title"
     t.string   "prefix"
     t.integer  "coursenumber"
-    t.integer  "courseid"
     t.float    "avgrating"
     t.integer  "numratings"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "courseid"
   end
+
+  add_index "cornellclasses", ["courseid"], name: "index_cornellclasses_on_courseid"
 
   create_table "ratings", force: :cascade do |t|
     t.string   "rater"
