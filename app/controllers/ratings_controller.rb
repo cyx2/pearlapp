@@ -10,6 +10,11 @@ class RatingsController < ApplicationController
     respond_with(@ratings)
   end
 
+  def userratings
+    @ratings = Rating.all.order("created_at DESC")
+    respond_with(@ratings)
+  end
+
   def show
     respond_with(@rating)
   end
@@ -24,6 +29,7 @@ class RatingsController < ApplicationController
   end
 
   def create
+    # Append user_id to each rating
     @rating = current_user.ratings.build(rating_params)
     @rating.save
     respond_with(@rating)

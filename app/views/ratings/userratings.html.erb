@@ -1,0 +1,43 @@
+<!-- WILL ONLY SHOW A SINGLE USER'S RATINGS -->
+
+<h1 class="center" style="padding-bottom: 1em">All of <%= current_user.name %>'s ratings</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Rater</th>
+      <th>Rating</th>
+      <th>Prefix</th>
+      <th>Course Number</th>
+      <!-- <th>Created at</th>
+      <th>Updated at</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>    
+    <% @ratings.each do |rating| %>
+      <!-- Logic loop to show only a specific user's ratings -->
+      <!-- Note inefficiency -->
+      <% if current_user.id == rating.user_id %>
+        <tr>
+          <td><%= rating.user.name %></td>
+          <td><%= rating.rating %></td>
+          <!-- <td><%= rating.courseid %></td> -->
+          <td><%= rating.prefix %></td>
+          <td><%= rating.course_number %></td>
+          <!-- <td><%= rating.created_at %></td>
+          <td><%= rating.updated_at %></td> -->
+          <td><%= link_to 'Show', rating %></td>
+
+          <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+          <td><%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rating', new_rating_path, class: "btn btn-default" %>
