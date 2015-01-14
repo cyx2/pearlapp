@@ -11,6 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+# Linda -
+# Should there only be one common courseid that is retrieved by both the classes
+# and the ratings?  Or two like I have below?
+# Do I need all of these indexes?
+
 ActiveRecord::Schema.define(version: 20150114091123) do
 
   create_table "cornellclasses", force: :cascade do |t|
