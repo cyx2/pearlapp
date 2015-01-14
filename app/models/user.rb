@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
   has_many :cornell_classes, :through => :ratings
 
   # Validator requires these fields for a user.
