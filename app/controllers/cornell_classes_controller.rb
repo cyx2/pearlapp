@@ -1,7 +1,6 @@
 class CornellClassesController < ApplicationController
   before_action :set_cornell_class, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  
+
   respond_to :html
 
   def index
@@ -43,6 +42,6 @@ class CornellClassesController < ApplicationController
     end
 
     def cornell_class_params
-      params.require(:cornell_class).permit(:title, :subject, :number, :avgrating, :numratings, :created_at, :updated_at)
+      params.require(:cornell_class).permit(:title, :prefix, :course_number, :avgrating, :numratings, :created_at, :updated_at)
     end
 end

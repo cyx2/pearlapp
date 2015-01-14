@@ -18,7 +18,7 @@ class CornellClassesControllerTest < ActionController::TestCase
 
   test "should create cornell_class" do
     assert_difference('CornellClass.count') do
-      post :create, cornell_class: { avgrating: @cornell_class.avgrating, created_at: @cornell_class.created_at, number: @cornell_class.number, numratings: @cornell_class.numratings, subject: @cornell_class.subject, title: @cornell_class.title, updated_at: @cornell_class.updated_at }
+      post :create, cornell_class: { avgrating: @cornell_class.avgrating, course_number: @cornell_class.course_number, created_at: @cornell_class.created_at, numratings: @cornell_class.numratings, prefix: @cornell_class.prefix, title: @cornell_class.title, updated_at: @cornell_class.updated_at }
     end
 
     assert_redirected_to cornell_class_path(assigns(:cornell_class))
@@ -35,7 +35,7 @@ class CornellClassesControllerTest < ActionController::TestCase
   end
 
   test "should update cornell_class" do
-    patch :update, id: @cornell_class, cornell_class: { avgrating: @cornell_class.avgrating, created_at: @cornell_class.created_at, number: @cornell_class.number, numratings: @cornell_class.numratings, subject: @cornell_class.subject, title: @cornell_class.title, updated_at: @cornell_class.updated_at }
+    patch :update, id: @cornell_class, cornell_class: { avgrating: @cornell_class.avgrating, course_number: @cornell_class.course_number, created_at: @cornell_class.created_at, numratings: @cornell_class.numratings, prefix: @cornell_class.prefix, title: @cornell_class.title, updated_at: @cornell_class.updated_at }
     assert_redirected_to cornell_class_path(assigns(:cornell_class))
   end
 

@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="center" style="padding-bottom: 1em">All Cornell University Classes Classes</h1>
+<h1>Listing Cornell Classes</h1>
 
-<table class="table table-hover">
+<table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Subject</th>
-      <th>Number</th>
-      <th>Avg. Rating</th>
-      <th># Ratings</th>
+      <th>Prefix</th>
+      <th>Course number</th>
+      <th>Avgrating</th>
+      <th>Numratings</th>
       <th>Created at</th>
       <th>Updated at</th>
       <th colspan="3"></th>
@@ -20,8 +20,8 @@
     <% @cornell_classes.each do |cornell_class| %>
       <tr>
         <td><%= cornell_class.title %></td>
-        <td><%= cornell_class.subject %></td>
-        <td><%= cornell_class.number %></td>
+        <td><%= cornell_class.prefix %></td>
+        <td><%= cornell_class.course_number %></td>
         <td><%= cornell_class.avgrating %></td>
         <td><%= cornell_class.numratings %></td>
         <td><%= cornell_class.created_at %></td>
