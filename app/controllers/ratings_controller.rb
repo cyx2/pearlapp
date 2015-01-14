@@ -50,6 +50,6 @@ class RatingsController < ApplicationController
     end
 
     def rating_params
-      params.require(:rating).permit(:rater, :rating, :cornell_class_id, :created_at, :updated_at, :prefix, :course_number)
+      params.require(:rating).permit(:rater, :rating, :courseid, :created_at, :updated_at, :prefix, :course_number)
     end
 end
