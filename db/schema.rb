@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114062114) do
+ActiveRecord::Schema.define(version: 20150114075153) do
 
   create_table "cornell_classes", force: :cascade do |t|
     t.string   "title"
@@ -19,23 +19,20 @@ ActiveRecord::Schema.define(version: 20150114062114) do
     t.integer  "course_number"
     t.float    "avgrating"
     t.integer  "numratings"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "cornell_class_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "ratings", force: :cascade do |t|
     t.string   "rater"
     t.integer  "rating"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "prefix"
     t.integer  "course_number"
-    t.integer  "cornell_class_id"
   end
 
-  add_index "ratings", ["cornell_class_id"], name: "index_ratings_on_cornell_class_id"
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "teammembers", force: :cascade do |t|
