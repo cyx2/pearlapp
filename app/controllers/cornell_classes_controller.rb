@@ -42,6 +42,6 @@ class CornellClassesController < ApplicationController
     end
 
     def cornell_class_params
-      params.require(:cornell_class).permit(:title, :prefix, :course_number, :avgrating, :numratings, :created_at, :updated_at)
+      params.require(:cornell_class).permit(:title, :prefix, :course_number, :avgrating, :numratings, :created_at, :updated_at, :cornell_class_id)
     end
 end

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :ratings
+  has_many :cornell_classes, :through => :ratings
+
   # Validator requires these fields for a user.
   validates :name, presence: true
   validates :email, uniqueness: true

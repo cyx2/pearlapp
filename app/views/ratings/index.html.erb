@@ -18,6 +18,7 @@
   <tbody>    
     <% @ratings.each do |rating| %>
       <!-- Logic loop to show only a specific user's ratings -->
+      <!-- Note inefficiency -->
       <% if current_user.id == rating.user_id %>
         <tr>
           <td><%= rating.user.name %></td>
