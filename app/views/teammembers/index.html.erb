@@ -1,4 +1,4 @@
-<h1 class="center" style="padding-bottom: 1em">Our Team</h1>
+<h1 class="center" style="padding-bottom: 1em">The Team</h1>
 
 <% if user_signed_in? && current_user.id == 1 %>
   <%= link_to 'New Team Member', new_teammember_path, class: "btn btn-default" %>
@@ -36,4 +36,13 @@
 <!-- Automatically paginates the team page -->
 <div class="center">
    <%= will_paginate @teammembers, renderer: BootstrapPagination::Rails %>
+</div>
+
+<hr>
+
+<h1 class="center" style="padding-bottom: 1em; padding-top: 1em">Join Us</h1>
+<div class="well well-sm center">
+  <p>
+    Interested in working with Pearl?  Send <a href="mailto:xucharliey@gmail.com">Charlie</a> a message!
+  </p>
 </div>
