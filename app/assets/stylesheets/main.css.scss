@@ -25,3 +25,16 @@ $btn-default-color: #3498db;
 .left {
 	text-align: left;
 }
+
+.dropdown-menu > li > a {
+  color: #3498db;
+  text-decoration: none;
+  &:visited {
+    /* color: #3498db; */
+    text-decoration: none;
+  }
+  &:hover {
+    color: #f39c12;   
+    text-decoration: none; 
+  }
+}
