@@ -27,7 +27,7 @@ class CornellclassesController < ApplicationController
         Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid)
       end
     end
-    @cornellclass = Cornellclass.new
+    #@cornellclass = Cornellclass.new
     redirect_to cornellclasses_path, notice: "Courses successfully pulled."
   end
 
