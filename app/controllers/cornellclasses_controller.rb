@@ -14,15 +14,19 @@ class CornellclassesController < ApplicationController
 
   def new
     # Pulls all course data for specified year, based on subject list
-    doc1= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
-    doc1.xpath("//subject/@subject").each do |prefix|
-      doc2= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/#{prefix}/xml/"))
-      doc2.xpath("/courses/course").each do |course|
-        num = course["catalog_nbr"] || "N/A"  # in case it doesn't exist
-        subj = course["subject"]     || "N/A"  # in case it doesn't exist
-        title = (course.at("course_title/text()") || "N/A").to_s
-        cid = (course.at("sections/section/@class_number") || "N/A").to_s
-        inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "N/A").to_s
+    subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
+    # Reads each subject and stores it in local variable prefix
+    subjectdoc.xpath("//subject/@subject").each do |prefix|
+      # Link to course pages, substituting in prefix in URL
+      classdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/#{prefix}/xml/"))
+      # Reads each course and stores listed vars
+      classdoc.xpath("/courses/course").each do |course|
+        num = course["catalog_nbr"] || "Not provided"
+        subj = course["subject"]    || "Not provided"
+        title = (course.at("course_title/text()") || "Not provided").to_s
+        cid = (course.at("sections/section/@class_number") || "Not provided").to_s
+        inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
+        # Creates a cornell class in Cornellclasses table
         Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid)
       end
     end
