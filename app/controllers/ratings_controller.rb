@@ -6,8 +6,12 @@ class RatingsController < ApplicationController
   respond_to :html
 
   def index
-    @ratings = Rating.all.order("created_at DESC")
-    respond_with(@ratings)
+    if current_user.id == 1
+      @ratings = Rating.all.order("created_at DESC")
+      respond_with(@ratings)
+    else
+      redirect_to userratings_path, notice: "Don't try to see other people's ratings!" unless current_user.id == 1
+    end
   end
 
   def userratings

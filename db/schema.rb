@@ -11,12 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-# Linda -
-# Should there only be one common courseid that is retrieved by both the classes
-# and the ratings?  Or two like I have below?
-# Do I need all of these indexes?
-
-ActiveRecord::Schema.define(version: 20150114091123) do
+ActiveRecord::Schema.define(version: 20150123152935) do
 
   create_table "cornellclasses", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150114091123) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "courseid"
+    t.string   "instructor"
   end
 
   add_index "cornellclasses", ["courseid"], name: "index_cornellclasses_on_courseid"

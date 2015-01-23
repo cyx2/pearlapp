@@ -1,18 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Cornellclasses</h1>
+<h1 class="center">Listing All Cornell Classes</h1>
 
-<table>
+<% if user_signed_in? && current_user.id == 1 %>
+  <%= link_to 'Pull Classes from Cornell servers', new_cornellclass_path, class: "btn btn-warning btn-large" %>
+<% end %>
+
+<!-- Automatically paginates the team page -->
+<div class="center">
+   <%= will_paginate @cornellclasses, renderer: BootstrapPagination::Rails %>
+</div>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
       <th>Prefix</th>
-      <th>Coursenumber</th>
-      <th>Courseid</th>
-      <th>Avgrating</th>
-      <th>Numratings</th>
-      <th>Created at</th>
-      <th>Updated at</th>
+      <th>Number</th>
+      <th>Instructor</th>
+      <th>Class Nbr</th>
+      <th>Avg Rating</th>
+      <th># Ratings</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,19 +31,16 @@
         <td><%= cornellclass.title %></td>
         <td><%= cornellclass.prefix %></td>
         <td><%= cornellclass.coursenumber %></td>
+        <td><%= cornellclass.instructor %></td>
         <td><%= cornellclass.courseid %></td>
         <td><%= cornellclass.avgrating %></td>
         <td><%= cornellclass.numratings %></td>
-        <td><%= cornellclass.created_at %></td>
-        <td><%= cornellclass.updated_at %></td>
+        <!--
         <td><%= link_to 'Show', cornellclass %></td>
         <td><%= link_to 'Edit', edit_cornellclass_path(cornellclass) %></td>
         <td><%= link_to 'Destroy', cornellclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        -->
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Cornellclass', new_cornellclass_path %>

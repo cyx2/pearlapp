@@ -6,7 +6,7 @@ class TeammembersController < ApplicationController
   respond_to :html
 
   def index
-    @teammembers = Teammember.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    @teammembers = Teammember.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 8)
     respond_with(@teammembers)
   end
 

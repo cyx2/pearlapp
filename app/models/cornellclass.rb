@@ -16,7 +16,7 @@
 class Cornellclass < ActiveRecord::Base
 	has_many :users, :through => :ratings
 
-	def ratings
+	def showratings
 		Rating.where(courseid: self.courseid)
 	end
 end
