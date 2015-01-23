@@ -15,10 +15,10 @@ class CornellclassesController < ApplicationController
 
   def new
     # Pulls all course data for specified year, based on subject list
-    doc = Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
-    doc.xpath("//subject/@subject").each do |prefix|
-      doc = Nokogiri.XML( open("https://courseroster.reg.cornell.edu/courses/roster/SP15/#{prefix}/xml/") )
-      doc.xpath("/courses/course").each do |course|
+    doc1 = Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
+    doc1.xpath("//subject/@subject").each do |prefix|
+      doc2 = Nokogiri.XML( open("https://courseroster.reg.cornell.edu/courses/roster/SP15/#{prefix}/xml/") )
+      doc2.xpath("/courses/course").each do |course|
         num  = course["catalog_nbr"] || "N/A"  # in case it doesn't exist
         subj = course["subject"]     || "N/A"  # in case it doesn't exist
         title = (course.at("course_title/text()") || "N/A").to_s
