@@ -4,7 +4,7 @@ class CornellclassesController < ApplicationController
   respond_to :html
 
   def index
-    @cornellclasses = Cornellclass.all.paginate(:page => params[:page], :per_page => 500)
+    @cornellclasses = Cornellclass.all.paginate(:page => params[:page], :per_page => 250)
     #@teammembers = Teammember.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 8)
     respond_with(@cornellclasses)
   end
@@ -15,9 +15,9 @@ class CornellclassesController < ApplicationController
 
   def new
     # Pulls all course data for specified year, based on subject list
-    doc = Nokogiri::HTML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
+    doc = Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
     doc.xpath("//subject/@subject").each do |prefix|
-      doc = Nokogiri.XML( open("https://courseroster.reg.cornell.edu/courses/roster/SP15/#{ prefix }/xml/") )
+      doc = Nokogiri.XML( open("https://courseroster.reg.cornell.edu/courses/roster/SP15/#{prefix}/xml/") )
       doc.xpath("/courses/course").each do |course|
         num  = course["catalog_nbr"] || "N/A"  # in case it doesn't exist
         subj = course["subject"]     || "N/A"  # in case it doesn't exist
