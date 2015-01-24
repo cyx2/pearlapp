@@ -4,7 +4,7 @@ class CornellclassesController < ApplicationController
   respond_to :html
 
   def index
-    @cornellclasses = Cornellclass.all.paginate(:page => params[:page], :per_page => 250)
+    @cornellclasses = Cornellclass.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 250)
     respond_with(@cornellclasses)
   end
 
