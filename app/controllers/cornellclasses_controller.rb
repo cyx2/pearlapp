@@ -1,5 +1,6 @@
 class CornellclassesController < ApplicationController
   before_action :set_cornellclass, only: [:show, :edit, :update, :destroy]
+  before_action :verify_user, only: [:new, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -67,6 +68,11 @@ class CornellclassesController < ApplicationController
     def set_cornellclass
       @cornellclass = Cornellclass.find(params[:id])
     end
+
+    def verify_user
+      redirect_to cornellclasses_path, notice: "You're not authorized to edit classes!" unless current_user.id == 1
+    end
+
 
     def cornellclass_params
       params.require(:cornellclass).permit(:title, :prefix, :coursenumber, :courseid, :avgrating, :numratings, :created_at, :updated_at)
