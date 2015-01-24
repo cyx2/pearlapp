@@ -34,9 +34,15 @@ class RatingsController < ApplicationController
 
   def create
     # Append user_id to each rating
-    @rating = current_user.ratings.build(rating_params)
-    @rating.save
-    respond_with(@rating)
+    @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", rating_params[:prefix], rating_params[:course_number])
+    @cornell_classes.each do |cornell_class| 
+      with_id_params = rating_params
+      with_id_params[:courseid] = cornell_class.courseid
+      @rating = current_user.ratings.build(with_id_params)
+      @rating.save
+      respond_with(@rating)
+    end
+    redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.nil?
   end
 
   def update
@@ -60,6 +66,6 @@ class RatingsController < ApplicationController
     end
 
     def rating_params
-      params.require(:rating).permit(:rater, :rating, :courseid, :created_at, :updated_at, :prefix, :course_number)
+      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, :course_number)
     end
 end
