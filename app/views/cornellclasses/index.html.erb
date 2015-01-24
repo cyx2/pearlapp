@@ -16,8 +16,7 @@
       <th>Prefix</th>
       <th>Number</th>
       <th>Instructor</th>
-      <th>Class Nbr</th>
-      <th>Avg Rating</th>
+      <th>Avg Overall Rating</th>
       <th># Ratings</th>
       <th colspan="3"></th>
     </tr>
@@ -30,11 +29,11 @@
         <td><%= cornellclass.prefix %></td>
         <td><%= cornellclass.coursenumber %></td>
         <td><%= cornellclass.instructor %></td>
-        <td><%= cornellclass.courseid %></td>
         <td><%= cornellclass.avgrating %></td>
         <td><%= cornellclass.numratings %></td>
+        <td><%= link_to 'View', cornellclass %></td>
+        <td><%= link_to 'Rate', new_rating_path %></td>
         <!--
-        <td><%= link_to 'Show', cornellclass %></td>
         <td><%= link_to 'Edit', edit_cornellclass_path(cornellclass) %></td>
         <td><%= link_to 'Destroy', cornellclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         -->

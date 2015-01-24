@@ -18,6 +18,9 @@ class CornellclassesController < ApplicationController
   end
 
   def new
+    ############# DON'T CHANGE THIS #############
+    #############################################
+    ############# YOU MUST NAVIGATE AWAY FROM PAGE AFTER CLICKING ADD CLASSES #############
     # Pulls all course data for specified year, based on subject list
     subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
     # Reads each subject and stores it in local variable prefix
