@@ -42,7 +42,7 @@ class RatingsController < ApplicationController
       @rating.save
       respond_with(@rating)
     end
-    redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.nil?
+    redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
   end
 
   def update
