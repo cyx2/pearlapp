@@ -11,7 +11,6 @@ class CornellclassesController < ApplicationController
   def search_results    
     @search_results = Cornellclass.where("coursenumber = ? OR lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%' OR courseid = ?", params[:search_text], params[:search_text], params[:search_text], params[:search_text])
     respond_with(@search_results)
-    #
   end
 
   def show
@@ -37,7 +36,6 @@ class CornellclassesController < ApplicationController
       end
     end
     #@cornellclass = Cornellclass.new
-    redirect_to root_path, notice: "Courses successfully pulled."
   end
 
   def edit
