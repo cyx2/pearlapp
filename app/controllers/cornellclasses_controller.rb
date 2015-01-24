@@ -8,6 +8,12 @@ class CornellclassesController < ApplicationController
     respond_with(@cornellclasses)
   end
 
+  def search_results    
+    @search_results = Cornellclass.where("coursenumber = ? OR lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%' OR courseid = ?", params[:search_text], params[:search_text], params[:search_text], params[:search_text])
+    respond_with(@search_results)
+    #
+  end
+
   def show
     respond_with(@cornellclass)
   end

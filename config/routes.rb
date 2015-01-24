@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root "pages#home"
   get "team" => "pages#team" #about_path
   get "userratings" => 'ratings#userratings'
+  get "search_results" => 'cornellclasses#search_results'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
