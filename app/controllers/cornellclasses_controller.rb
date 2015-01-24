@@ -31,7 +31,7 @@ class CornellclassesController < ApplicationController
       end
     end
     #@cornellclass = Cornellclass.new
-    redirect_to cornellclasses_path, notice: "Courses successfully pulled."
+    redirect_to root_path, notice: "Courses successfully pulled."
   end
 
   def edit
