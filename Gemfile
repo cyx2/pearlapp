@@ -21,6 +21,8 @@ gem 'masonry-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
+gem 'nokogiri'
+
 group :development, :test do
   gem 'byebug' 	
   gem 'web-console', '~> 2.0'

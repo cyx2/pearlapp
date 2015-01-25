@@ -216,6 +216,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   masonry-rails
+  nokogiri
   paperclip!
   pg
   rails (= 4.2.0)
