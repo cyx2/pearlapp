@@ -33,11 +33,12 @@ class RatingsController < ApplicationController
   end
 
   def create
-    # Append user_id to each rating
+    # Append courseid to each rating    
     @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", rating_params[:prefix], rating_params[:course_number])
     @cornell_classes.each do |cornell_class| 
       with_id_params = rating_params
       with_id_params[:courseid] = cornell_class.courseid
+      # Append user_id to each rating
       @rating = current_user.ratings.build(with_id_params)
       @rating.save
       respond_with(@rating)

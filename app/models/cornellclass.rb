@@ -19,4 +19,5 @@ class Cornellclass < ActiveRecord::Base
 	def showratings
 		Rating.where(courseid: self.courseid)
 	end
+
 end

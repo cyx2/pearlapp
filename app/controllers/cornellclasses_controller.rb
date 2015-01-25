@@ -8,7 +8,7 @@ class CornellclassesController < ApplicationController
     @cornellclasses = Cornellclass.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 1000)
     respond_with(@cornellclasses)
   end
-
+  
   def search_results    
     @search_results = Cornellclass.where("coursenumber = ? OR lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%' OR courseid = ?", params[:search_text], params[:search_text], params[:search_text], params[:search_text])
     respond_with(@search_results)
@@ -47,7 +47,7 @@ class CornellclassesController < ApplicationController
 
   def create
     @cornellclass = Cornellclass.new(cornellclass_params)
-    @cornellclass.save
+    @cornellclass.save 
     respond_with(@cornellclass)
   end
 
@@ -62,7 +62,7 @@ class CornellclassesController < ApplicationController
   end
 
   def userratings
-  end
+  end  
 
   private
     def set_cornellclass
