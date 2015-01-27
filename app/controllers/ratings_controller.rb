@@ -45,6 +45,7 @@ class RatingsController < ApplicationController
       respond_with(@rating)
       # Commanding Cornellclass model to calculate the average, after new rating is created.
       cornell_class.calcavgrating
+      cornell_class.countratings
     end
     redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
   end

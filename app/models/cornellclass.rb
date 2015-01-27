@@ -22,6 +22,12 @@ class Cornellclass < ActiveRecord::Base
 
 	def calcavgrating
 		self.avgrating=self.showratings.average(:rating).to_f
+		self.save
+	end
+
+	def countratings
+		self.numratings=self.showratings.count.to_int
+		self.save
 	end
 
 end
