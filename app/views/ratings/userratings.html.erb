@@ -1,6 +1,10 @@
 <!-- WILL ONLY SHOW A SINGLE USER'S RATINGS -->
 
-<h1 class="center" style="padding-bottom: 1em">All of <%= current_user.name %>'s ratings</h1>
+<div class="well well-sm center">
+  <h1 class="center" style="padding-bottom: 1em">All of <%= current_user.name %>'s ratings</h1>  
+</div>
+
+<%= link_to 'New Rating', new_rating_path, class: "btn btn-default" %>
 
 <table class="table table-hover">
   <thead>
@@ -28,10 +32,8 @@
           <td><%= rating.course_number %></td>
           <!-- <td><%= rating.created_at %></td>
           <td><%= rating.updated_at %></td> -->
-          <td><%= link_to 'Show', rating %></td>
-
-          <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
-          <td><%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', rating, class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to 'Edit', edit_rating_path(rating), class: "btn btn-default btn-xs" %></td>
         </tr>
       <% end %>
     <% end %>
@@ -39,5 +41,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Rating', new_rating_path, class: "btn btn-default" %>

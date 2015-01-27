@@ -43,9 +43,10 @@ class RatingsController < ApplicationController
       @rating = current_user.ratings.build(with_id_params)
       @rating.save
       respond_with(@rating)
-      # Commanding Cornellclass model to calculate the average, after new rating is created.
+      # Update our aggregate data
       cornell_class.calcavgrating
       cornell_class.countratings
+      cornell_class.calchwyesno
     end
     redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
   end
@@ -57,7 +58,8 @@ class RatingsController < ApplicationController
 
   def destroy
     @rating.destroy
-    respond_with(@rating)
+    #respond_with(@rating)
+    redirect_to userratings_path, notice: "Your rating was successfully deleted."
   end
 
   private
@@ -71,6 +73,6 @@ class RatingsController < ApplicationController
     end
 
     def rating_params
-      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, :course_number)
+      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, :course_number, :hwyesno)
     end
 end

@@ -1,31 +1,48 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Rater:</strong>
-  <%= @rating.user.name %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @rating.rating %>
-</p>
-
 <!--
 <p>
   <strong>Classid:</strong>
   <%= @rating.courseid %>
 </p>
 -->
+<table class="table">
 
-<p>
-  <strong>Course:</strong><br/>
-  <%= @rating.prefix %><%= @rating.course_number %>
-</p>
+  <tbody>
+    <tr>
+      <td><strong>Rater</strong></td>
+      <td><%= @rating.user.name %></td>
+    </tr>
+    <tr>
+      <td><strong>Rating</strong></td>
+      <td><%= @rating.rating %></td>
+    </tr>
+    <tr>
+      <td><strong>Class</strong></td>
+      <td><%= @rating.prefix %><%= @rating.course_number %></td>
+    </tr>
+    <tr>
+      <td><strong>Homework?</strong></td>
+      <td>
+        <% if @rating.hwyesno == true %>
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <% else %>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Created On</strong></td>
+      <td><%= @rating.created_at %></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Created at:</strong>
-  <%= @rating.created_at %>
-</p>
+<div>
+  <%= link_to 'Delete', @rating, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %> |
+  <%= link_to 'Edit', edit_rating_path(@rating), class: "btn btn-default btn-xs" %> |
+<%= link_to 'Back', userratings_path, class: "btn btn-default btn-xs" %>
+</div>
+
 
 <!--
 <p>
@@ -34,5 +51,4 @@
 </p>
 -->
 
-<%= link_to 'Edit', edit_rating_path(@rating) %> |
-<%= link_to 'Back', userratings_path %>
+

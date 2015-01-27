@@ -32,4 +32,18 @@ class Cornellclass < ActiveRecord::Base
 		self.save
 	end
 
+	def calchwyesno
+		@t=self.showratings.where(hwyesno: true).count
+		@f=self.showratings.where(hwyesno: false).count
+
+		if @t > @f
+			self.hwyesno=true
+		elsif @t < @f
+			self.hwyesno=false
+		else
+			self.hwyesno=nil
+		end
+		self.save
+	end
+
 end
