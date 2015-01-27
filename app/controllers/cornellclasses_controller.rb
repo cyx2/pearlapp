@@ -9,8 +9,9 @@ class CornellclassesController < ApplicationController
     respond_with(@cornellclasses)
   end
   
-  def search_results    
-    @search_results = Cornellclass.where("coursenumber = ? OR lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%' OR courseid = ?", params[:search_text], params[:search_text], params[:search_text], params[:search_text])
+  def search_results
+    # Finds search results from page/home search form, paginates
+    @search_results = Cornellclass.where("coursenumber = ? OR lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%' OR courseid = ?", params[:search_text], params[:search_text], params[:search_text], params[:search_text]).paginate(:page => params[:page], :per_page => 50)
     respond_with(@search_results)
   end
 
