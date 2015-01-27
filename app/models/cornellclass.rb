@@ -20,11 +20,13 @@ class Cornellclass < ActiveRecord::Base
 		Rating.where(courseid: self.courseid)
 	end
 
+	# Note inefficiency, but this works when the rating starts from nil
 	def calcavgrating
-		self.avgrating=self.showratings.average(:rating).to_f
+		self.avgrating=self.showratings.average(:rating).to_f.round(3)
 		self.save
 	end
 
+	# Note inefficiency, but this works when the rating starts from nil
 	def countratings
 		self.numratings=self.showratings.count.to_int
 		self.save
