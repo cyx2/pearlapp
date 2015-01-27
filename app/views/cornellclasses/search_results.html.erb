@@ -24,6 +24,8 @@
         <td><%= cornellclass.courseid %></td>
         <td><%= cornellclass.avgrating %></td>
         <td><%= cornellclass.numratings %></td>
+        <td><%= link_to 'View', cornellclass, class: "btn btn-default btn-xs center" %></td>
+        <td><%= link_to 'Rate', new_rating_path, class: "btn btn-success btn-xs center" %></td>
         <!--
         <td><%= link_to 'Show', cornellclass %></td>
         <td><%= link_to 'Edit', edit_cornellclass_path(cornellclass) %></td>
