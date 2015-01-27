@@ -20,15 +20,14 @@ gem 'aws-sdk'
 gem 'masonry-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-
 gem 'nokogiri'
 
 group :development, :test do
   gem 'byebug' 	
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'sqlite3'
   gem 'annotate'
+  gem 'sqlite3'
 end
 
 group :production do

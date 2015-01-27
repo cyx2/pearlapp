@@ -36,12 +36,15 @@ class RatingsController < ApplicationController
     # Append courseid to each rating    
     @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", rating_params[:prefix], rating_params[:course_number])
     @cornell_classes.each do |cornell_class| 
+      # cornell_class is a single class
       with_id_params = rating_params
       with_id_params[:courseid] = cornell_class.courseid
       # Append user_id to each rating
       @rating = current_user.ratings.build(with_id_params)
       @rating.save
       respond_with(@rating)
+      # Commanding Cornellclass model to calculate the average, after new rating is created.
+      cornell_class.calcavgrating
     end
     redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
   end

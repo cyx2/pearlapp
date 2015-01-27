@@ -20,4 +20,8 @@ class Cornellclass < ActiveRecord::Base
 		Rating.where(courseid: self.courseid)
 	end
 
+	def calcavgrating
+		self.avgrating=self.showratings.average(:rating).to_f
+	end
+
 end

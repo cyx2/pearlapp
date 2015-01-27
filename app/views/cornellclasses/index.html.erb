@@ -31,8 +31,8 @@
         <td><%= cornellclass.instructor %></td>
         <td><%= cornellclass.avgrating %></td>
         <td><%= cornellclass.numratings %></td>
-        <td><%= link_to 'View', cornellclass %></td>
-        <td><%= link_to 'Generic Rate Link', new_rating_path %></td>
+        <td><%= link_to 'View', cornellclass, class: "btn btn-danger btn-sm center" %></td>
+        <td><%= link_to 'Rate', new_rating_path, class: "btn btn-primary btn-sm center" %></td>
         <!--
         <td><%= link_to 'Edit', edit_cornellclass_path(cornellclass) %></td>
         <td><%= link_to 'Destroy', cornellclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
