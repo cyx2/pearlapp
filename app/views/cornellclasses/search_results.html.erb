@@ -1,11 +1,16 @@
-<h1 class="center">Listing Search Results</h1>
+<div class="well well-sm">
+  <h1 class="center">Listing Search Results</h1>  
+  <!-- Automatically paginates the search results -->
+  <div class="center">
+     <%= will_paginate @search_results, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Prefix</th>
-      <th>Number</th>
+      <th>Course</th>
       <th>Instructor</th>
       <th>Class Nbr</th>
       <th>Avg Rating</th>
@@ -18,14 +23,17 @@
     <% @search_results.each do |cornellclass| %>
       <tr>
         <td><%= cornellclass.title %></td>
-        <td><%= cornellclass.prefix %></td>
-        <td><%= cornellclass.coursenumber %></td>
+        <td><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
         <td><%= cornellclass.instructor %></td>
         <td><%= cornellclass.courseid %></td>
         <td><%= cornellclass.avgrating %></td>
         <td><%= cornellclass.numratings %></td>
-        <td><%= link_to 'View', cornellclass, class: "btn btn-default btn-xs center" %></td>
-        <td><%= link_to 'Rate', new_rating_path, class: "btn btn-success btn-xs center" %></td>
+        <td>
+          <%= link_to '', cornellclass, class: "btn btn-default btn-xs center glyphicon glyphicon-list-alt" %>
+        </td>
+        <td>
+          <%= link_to '', new_rating_path, class: "btn btn-success btn-xs center glyphicon glyphicon-pencil" %>
+        </td>
         <!--
         <td><%= link_to 'Show', cornellclass %></td>
         <td><%= link_to 'Edit', edit_cornellclass_path(cornellclass) %></td>
