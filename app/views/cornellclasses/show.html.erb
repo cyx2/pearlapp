@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container-fluid">
-  <div class="panel panel-info"
-    <div class="center1 panel-heading" style>
-      <p>CS 2110</p>
+  <div class="panel panel-default">
+    <div class="panel-heading center" style>
+      <h3><%= @cornellclass.prefix %> <%= @cornellclass.coursenumber %>: <%= @cornellclass.title %></h3>
     </div>
   </div>
 </div>
@@ -22,21 +22,6 @@
   </div>
 
   <div class="col-md-6 col-sm-6">
-
-    <p>
-      <strong>Title:</strong>
-      <%= @cornellclass.title %>
-    </p>
-
-    <p>
-      <strong>Prefix:</strong>
-      <%= @cornellclass.prefix %>
-    </p>
-
-    <p>
-      <strong>Coursenumber:</strong>
-      <%= @cornellclass.coursenumber %>
-    </p>
 
     <p>
       <strong>Courseid:</strong>
