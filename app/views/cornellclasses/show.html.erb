@@ -1,73 +1,91 @@
 <p id="notice"><%= notice %></p>
 
+<div class="panel panel-default">
+      <div class="panel-heading">
+            <h1 class="center">
+                  <%= @cornellclass.prefix + " " + @cornellclass.coursenumber.to_s %>
+            </h1>
 
+            <h3 class="center">
+                  <%= @cornellclass.title %>
+            </h3>
+      </div>
+</div> 
 
+<br>
 
-<div class="panel panel-primary"  >
-  <div class="panel-heading">
-    <h3 class="panel-title center">CS 2110</h3>
-  </div>
-    
-  <br>
+<div class="panel-body">
 
-  <div class="panel-body">
+      <div class="container">
 
-  <div class="container">
+            <div class="navbar-left col-md-6">
+                  <ul class="nav nav-pills nav-stacked">
+                        <li role="presentation" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="#">Home</a></li>
+                        <li role="presentation" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="#">Profile</a></li>
+                        <li role="presentation" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="#">Messages</a></li>
+                        <li role="presentation" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="#">Messages</a></li>
+                  </ul>
+            </div>
 
-    <div class="navbar-left col-md-6">
-      <ul class="nav nav-pills nav-stacked">
-        <li role="presentation" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="#">Home</a></li>
-        <li role="presentation" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="#">Profile</a></li>
-        <li role="presentation" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="#">Messages</a></li>
-        <li role="presentation" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><a href="#">Messages</a></li>
-      </ul>
-    </div>
+            <div class="col-md-6 col-sm-6">
 
-    <div class="col-md-6 col-sm-6">
+                  <p>
+                  <strong>Course Number:</strong>
+                  <%= @cornellclass.courseid %>
+                  </p>
 
-      <p>
-        <strong>Title:</strong>
-        <%= @cornellclass.title %>
-      </p>
+                  <p>
+                  <strong>Average Rating:</strong>
+                  <!--  <%= @cornellclass.avgrating %> -->
+                  <% $i = @cornellclass.avgrating %>
+                  <% $count = 1 %>
 
-      <p>
-        <strong>Prefix:</strong>
-        <%= @cornellclass.prefix %>
-      </p>
+                  <% while $count <= $i do %>    
+                        <div class="filledStar<%= $count %>">&nbsp</div>
+                        <% $count += 1 
+                  end 
+                  %>
 
-      <p>
-        <strong>Coursenumber:</strong>
-        <%= @cornellclass.coursenumber %>
-      </p>
+                  <% while $i < 5 do %>
+                        <div class="filledStar0">&nbsp</div>
+                        <% $i += 1 
+                  end 
+                  %>
 
-      <p>
-        <strong>Courseid:</strong>
-        <%= @cornellclass.courseid %>
-      </p>
+                 <!--  
+                  <div class="filledStar1">&nbsp</div>
+                  <div class="filledStar2">&nbsp</div> 
+                  <div class="filledStar3">&nbsp</div> 
+                  <div class="filledStar4">&nbsp</div> 
+                  <div class="filledStar5">&nbsp</div>
+                  <div class="filledStar6"></div>
+                  <div class="filledStar7"></div> -->
+                  </p>
 
-      <p>
-        <strong>Avgrating:</strong>
-        <%= @cornellclass.avgrating %>
-      </p>
+                  <br>
+                  <br>
 
-      <p>
-        <strong>Numratings:</strong>
-        <%= @cornellclass.numratings %>
-      </p>
+                  <p>
+                  <strong>Numratings:</strong>
+                  <div class="filledStar1 circleCenter"> <%= @cornellclass.numratings %> </div>
+                  </p>
 
-      <p>
-        <strong>Created at:</strong>
-        <%= @cornellclass.created_at %>
-      </p>
+                  <br>
+                  <br>
 
-      <p>
-        <strong>Updated at:</strong>
-        <%= @cornellclass.updated_at %>
-      </p>
+                  <p>
+                  <strong>Created at:</strong>
+                  <%= @cornellclass.created_at %>
+                  </p>
 
-      <%= link_to 'Edit', edit_cornellclass_path(@cornellclass) %> |
-      <%= link_to 'Back', cornellclasses_path %>
-</div>
-    </div>
-  </div>
+                  <p>
+                  <strong>Updated at:</strong>
+                  <%= @cornellclass.updated_at %>
+                  </p>
+
+                  <%= link_to 'Edit', edit_cornellclass_path(@cornellclass) %> |
+                  <%= link_to 'Back', cornellclasses_path %>
+                  
+            </div>
+      </div>
 </div>

@@ -1,3 +1,147 @@
 // Place all the styles related to the cornellclasses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.circleCenter{
+	color: white;
+	text-align: center;
+	line-height: 2em;
+}
+
+#introbar{
+	float: left;
+	width:100%;
+	height: 500px;
+	margin: 0 auto;
+	background-color: white;
+	text-align: center;
+}
+
+.filledStar0{
+	float:left;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	background: white;
+	border-radius: solid;
+	margin: 0 2px 0 0;
+}
+
+.filledStar1{
+	float:left;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	background: white;
+	border-radius: solid;
+	margin: 0 2px 0 0;
+	-webkit-animation: alex1 .25s linear .15s forwards; /* Chrome, Safari, Opera */
+}
+
+.filledStar2{
+	float:left;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	background: white;
+	border-radius: solid;
+	margin: 0 2px 0 0;
+	-webkit-animation: alex2 .25s linear .3s forwards; 
+}
+
+.filledStar3{
+	float:left;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	background: white;
+	border: 1px solid #4abff0;
+	border-radius: solid;
+	margin: 0 2px 0 0;
+	-webkit-animation: alex3 .25s linear .45s forwards; 
+}
+
+.filledStar4{
+	float:left;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	background: white;
+	border-radius: solid;
+	margin: 0 2px 0 0;
+	-webkit-animation: alex4 .25s linear .6s forwards; 
+}
+
+.filledStar5{
+	float:left;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	background: white;
+	border-radius: solid;
+	margin: 0 2px 0 0;
+	-webkit-animation: alex5 .25s linear .75s forwards; 
+} 
+
+.filledStar6{
+	float:left;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+	width: 15px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	border-right: none;
+	border-radius: solid;
+	margin: 0 0 0 0;
+	background: white;
+	-webkit-animation: alex6 .25s linear .9s forwards; 
+}
+
+/*second half of half sphere*/
+.filledStar7{
+	float:left;
+	border-top-right-radius: 100px;
+	border-bottom-right-radius: 100px;
+	width: 15px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	border-left: none;
+	border-radius: solid;
+	margin: 0 2px 0 0;
+	background: white;
+}
+
+@-webkit-keyframes alex1 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-webkit-keyframes alex2 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-webkit-keyframes alex3 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-webkit-keyframes alex4 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-webkit-keyframes alex5 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-webkit-keyframes alex6 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
