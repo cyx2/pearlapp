@@ -43,10 +43,28 @@ class RatingsController < ApplicationController
       @rating = current_user.ratings.build(with_id_params)
       @rating.save
       respond_with(@rating)
-      # Update our aggregate data
+      # Aggregate data calculation      
+      # Context calculation
+      cornell_class.countratings      
+      # Quality avg calculation
       cornell_class.calcavgrating
-      cornell_class.countratings
+      cornell_class.calcprofqual
+      cornell_class.calctaqual
+      cornell_class.calclecturequal
+      cornell_class.calcrecitationqual
+      # Difficulty avg calculation
+      cornell_class.calchwdiff
+      cornell_class.calcexamdiff
+      cornell_class.calcmaterialdiff
+      cornell_class.calcprojdiff
+      cornell_class.calcprelimdiff
+      # Boolean avg calculation
       cornell_class.calchwyesno
+      cornell_class.calcrecitationreqdyesno
+      cornell_class.calcexamyesno
+      cornell_class.calclecturereqdyesno
+      cornell_class.calcprojyesno      
+      cornell_class.calcprelimyesno
     end
     redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
   end
@@ -73,6 +91,6 @@ class RatingsController < ApplicationController
     end
 
     def rating_params
-      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, :course_number, :hwyesno)
+      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, :course_number, :hwyesno, :recitationreqdyesno, :examyesno, :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff)
     end
 end
