@@ -14,6 +14,12 @@
 
 <br>
 
+<ul class="nav nav-pills nav-justified">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+
 <div class="panel-body">
 
       <div class="container">
@@ -35,23 +41,35 @@
                   </p>
 
                   <p>
-                  <strong>Average Rating:</strong>
-                  <!--  <%= @cornellclass.avgrating %> -->
-                  <% $i = @cornellclass.avgrating %>
-                  <% $count = 1 %>
+                  <strong><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Average Rating:</strong>
+                        <% 
+                        if @cornellclass.avgrating.present? 
+                              $i = @cornellclass.avgrating 
+                              $count = 1 
+                        %>
 
-                  <% while $count <= $i do %>    
-                        <div class="filledStar<%= $count %>">&nbsp</div>
-                        <% $count += 1 
-                  end 
-                  %>
+                        <%    
+                              while $count <= $i do %>    
+                                    <div class="filledStar<%= $count %>">&nbsp</div>
+                        <%          $count += 1 
+                              end 
+                        %>
 
-                  <% while $i < 5 do %>
-                        <div class="filledStar0">&nbsp</div>
-                        <% $i += 1 
-                  end 
-                  %>
+                        <%    
+                              while $i < 5 do 
+                        %>
+                                    <div class="filledStar0">&nbsp</div>
+                        <%          $i += 1 
+                              end %>
+                              <br>
+                              <br>
+                        <% else %>
+                        No ratings yet
 
+                        <%
+                        end
+                        %>
+                  </p>
                  <!--  
                   <div class="filledStar1">&nbsp</div>
                   <div class="filledStar2">&nbsp</div> 
@@ -60,14 +78,26 @@
                   <div class="filledStar5">&nbsp</div>
                   <div class="filledStar6"></div>
                   <div class="filledStar7"></div> -->
+                  
+
+                  <p>
+                        <strong><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Number of Ratings:</strong>
+                        <div class="filledStar1 circleCenter"> 
+                              <%= 
+                              if @cornellclass.numratings.present? 
+                                    @cornellclass.numratings 
+                              else 
+                                    0 
+                              end%> 
+                        </div>
                   </p>
 
                   <br>
                   <br>
 
                   <p>
-                  <strong>Numratings:</strong>
-                  <div class="filledStar1 circleCenter"> <%= @cornellclass.numratings %> </div>
+                        <strong>Homework:</strong>
+                        <div class="filledStar1 circleCenter"> <%= @cornellclass.hwyesno.to_s %> </div>
                   </p>
 
                   <br>
