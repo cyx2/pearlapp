@@ -1,31 +1,153 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Rater:</strong>
-  <%= @rating.user.name %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @rating.rating %>
-</p>
-
 <!--
 <p>
   <strong>Classid:</strong>
   <%= @rating.courseid %>
 </p>
 -->
+<div class="panel panel-default">
 
-<p>
-  <strong>Course:</strong><br/>
-  <%= @rating.prefix %><%= @rating.course_number %>
-</p>
+  <div class="panel-heading">
+    <div class="panel-title center">
+      <h1>Viewing your rating for <%= @rating.prefix %><%= @rating.course_number %></h1>
+    </div>
+  </div>
 
-<p>
-  <strong>Created at:</strong>
-  <%= @rating.created_at %>
-</p>
+  <div class="panel-body">
+    <table class="table">
+      <tbody>
+        <!-- Context Information -->
+        <tr>
+          <td><strong>Rater</strong></td>
+          <td><%= @rating.user.name %></td>
+        </tr>    
+        <tr>
+          <td><strong>Class</strong></td>
+          <td><%= @rating.prefix %><%= @rating.course_number %></td>
+        </tr>
+
+        <!-- Multiple Choice 0-5 Quality -->
+        <tr>
+          <td><strong>Overall Rating</strong></td>
+          <td><%= @rating.rating %></td>
+        </tr>
+        <tr>
+          <td><strong>Professor Quality</strong></td>
+          <td><%= @rating.profqual %></td>
+        </tr>
+        <tr>
+          <td><strong>TA Quality</strong></td>
+          <td><%= @rating.taqual %></td>
+        </tr>
+        <tr>
+          <td><strong>Lecture Quality</strong></td>
+          <td><%= @rating.lecturequal %></td>
+        </tr>
+        <tr>
+          <td><strong>Recitation Quality</strong></td>
+          <td><%= @rating.recitationqual %></td>
+        </tr>
+
+        <!-- Multiple Choice 0-5 Difficulty -->
+        <tr>
+          <td><strong>Homework Difficulty</strong></td>
+          <td><%= @rating.hwdiff %></td>
+        </tr>
+        <tr>
+          <td><strong>Exam Difficulty</strong></td>
+          <td><%= @rating.examdiff %></td>
+        </tr>
+        <tr>
+          <td><strong>Material Difficulty</strong></td>
+          <td><%= @rating.materialdiff %></td>
+        </tr>
+        <tr>
+          <td><strong>Project Difficulty</strong></td>
+          <td><%= @rating.projdiff %></td>
+        </tr>
+        <tr>
+          <td><strong>Prelim Difficulty</strong></td>
+          <td><%= @rating.prelimdiff %></td>
+        </tr>
+
+        <!-- Booleans -->
+        <tr>
+          <td><strong>Homework?</strong></td>
+          <td>
+            <% if @rating.hwyesno == true %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Required Recitation?</strong></td>
+          <td>
+            <% if @rating.recitationreqdyesno == true %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Final Exam?</strong></td>
+          <td>
+            <% if @rating.examyesno == true %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Lecture Attendance Required?</strong></td>
+          <td>
+            <% if @rating.lecturereqdyesno == true %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Significant Project(s)?</strong></td>
+          <td>
+            <% if @rating.projyesno == true %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Prelims?</strong></td>
+          <td>
+            <% if @rating.prelimyesno == true %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </td>
+        </tr>
+
+        <!-- Time Stamp -->
+        <tr>
+          <td><strong>Created On</strong></td>
+          <td><%= @rating.created_at %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="center" style="padding-bottom: 1em">
+  <%= link_to 'Delete', @rating, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %> |
+  <%= link_to 'Edit', edit_rating_path(@rating), class: "btn btn-default btn-xs" %> |
+<%= link_to 'Back', userratings_path, class: "btn btn-default btn-xs" %>
+</div>
+
 
 <!--
 <p>
@@ -34,5 +156,4 @@
 </p>
 -->
 
-<%= link_to 'Edit', edit_rating_path(@rating) %> |
-<%= link_to 'Back', userratings_path %>
+

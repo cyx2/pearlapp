@@ -18,14 +18,90 @@
       </div>
     </div>
 
+    <!-- Context Information -->
     <div class="panel-body"> 
       <div class="field form-inline">
         <%= f.label :rater %><br>
         <%= current_user.name %>
+      </div>      
+      <div class="field form-inline">
+        <%= f.label :prefix %>,
+        <%= f.label :course_number %><br>
+        <%= f.text_field :prefix, class: "form-control", placeholder: "BEE" %>
+        <%= f.number_field :course_number, class: "form-control", placeholder: "3500" %>
+      </div>
+
+      <hr>
+      <!-- Multiple Choice 0-5 Quality -->
+      <div class="field form-inline">
+        <%= f.label 'Overall Rating' %><br>
+        <%= f.number_field :rating, class: "form-control", placeholder: "0 to 5" %>
       </div>
       <div class="field form-inline">
-        <%= f.label :rating %><br>
-        <%= f.number_field :rating, class: "form-control", placeholder: "0 to 5" %>
+        <%= f.label 'Professor Quality' %><br>
+        <%= f.number_field :profqual, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'TA Quality' %><br>
+        <%= f.number_field :taqual, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Lecture Quality' %><br>
+        <%= f.number_field :lecturequal, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Recitation Quality' %><br>
+        <%= f.number_field :recitationqual, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+
+      <hr>
+      <!-- Multiple Choice 0-5 Difficulty -->
+      <div class="field form-inline">
+        <%= f.label 'Homework Difficulty' %><br>
+        <%= f.number_field :hwdiff, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Exam Difficulty' %><br>
+        <%= f.number_field :examdiff, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Course Material Difficulty' %><br>
+        <%= f.number_field :materialdiff, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Project Difficulty' %><br>
+        <%= f.number_field :projdiff, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Prelim Difficulty' %><br>
+        <%= f.number_field :prelimdiff, class: "form-control", placeholder: "0 to 5" %>
+      </div>
+
+      <hr>
+      <!-- Booleans -->
+      <div class="field form-inline">
+        <%= f.label 'Graded Homework?' %>
+        <%= f.check_box :hwyesno, class: "checkbox" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Required Recitation?' %>
+        <%= f.check_box :recitationreqdyesno, class: "checkbox" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Final Exam?' %>
+        <%= f.check_box :examyesno, class: "checkbox" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Lecture Attendance Required?' %>
+        <%= f.check_box :lecturereqdyesno, class: "checkbox" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Significant Project(s)?' %>
+        <%= f.check_box :projyesno, class: "checkbox" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Prelims?' %>
+        <%= f.check_box :prelimyesno, class: "checkbox" %>
       </div>
       <!--
       <div class="form-group">
@@ -33,12 +109,6 @@
         <%= f.number_field :courseid %>
       </div>
       -->
-      <div class="field form-inline">
-        <%= f.label :prefix %>,
-        <%= f.label :course_number %><br>
-        <%= f.text_field :prefix, class: "form-control", placeholder: "BEE" %>
-        <%= f.number_field :course_number, class: "form-control", placeholder: "3500" %>
-      </div>
       <!--
       <div class="field">
         <%= f.label :created_at %><br>
@@ -51,7 +121,7 @@
       -->
       <div class="actions">
         <%= f.submit "Submit", class: "btn btn-primary" %>
-        <%= link_to 'Back', root_path, class: "btn btn-default" %>
+        <%= link_to 'Back', userratings_path, class: "btn btn-default" %>
       </div>
     </div>
 <% end %>

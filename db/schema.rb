@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127042041) do
+ActiveRecord::Schema.define(version: 20150128034107) do
 
   create_table "cornellclasses", force: :cascade do |t|
     t.string   "title"
@@ -19,22 +19,52 @@ ActiveRecord::Schema.define(version: 20150127042041) do
     t.integer  "coursenumber"
     t.float    "avgrating"
     t.integer  "numratings"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "courseid"
     t.string   "instructor"
+    t.boolean  "hwyesno"
+    t.float    "profqual"
+    t.float    "taqual"
+    t.float    "lecturequal"
+    t.float    "recitationqual"
+    t.boolean  "recitationreqdyesno"
+    t.float    "hwdiff"
+    t.float    "examdiff"
+    t.boolean  "examyesno"
+    t.boolean  "lecturereqdyesno"
+    t.float    "materialdiff"
+    t.boolean  "projyesno"
+    t.float    "projdiff"
+    t.boolean  "prelimyesno"
+    t.float    "prelimdiff"
   end
 
   add_index "cornellclasses", ["courseid"], name: "index_cornellclasses_on_courseid"
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "rating"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "user_id"
     t.string   "prefix"
     t.integer  "course_number"
     t.integer  "courseid"
+    t.boolean  "hwyesno"
+    t.integer  "profqual"
+    t.integer  "taqual"
+    t.integer  "lecturequal"
+    t.integer  "recitationqual"
+    t.boolean  "recitationreqdyesno"
+    t.integer  "hwdiff"
+    t.integer  "examdiff"
+    t.boolean  "examyesno"
+    t.boolean  "lecturereqdyesno"
+    t.integer  "materialdiff"
+    t.boolean  "projyesno"
+    t.integer  "projdiff"
+    t.boolean  "prelimyesno"
+    t.integer  "prelimdiff"
   end
 
   add_index "ratings", ["courseid"], name: "index_ratings_on_courseid"
