@@ -27,167 +27,164 @@
       <div class="field form-inline">
         <%= f.label :prefix %>,
         <%= f.label :course_number %><br>
-        <%= f.text_field :prefix, class: "form-control", placeholder: "BEE" %>
-        <%= f.number_field :course_number, class: "form-control", placeholder: "3500" %>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Overall Rating' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :rating, '1' %>
-        <%= f.radio_button :rating, '1', :checked => true %>
-        <%= label :rating, '2' %>
-        <%= f.radio_button :rating, '2' %>
-        <%= label :rating, '3' %>
-        <%= f.radio_button :rating, '3' %>
-        <%= label :rating, '4' %>
-        <%= f.radio_button :rating, '4' %>
-        <%= label :rating, '5' %>
-        <%= f.radio_button :rating, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        <%= f.text_field :prefix, class: "form-control", placeholder: "CS" %>
+        <%= f.number_field :course_number, class: "form-control", placeholder: "3410" %>
       </div>
 
-      <hr>
-      <!-- Multiple Choice 0-5 Quality -->
-      <h4>Quality of:</h4>
-      <!-- <p class="help-block">Please rate from 0 - 5</p> -->  
-      <div class="field form-inline">
-        <%= f.label 'Professor' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :profqual, '1' %>
-        <%= f.radio_button :profqual, '1', :checked => true %>
-        <%= label :profqual, '2' %>
-        <%= f.radio_button :profqual, '2' %>
-        <%= label :profqual, '3' %>
-        <%= f.radio_button :profqual, '3' %>
-        <%= label :profqual, '4' %>
-        <%= f.radio_button :profqual, '4' %>
-        <%= label :profqual, '5' %>
-        <%= f.radio_button :profqual, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'TA' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :taqual, '1' %>
-        <%= f.radio_button :taqual, '1', :checked => true %>
-        <%= label :taqual, '2' %>
-        <%= f.radio_button :taqual, '2' %>
-        <%= label :taqual, '3' %>
-        <%= f.radio_button :taqual, '3' %>
-        <%= label :taqual, '4' %>
-        <%= f.radio_button :taqual, '4' %>
-        <%= label :taqual, '5' %>
-        <%= f.radio_button :taqual, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Lecture' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :lecturequal, '1' %>
-        <%= f.radio_button :lecturequal, '1', :checked => true %>
-        <%= label :lecturequal, '2' %>
-        <%= f.radio_button :lecturequal, '2' %>
-        <%= label :lecturequal, '3' %>
-        <%= f.radio_button :lecturequal, '3' %>
-        <%= label :lecturequal, '4' %>
-        <%= f.radio_button :lecturequal, '4' %>
-        <%= label :lecturequal, '5' %>
-        <%= f.radio_button :lecturequal, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Recitation' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :recitationqual, '1' %>
-        <%= f.radio_button :recitationqual, '1', :checked => true %>
-        <%= label :recitationqual, '2' %>
-        <%= f.radio_button :recitationqual, '2' %>
-        <%= label :recitationqual, '3' %>
-        <%= f.radio_button :recitationqual, '3' %>
-        <%= label :recitationqual, '4' %>
-        <%= f.radio_button :recitationqual, '4' %>
-        <%= label :recitationqual, '5' %>
-        <%= f.radio_button :recitationqual, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-
-      <hr>
-      <!-- Multiple Choice 0-5 Difficulty -->
-      <h4>Difficulty of:</h4>
-      <div class="field form-inline">
-        <%= f.label 'Homework' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :hwdiff, '1' %>
-        <%= f.radio_button :hwdiff, '1', :checked => true %>
-        <%= label :hwdiff, '2' %>
-        <%= f.radio_button :hwdiff, '2' %>
-        <%= label :hwdiff, '3' %>
-        <%= f.radio_button :hwdiff, '3' %>
-        <%= label :hwdiff, '4' %>
-        <%= f.radio_button :hwdiff, '4' %>
-        <%= label :hwdiff, '5' %>
-        <%= f.radio_button :hwdiff, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Exam' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :examdiff, '1' %>
-        <%= f.radio_button :examdiff, '1', :checked => true %>
-        <%= label :examdiff, '2' %>
-        <%= f.radio_button :examdiff, '2' %>
-        <%= label :examdiff, '3' %>
-        <%= f.radio_button :examdiff, '3' %>
-        <%= label :examdiff, '4' %>
-        <%= f.radio_button :examdiff, '4' %>
-        <%= label :examdiff, '5' %>
-        <%= f.radio_button :examdiff, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Course Material' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :materialdiff, '1' %>
-        <%= f.radio_button :materialdiff, '1', :checked => true %>
-        <%= label :materialdiff, '2' %>
-        <%= f.radio_button :materialdiff, '2' %>
-        <%= label :materialdiff, '3' %>
-        <%= f.radio_button :materialdiff, '3' %>
-        <%= label :materialdiff, '4' %>
-        <%= f.radio_button :materialdiff, '4' %>
-        <%= label :materialdiff, '5' %>
-        <%= f.radio_button :materialdiff, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Project' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :projdiff, '1' %>
-        <%= f.radio_button :projdiff, '1', :checked => true %>
-        <%= label :projdiff, '2' %>
-        <%= f.radio_button :projdiff, '2' %>
-        <%= label :projdiff, '3' %>
-        <%= f.radio_button :projdiff, '3' %>
-        <%= label :projdiff, '4' %>
-        <%= f.radio_button :projdiff, '4' %>
-        <%= label :projdiff, '5' %>
-        <%= f.radio_button :projdiff, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Prelim' %><br>
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        <%= label :prelimdiff, '1' %>
-        <%= f.radio_button :prelimdiff, '1', :checked => true %>
-        <%= label :prelimdiff, '2' %>
-        <%= f.radio_button :prelimdiff, '2' %>
-        <%= label :prelimdiff, '3' %>
-        <%= f.radio_button :prelimdiff, '3' %>
-        <%= label :prelimdiff, '4' %>
-        <%= f.radio_button :prelimdiff, '4' %>
-        <%= label :prelimdiff, '5' %>
-        <%= f.radio_button :prelimdiff, '5' %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+      <hr>     
+      <!-- Multiple Choice 0-5 Quality -->  
+      <h4 class="center">Quality</h4>
+      <div>        
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <td></td>
+              <td><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></td>
+              <td>1</td>  
+              <td>2</td> 
+              <td>3</td> 
+              <td>4</td> 
+              <td>5</td>
+              <td><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></td>
+              <td></td>
+              <td><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Professor' %></td>
+              <td></td>
+              <td><%= f.radio_button :profqual, '1' %></td>
+              <td><%= f.radio_button :profqual, '2' %></td>
+              <td><%= f.radio_button :profqual, '3' %></td>
+              <td><%= f.radio_button :profqual, '4' %></td>
+              <td><%= f.radio_button :profqual, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :profqual, '' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'TA' %></td>
+              <td></td>
+              <td><%= f.radio_button :taqual, '1' %></td>
+              <td><%= f.radio_button :taqual, '2' %></td>
+              <td><%= f.radio_button :taqual, '3' %></td>
+              <td><%= f.radio_button :taqual, '4' %></td>
+              <td><%= f.radio_button :taqual, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :taqual, '' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Lectures' %></td>
+              <td></td>
+              <td><%= f.radio_button :lecturequal, '1' %></td>
+              <td><%= f.radio_button :lecturequal, '2' %></td>
+              <td><%= f.radio_button :lecturequal, '3' %></td>
+              <td><%= f.radio_button :lecturequal, '4' %></td>
+              <td><%= f.radio_button :lecturequal, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :lecturequal, '' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Recitation' %></td>
+              <td></td>
+              <td><%= f.radio_button :recitationqual, '1' %></td>
+              <td><%= f.radio_button :recitationqual, '2' %></td>
+              <td><%= f.radio_button :recitationqual, '3' %></td>
+              <td><%= f.radio_button :recitationqual, '4' %></td>
+              <td><%= f.radio_button :recitationqual, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :recitationqual, '' %></td>
+            </tr>
+            <tr><td colspan="10" class="center"><h4>Difficulty</h4></td></tr>
+            <tr>
+              <td></td>
+              <td><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></td>
+              <td>1</td>  
+              <td>2</td> 
+              <td>3</td> 
+              <td>4</td> 
+              <td>5</td>  
+              <td><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></td>  
+              <td></td>
+              <td><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>     
+            </tr>
+            <tr>
+              <td><%= f.label 'Homework' %></td>
+              <td></td>
+              <td><%= f.radio_button :hwdiff, '1' %></td>
+              <td><%= f.radio_button :hwdiff, '2' %></td>
+              <td><%= f.radio_button :hwdiff, '3' %></td>
+              <td><%= f.radio_button :hwdiff, '4' %></td>
+              <td><%= f.radio_button :hwdiff, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :hwdiff, '' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Exam' %></td>
+              <td></td>
+              <td><%= f.radio_button :examdiff, '1' %></td>
+              <td><%= f.radio_button :examdiff, '2' %></td>
+              <td><%= f.radio_button :examdiff, '3' %></td>
+              <td><%= f.radio_button :examdiff, '4' %></td>
+              <td><%= f.radio_button :examdiff, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :examdiff, '' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Course Material & Topics' %></td>
+              <td></td>
+              <td><%= f.radio_button :materialdiff, '1' %></td>
+              <td><%= f.radio_button :materialdiff, '2' %></td>
+              <td><%= f.radio_button :materialdiff, '3' %></td>
+              <td><%= f.radio_button :materialdiff, '4' %></td>
+              <td><%= f.radio_button :materialdiff, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :materialdiff, '' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Project(s)' %></td>
+              <td></td>
+              <td><%= f.radio_button :projdiff, '1' %></td>
+              <td><%= f.radio_button :projdiff, '2' %></td>
+              <td><%= f.radio_button :projdiff, '3' %></td>
+              <td><%= f.radio_button :projdiff, '4' %></td>
+              <td><%= f.radio_button :projdiff, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :projdiff, '' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Prelim(s)' %></td>
+              <td></td>
+              <td><%= f.radio_button :prelimdiff, '1' %></td>
+              <td><%= f.radio_button :prelimdiff, '2' %></td>
+              <td><%= f.radio_button :prelimdiff, '3' %></td>
+              <td><%= f.radio_button :prelimdiff, '4' %></td>
+              <td><%= f.radio_button :prelimdiff, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :prelimdiff, '' %></td>
+            </tr>
+            <tr><td colspan="10" class="center"><h4>Overall</h4></td></tr>
+            <tr>
+              <td><%= f.label 'Overall Course Opinion' %></td>
+              <td></td>
+              <td><%= f.radio_button :rating, '1' %></td>
+              <td><%= f.radio_button :rating, '2' %></td>
+              <td><%= f.radio_button :rating, '3' %></td>
+              <td><%= f.radio_button :rating, '4' %></td>
+              <td><%= f.radio_button :rating, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :rating, '' %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <hr>
@@ -216,22 +213,6 @@
         <%= f.label 'Prelims?' %>
         <%= f.check_box :prelimyesno, class: "checkbox" %>
       </div>
-      <!--
-      <div class="form-group">
-        <%= f.label :courseid %><br>
-        <%= f.number_field :courseid %>
-      </div>
-      -->
-      <!--
-      <div class="field">
-        <%= f.label :created_at %><br>
-        <%= f.datetime_select :created_at %>
-      </div>
-      <div class="field">
-        <%= f.label :updated_at %><br>
-        <%= f.datetime_select :updated_at %>
-      </div>
-      -->
       <div class="actions">
         <%= f.submit "Submit", class: "btn btn-primary" %>
         <%= link_to 'Back', userratings_path, class: "btn btn-default" %>

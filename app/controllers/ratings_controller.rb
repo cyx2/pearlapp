@@ -45,7 +45,15 @@ class RatingsController < ApplicationController
       respond_with(@rating)
       # Aggregate data calculation      
       # Context calculation
-      cornell_class.countratings      
+      cornell_class.countratings 
+      # Boolean avg calculation ## Must be above others
+      # because numerical calc functions depend on bools
+      cornell_class.calchwyesno
+      cornell_class.calcrecitationreqdyesno
+      cornell_class.calcexamyesno
+      cornell_class.calclecturereqdyesno
+      cornell_class.calcprojyesno      
+      cornell_class.calcprelimyesno    
       # Quality avg calculation
       cornell_class.calcavgrating
       cornell_class.calcprofqual
@@ -58,13 +66,6 @@ class RatingsController < ApplicationController
       cornell_class.calcmaterialdiff
       cornell_class.calcprojdiff
       cornell_class.calcprelimdiff
-      # Boolean avg calculation
-      cornell_class.calchwyesno
-      cornell_class.calcrecitationreqdyesno
-      cornell_class.calcexamyesno
-      cornell_class.calclecturereqdyesno
-      cornell_class.calcprojyesno      
-      cornell_class.calcprelimyesno
     end
     redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
   end
