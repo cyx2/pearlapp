@@ -35,9 +35,15 @@ class Rating < ActiveRecord::Base
 	#validates :rating, numericality: { :greater_than_or_equal_to => 0 }
 	#validates :rating, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimdiff, numericality: { :less_than_or_equal_to => 5 }
 	
-	validates :rating, :prefix, :course_number, :semester, presence: true	
+	validates :rating, :prefix, :course_number, :semester, presence: true		
 
 	def showclass
 		Cornellclass.where(courseid: self.courseid)		
 	end
+
+	def format
+    self.prefix=self.prefix.upcase
+    self.save
+  end
+
 end
