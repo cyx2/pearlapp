@@ -24,11 +24,13 @@ class CornellclassesController < ApplicationController
     #############################################
     ############# YOU MUST NAVIGATE AWAY FROM PAGE AFTER CLICKING ADD CLASSES #############
     # Pulls all course data for specified year, based on subject list
-    subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
+    subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/FA14/xml/"))
     # Reads each subject and stores it in local variable prefix
     subjectdoc.xpath("//subject/@subject").each do |prefix|
       # Link to course pages, substituting in prefix in URL
-      classdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/#{prefix}/xml/"))
+      classdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/FA14/#{prefix}/xml/"))
+      # Gets the semester from each sheet read
+      semester = classdoc.xpath("/courses/@term").to_s
       # Reads each course and stores listed vars
       classdoc.xpath("/courses/course").each do |course|
         num = course["catalog_nbr"] || "Not provided"
@@ -37,7 +39,7 @@ class CornellclassesController < ApplicationController
         cid = (course.at("sections/section/@class_number") || "Not provided").to_s
         inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
         # Creates a cornell class in Cornellclasses table
-        Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid)
+        Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester)
       end
     end
     @cornellclass = Cornellclass.new

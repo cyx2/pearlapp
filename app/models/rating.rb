@@ -25,6 +25,7 @@
 #  projdiff            :integer
 #  prelimyesno         :boolean
 #  prelimdiff          :integer
+#  semester            :string
 #
 
 class Rating < ActiveRecord::Base	
@@ -32,9 +33,9 @@ class Rating < ActiveRecord::Base
 	# belongs_to :cornellclass
 
 	#validates :rating, numericality: { :greater_than_or_equal_to => 0 }
-	#validates :rating, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, numericality: { :less_than_or_equal_to => 5 }
+	#validates :rating, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimdiff, numericality: { :less_than_or_equal_to => 5 }
 	
-	validates :rating, :prefix, :course_number, presence: true	
+	validates :rating, :prefix, :course_number, :semester, presence: true	
 
 	def showclass
 		Cornellclass.where(courseid: self.courseid)		

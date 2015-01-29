@@ -27,6 +27,7 @@
 #  projdiff            :float
 #  prelimyesno         :boolean
 #  prelimdiff          :float
+#  semester            :string
 #
 
 class Cornellclass < ActiveRecord::Base

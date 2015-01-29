@@ -25,6 +25,7 @@
 #  projdiff            :integer
 #  prelimyesno         :boolean
 #  prelimdiff          :integer
+#  semester            :string
 #
 
 require 'test_helper'

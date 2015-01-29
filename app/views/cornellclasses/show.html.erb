@@ -98,7 +98,11 @@
                   <p>
                         <strong>Homework:</strong>
                         <div class="filledStar1 circleCenter"> 
-                              <%= @cornellclass.hwyesno.to_s %>
+                              <% if @cornellclass.projyesno == true %>
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                              <% else %>
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                              <% end %>
                         </div>
                   </p>
 
