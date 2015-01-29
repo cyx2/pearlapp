@@ -22,8 +22,9 @@ class CornellclassesController < ApplicationController
     parse_pre = true
     parse_post = false
     while i < n do
-      if (parse_pre && search_text[i] =~ /[A-Za-z]/)
+      if (parse_pre && search_text[i] =~ /[A-Za-z ]/)
         prefix = prefix + search_text[i]
+        puts(search_text[i])
       elsif (!parse_post && search_text[i] =~ /[0-9]/)
         parse_pre = false
         coursenumber = coursenumber + search_text[i]
@@ -33,8 +34,15 @@ class CornellclassesController < ApplicationController
       end
       i = i + 1
     end
+
+    if coursenumber == ""
+      freeform = prefix
+      prefix = ""
+    else
+      prefix = prefix.strip
+    end
     
-    @search_results = Cornellclass.where("(prefix LIKE '%' || upper(?) || '%' AND (coursenumber = ? OR 0 = ?)) AND (lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%')", prefix, coursenumber.to_i, coursenumber.to_i, freeform, freeform).paginate(:page => params[:page], :per_page => 50)
+    @search_results = Cornellclass.where("UPPER(prefix) LIKE '%' || UPPER(?) || '%' AND (coursenumber = ? OR 0 = ?) AND (lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%')", prefix, coursenumber.to_i, coursenumber.to_i, freeform, freeform).paginate(:page => params[:page], :per_page => 50)
     respond_with(@search_results)
   end
 
