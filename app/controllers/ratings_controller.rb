@@ -40,8 +40,9 @@ class RatingsController < ApplicationController
       with_id_params = rating_params
       with_id_params[:courseid] = cornell_class.courseid
       # Append user_id to each rating
-      @rating = current_user.ratings.build(with_id_params)
-      @rating.save
+      @rating = current_user.ratings.build(with_id_params)      
+      @rating.save      
+      @rating.format
       respond_with(@rating)
       # Aggregate data calculation      
       # Context calculation
@@ -84,7 +85,7 @@ class RatingsController < ApplicationController
   private
     def set_rating
       @rating = Rating.find(params[:id])
-    end
+    end    
 
     def verify_user
       @rating = current_user.ratings.find_by(id: params[:id])
