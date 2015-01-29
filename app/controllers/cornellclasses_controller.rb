@@ -11,7 +11,30 @@ class CornellclassesController < ApplicationController
   
   def search_results
     # Finds search results from page/home search form, paginates
-    @search_results = Cornellclass.where("coursenumber = ? OR lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%' OR courseid = ?", params[:search_text], params[:search_text], params[:search_text], params[:search_text]).paginate(:page => params[:page], :per_page => 50)
+    search_text = params[:search_text]
+
+    prefix = ""
+    coursenumber = ""
+    freeform = ""
+
+    i = 0
+    n = search_text.length
+    parse_pre = true
+    parse_post = false
+    while i < n do
+      if (parse_pre && search_text[i] =~ /[A-Za-z]/)
+        prefix = prefix + search_text[i]
+      elsif (!parse_post && search_text[i] =~ /[0-9]/)
+        parse_pre = false
+        coursenumber = coursenumber + search_text[i]
+      else
+        parse_post = true
+        freeform = freeform + search_text[i]
+      end
+      i = i + 1
+    end
+    
+    @search_results = Cornellclass.where("(prefix LIKE '%' || upper(?) || '%' AND (coursenumber = ? OR 0 = ?)) AND (lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%')", prefix, coursenumber.to_i, coursenumber.to_i, freeform, freeform).paginate(:page => params[:page], :per_page => 50)
     respond_with(@search_results)
   end
 
