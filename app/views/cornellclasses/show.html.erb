@@ -89,13 +89,32 @@
                   <p>
                         <strong>Homework:</strong>
                         <div class="filledStar1 circleCenter"> 
-                              <% if @cornellclass.projyesno == true %>
+                              <% if @cornellclass.hwyesno == true %>
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                               <% else %>
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                               <% end %>
                         </div>
                   </p>
+
+                  <!--
+                  <%= @cornellclass.instructor %>
+                  <%= @cornellclass.profqual %>
+                  <%= @cornellclass.taqual %>
+                  <%= @cornellclass.lecturequal %>
+                  <%= @cornellclass.recitationqual %>
+                  <%= @cornellclass.recitationreqdyesno %>
+                  <%= @cornellclass.hwdiff %>
+                  <%= @cornellclass.examdiff %>
+                  <%= @cornellclass.examyesno %>
+                  <%= @cornellclass.lecturereqdyesno %>
+                  <%= @cornellclass.materialdiff %>
+                  <%= @cornellclass.projyesno %>
+                  <%= @cornellclass.projdiff %>
+                  <%= @cornellclass.prelimyesno %>
+                  <%= @cornellclass.prelimdiff %>
+                  <%= @cornellclass.semester %>
+                  -->
 
                   <br>
                   <br>
