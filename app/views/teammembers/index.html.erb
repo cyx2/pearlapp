@@ -4,7 +4,7 @@
   <%= link_to 'New Team Member', new_teammember_path, class: "btn btn-default" %>
 <% end %>
 
-<div id="pins" class="transitions-enabled">
+<div id="teammembers" class="transitions-enabled">
   <% @teammembers.each do |teammember| %>
     <div class="box panel panel-default">
       <% if teammember.image? %>
