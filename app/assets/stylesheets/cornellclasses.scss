@@ -8,6 +8,12 @@
 	line-height: 2em;
 }
 
+.circleCenterI{
+	color: #4abff0;
+	text-align: center;
+	line-height: 2em;
+}
+
 #introbar{
 	float: left;
 	width:100%;
@@ -88,22 +94,9 @@
 	-webkit-animation: alex5 .25s linear .75s forwards; 
 } 
 
-.filledStar6{
-	float:left;
-	border-top-left-radius: 100px;
-	border-bottom-left-radius: 100px;
-	width: 15px;
-	height: 30px;
-	border: 1px solid #4abff0;
-	border-right: none;
-	border-radius: solid;
-	margin: 0 0 0 0;
-	background: white;
-	-webkit-animation: alex6 .25s linear .9s forwards; 
-}
 
 /*second half of half sphere*/
-.filledStar7{
+.filledHalfR0{
 	float:left;
 	border-top-right-radius: 100px;
 	border-bottom-right-radius: 100px;
@@ -114,6 +107,76 @@
 	border-radius: solid;
 	margin: 0 2px 0 0;
 	background: white;
+} 
+
+.filledHalfL1{
+	float:left;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+	width: 15px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	border-right: none;
+	border-radius: solid;
+	margin: 0 0 0 0;
+	background: white;
+	-webkit-animation: alex6 .25s linear .15s forwards;
+}
+
+.filledHalfL2{
+	float:left;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+	width: 15px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	border-right: none;
+	border-radius: solid;
+	margin: 0 0 0 0;
+	background: white;
+	-webkit-animation: alex6 .25s linear .3s forwards; 
+}
+
+.filledHalfL3{
+	float:left;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+	width: 15px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	border-right: none;
+	border-radius: solid;
+	margin: 0 0 0 0;
+	background: white;
+	-webkit-animation: alex6 .25s linear .45s forwards; 
+}
+
+.filledHalfL4{
+	float:left;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+	width: 15px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	border-right: none;
+	border-radius: solid;
+	margin: 0 0 0 0;
+	background: white;
+	-webkit-animation: alex6 .25s linear .6s forwards; 
+}
+
+.filledHalfL5{
+	float:left;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+	width: 15px;
+	height: 30px;
+	border: 1px solid #4abff0;
+	border-right: none;
+	border-radius: solid;
+	margin: 0 0 0 0;
+	background: white;
+	-webkit-animation: alex6 .25s linear .75s forwards; 
 }
 
 @-webkit-keyframes alex1 {

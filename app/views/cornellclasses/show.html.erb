@@ -15,26 +15,26 @@
 <br>
 
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
+  <li role="presentation" id="overallLI"><a id="button0">At a glance</a></li>
+  <li role="presentation" id="professorLI"><a id="button1">Professor</a></li>
+  <li role="presentation" id="assignmentsLI"><a id="button2">Assignments</a></li>
 </ul>
 
 <div class="panel-body">
 
       <div class="container">
 
-            <div class="col-md-6 col-sm-6">
-
+            <div id="overall">
+                  
                   <p>
                   <strong>Course Number:</strong>
-                  <%= @cornellclass.courseid %>
+                  <a class="btn btn-default" href="https://classes.cornell.edu/browse/roster/SP15/class/<%= @cornellclass.prefix.upcase %>/<%= @cornellclass.coursenumber.to_s %>" target="window" role="button"><%= @cornellclass.courseid %></a>
                   </p>
 
                   <p>
                   <strong><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Average Rating:</strong>
                         <% 
-                        if @cornellclass.avgrating.present? 
+                        if @cornellclass.numratings.present? 
                               $i = @cornellclass.avgrating 
                               $count = 1 
                         %>
@@ -47,6 +47,13 @@
                         %>
 
                         <%    
+                              $difference = @cornellclass.avgrating - @cornellclass.avgrating.to_i
+                              if($difference >= 0.3 && $difference <= 0.7) 
+                        %>
+                                    <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+                                    <% $i = $i + 1;
+                              end
+
                               while $i < 5 do 
                         %>
                                     <div class="filledStar0">&nbsp</div>
@@ -54,29 +61,15 @@
                               end %>
                               <br>
                               <br>
-                        <% else %>
-                        No ratings yet
-
-                        <%
-                        end
-                        %>
+                        
                   </p>
-                 <!--  
-                  <div class="filledStar1">&nbsp</div>
-                  <div class="filledStar2">&nbsp</div> 
-                  <div class="filledStar3">&nbsp</div> 
-                  <div class="filledStar4">&nbsp</div> 
-                  <div class="filledStar5">&nbsp</div>
-                  <div class="filledStar6"></div>
-                  <div class="filledStar7"></div> -->
-                  
-
+                 
                   <p>
                         <strong><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Number of Ratings:</strong>
                         <div class="filledStar1 circleCenter"> 
                               <%= 
                               if @cornellclass.numratings.present? 
-                                    @cornellclass.numratings 
+                                    @cornellclass.numratings
                               else 
                                     0 
                               end%> 
@@ -88,14 +81,75 @@
 
                   <p>
                         <strong>Homework:</strong>
-                        <div class="filledStar1 circleCenter"> 
-                              <% if @cornellclass.hwyesno == true %>
+
+                        <% 
+                        if @cornellclass.hwyesno == true
+                              $bubble1 = "filledStar1 circleCenter"
+                              $bubble2 = "filledStar0 circleCenterI"
+                        else
+                              $bubble1 = "filledStar0 circleCenterI"
+                              $bubble2 = "filledStar1 circleCenter"
+                        end
+                        %>
+
+                        <div class="<%= $bubble1 %>"> 
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                              <% else %>
+                        </div>
+                        <div class="<%= $bubble2 %>">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                              <% end %>
                         </div>
                   </p>
+
+                  <br>
+                  <br>
+
+                  <p>
+                        <strong>Prelims:</strong>
+
+                        <% 
+                        if @cornellclass.prelimyesno == true
+                              $bubble1 = "filledStar1 circleCenter"
+                              $bubble2 = "filledStar0 circleCenterI"
+                        else
+                              $bubble1 = "filledStar0 circleCenterI"
+                              $bubble2 = "filledStar1 circleCenter"
+                        end
+                        %>
+
+                        <div class="<%= $bubble1 %>"> 
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </div>
+                        <div class="<%= $bubble2 %>">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </div>
+                  </p>
+
+                  <br>
+                  <br>
+
+                  <p>
+                        <strong>Lecture Required:</strong>
+
+                        <% 
+                        if @cornellclass.lecturereqdyesno == true
+                              $bubble1 = "filledStar1 circleCenter"
+                              $bubble2 = "filledStar0 circleCenterI"
+                        else
+                              $bubble1 = "filledStar0 circleCenterI"
+                              $bubble2 = "filledStar1 circleCenter"
+                        end
+                        %>
+
+                        <div class="<%= $bubble1 %>"> 
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </div>
+                        <div class="<%= $bubble2 %>">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </div>
+
+                        
+                  </p>
+
 
                   <!--
                   <%= @cornellclass.instructor %>
@@ -111,7 +165,6 @@
                   <%= @cornellclass.materialdiff %>
                   <%= @cornellclass.projyesno %>
                   <%= @cornellclass.projdiff %>
-                  <%= @cornellclass.prelimyesno %>
                   <%= @cornellclass.prelimdiff %>
                   <%= @cornellclass.semester %>
                   -->
@@ -119,19 +172,28 @@
                   <br>
                   <br>
 
-                  <p>
-                  <strong>Created at:</strong>
-                  <%= @cornellclass.created_at %>
-                  </p>
-
-                  <p>
-                  <strong>Updated at:</strong>
-                  <%= @cornellclass.updated_at %>
-                  </p>
-
                   <%= link_to 'Edit', edit_cornellclass_path(@cornellclass) %> |
                   <%= link_to 'Back', cornellclasses_path %>
                   
+            </div>
+
+            <div id="professor">
+                  <p>
+                        <strong>Professor</strong>
+                        <%= @cornellclass.instructor %>
+                  </p>
+
+                  <p></p>
+            </div>
+
+
+            <div id="assignments">
+
+
+                  <% else %>
+                        No ratings yet
+
+                  <% end %>
             </div>
       </div>
 </div>
