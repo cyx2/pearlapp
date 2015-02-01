@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cornellsubjects
+
   resources :cornellclasses
 
   resources :teammembers

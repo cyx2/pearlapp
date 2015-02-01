@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Cornellsubjects</h1>
+
+<div id="cornellsubjects" class="transitions-enabled">
+  <% @cornellsubjects.each do |cornellsubject| %>
+      <button class="cornellsubjectbox btn btn-default" onclick="document.getElementById("search-form").submit()">
+      	 <%= cornellsubject.prefix %>
+      </button>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Cornellsubject', new_cornellsubject_path %>
