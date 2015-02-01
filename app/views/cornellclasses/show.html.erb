@@ -172,8 +172,10 @@
                   <br>
                   <br>
 
-                  <%= link_to 'Edit', edit_cornellclass_path(@cornellclass) %> |
-                  <%= link_to 'Back', cornellclasses_path %>
+                  <% if user_signed_in? && current_user.id == 1 %>
+                        <%= link_to 'Edit', edit_cornellclass_path(@cornellclass) %> |
+                        <%= link_to 'Back', cornellclasses_path %>
+                  <% end %>
                   
             </div>
 
