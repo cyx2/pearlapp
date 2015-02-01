@@ -1,5 +1,6 @@
 class CornellsubjectsController < ApplicationController
   before_action :set_cornellsubject, only: [:show, :edit, :update, :destroy]
+  before_action :verify_user, only: [:new, :show, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -13,9 +14,11 @@ class CornellsubjectsController < ApplicationController
   end
 
   def new
-    doc = Nokogiri::HTML(open("https://courseroster.reg.cornell.edu/courses/roster/FA14/xml/"))
-    doc.xpath("//subject/@subject").each do |prefix|
-      Cornellsubject.create(:prefix => prefix)      
+    sdoc = Nokogiri::XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
+    sdoc.xpath("/subjects/subject").each do |s|
+      pref = s["subject"]
+      na=s["subject_ldescr"]
+      Cornellsubject.create(:prefix => pref, :name => na)      
     end
     @cornellsubject = Cornellsubject.new
   end
@@ -42,6 +45,10 @@ class CornellsubjectsController < ApplicationController
   private
     def set_cornellsubject
       @cornellsubject = Cornellsubject.find(params[:id])
+    end
+
+    def verify_user
+      redirect_to cornellsubjects_path, notice: "You're not authorized to edit the subjects at Cornell!" unless current_user.id == 1
     end
 
     def cornellsubject_params
