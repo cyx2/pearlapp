@@ -29,13 +29,13 @@ class CornellclassesController < ApplicationController
         parse_pre = false
         coursenumber = coursenumber + search_text[i]
       else
-        parse_post = true
+        parse_post = true 
         freeform = freeform + search_text[i]
       end
       i = i + 1
     end
 
-    if coursenumber == ""
+    if (coursenumber == "" && !Cornellclass.exists?(['UPPER(prefix) = UPPER(?)', prefix.strip]))
       freeform = prefix
       prefix = ""
     else
