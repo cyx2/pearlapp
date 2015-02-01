@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cornellsubjects
+
   resources :cornellclasses
 
   resources :teammembers
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   get "team" => "pages#team" #about_path
   get "userratings" => 'ratings#userratings'
   get "search_results" => 'cornellclasses#search_results'
+  get "findbysubject" => 'cornellclasses#findbysubject'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

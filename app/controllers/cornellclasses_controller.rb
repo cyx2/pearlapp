@@ -8,6 +8,11 @@ class CornellclassesController < ApplicationController
     @cornellclasses = Cornellclass.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 1000)
     respond_with(@cornellclasses)
   end
+
+  def findbysubject
+    @p = params[:prefix]
+    @cornellclasses = Cornellclass.where(prefix: @p)
+  end
   
   def search_results
     # Finds search results from page/home search form, paginates
