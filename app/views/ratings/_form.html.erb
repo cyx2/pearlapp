@@ -104,13 +104,13 @@
             <tr><td colspan="10" class="center"><h4>Difficulty</h4></td></tr>
             <tr>
               <td></td>
-              <td><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></td>
+              <td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
               <td>1</td>  
               <td>2</td> 
               <td>3</td> 
               <td>4</td> 
               <td>5</td>  
-              <td><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></td>  
+              <td><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></td>  
               <td></td>
               <td><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>     
             </tr>
@@ -127,7 +127,19 @@
               <td><%= f.radio_button :hwdiff, '' %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Exam' %></td>
+              <td><%= f.label 'Prelim(s)' %></td>
+              <td></td>
+              <td><%= f.radio_button :prelimdiff, '1' %></td>
+              <td><%= f.radio_button :prelimdiff, '2' %></td>
+              <td><%= f.radio_button :prelimdiff, '3' %></td>
+              <td><%= f.radio_button :prelimdiff, '4' %></td>
+              <td><%= f.radio_button :prelimdiff, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :prelimdiff, '' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Final Exam' %></td>
               <td></td>
               <td><%= f.radio_button :examdiff, '1' %></td>
               <td><%= f.radio_button :examdiff, '2' %></td>
@@ -162,18 +174,7 @@
               <td></td>
               <td><%= f.radio_button :projdiff, '' %></td>
             </tr>
-            <tr>
-              <td><%= f.label 'Prelim(s)' %></td>
-              <td></td>
-              <td><%= f.radio_button :prelimdiff, '1' %></td>
-              <td><%= f.radio_button :prelimdiff, '2' %></td>
-              <td><%= f.radio_button :prelimdiff, '3' %></td>
-              <td><%= f.radio_button :prelimdiff, '4' %></td>
-              <td><%= f.radio_button :prelimdiff, '5' %></td>
-              <td></td>
-              <td></td>
-              <td><%= f.radio_button :prelimdiff, '' %></td>
-            </tr>
+            
             <tr><td colspan="10" class="center"><h4>Overall</h4></td></tr>
             <tr>
               <td></td>
