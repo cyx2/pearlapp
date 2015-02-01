@@ -25,8 +25,8 @@ $(document).ready(function(){
         $("#nav-search-text").focus();
     });
     $("#nav-search-text").blur(function(){
-	  			$("#nav-search-text").hide().animate({width: "0px"}, 500);
-	  			$("#nav-search-form").hide();
-	      	$("#show-search-toggle").show();
+		$("#nav-search-text").hide().animate({width: "0px"}, 500);
+		$("#nav-search-form").hide();
+      	$("#show-search-toggle").show();
     });
 });
