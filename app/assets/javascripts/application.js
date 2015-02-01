@@ -17,3 +17,16 @@
 //= require turbolinks
 //= require masonry/jquery.masonry
 //= require_tree .
+$(document).ready(function(){
+    $("#show-search-toggle").click(function(){
+    	$("#show-search-toggle").hide();
+        $("#nav-search-form").show();
+        $("#nav-search-text").show().animate({width: "200px"}, 500);
+        $("#nav-search-text").focus();
+    });
+    $("#nav-search-text").blur(function(){
+	  			$("#nav-search-text").hide().animate({width: "0px"}, 500);
+	  			$("#nav-search-form").hide();
+	      	$("#show-search-toggle").show();
+    });
+});

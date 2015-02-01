@@ -22,6 +22,8 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'nokogiri'
 
+gem 'jquery-ui-rails', '~> 5.0.3'
+
 group :development, :test do
   gem 'byebug' 	
   gem 'web-console', '~> 2.0'
