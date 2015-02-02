@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require twitter/typeahead.min
 //= require jquery.turbolinks
 //= require turbolinks
 //= require masonry/jquery.masonry
@@ -30,3 +31,34 @@ $(document).ready(function(){
       	$("#show-search-toggle").show();
     });
 });
+
+$(document).ready(function() {
+    var cornellclasses = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      limit: 10,
+      prefetch: {
+        // url points to a json file that contains an array of country names, see
+        // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
+        url: 'http://localhost:3000/coursesjson.json',
+        // the json file contains an array of strings, but the Bloodhound
+        // suggestion engine expects JavaScript objects so this converts all of
+        // those strings
+        filter: function(cornellclasses) {
+            return $.map(cornellclasses, function(cornellclass) { return { name: cornellclass }; });
+        }
+      }
+    });
+
+    // initialize the bloodhound suggestion engine
+    cornellclasses.initialize();
+
+    // instantiate the typeahead UI
+    $('#prefetch .typeahead').typeahead(null, {
+      name: 'cornellclasses',
+      displayKey: 'name',
+      source: cornellclasses.ttAdapter()
+    });
+
+});
+ 
