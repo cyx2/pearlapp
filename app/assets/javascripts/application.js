@@ -40,7 +40,7 @@ $(document).ready(function() {
       prefetch: {
         // url points to a json file that contains an array of country names, see
         // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
-        url: 'http://localhost:3000/coursesjson.json',
+        url: 'http://localhost:3000/coursesjson.json', // ********* TODO: relative path?? ********* 
         // the json file contains an array of strings, but the Bloodhound
         // suggestion engine expects JavaScript objects so this converts all of
         // those strings
