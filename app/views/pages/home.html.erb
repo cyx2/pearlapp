@@ -20,6 +20,8 @@
 <!-- Logic tree for home page content -->
 <% if user_signed_in? %>
 
+	<%= render 'pages/bugpanel' %>
+	
 	<!-- Class search -->
 	<div class="well well-sm">
 		<div class="center">
@@ -43,7 +45,10 @@
 		</form>
 	</div>
 
-	<!-- The fake class screener -->
+	<!-- renders the dashboard page -->
+	<%= render 'pages/dashboard' %>
+
+	<!-- The fake class screener
 	<div class="well well-sm">
 		<div class="center">
 			<h1 style="padding-bottom: 15px">Class Screener</h1>
@@ -75,6 +80,7 @@
 			</div>	
 		</div>
 	</div>
+	-->
 
 <% else %>
 

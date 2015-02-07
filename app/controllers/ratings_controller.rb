@@ -40,10 +40,9 @@ class RatingsController < ApplicationController
       with_id_params = rating_params
       with_id_params[:courseid] = cornell_class.courseid
       # Append user_id to each rating
-      @rating = current_user.ratings.build(with_id_params)      
-      @rating.save      
-      @rating.format
-      respond_with(@rating)
+      @rating = current_user.ratings.build(with_id_params)
+      @rating.save
+      @rating.format      
       # Aggregate data calculation      
       # Context calculation
       cornell_class.countratings 
@@ -66,9 +65,10 @@ class RatingsController < ApplicationController
       cornell_class.calcexamdiff
       cornell_class.calcmaterialdiff
       cornell_class.calcprojdiff
-      cornell_class.calcprelimdiff
+      cornell_class.calcprelimdiff      
     end
-    redirect_to new_rating_path, notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
+    respond_with(@rating)
+    redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
   end
 
   def update
