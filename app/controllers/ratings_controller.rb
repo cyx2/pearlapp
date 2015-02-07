@@ -15,7 +15,7 @@ class RatingsController < ApplicationController
   end
 
   def userratings
-    @ratings = Rating.all.order("created_at DESC")
+    @ratings = current_user.ratings
     respond_with(@ratings)
   end
 
@@ -67,7 +67,7 @@ class RatingsController < ApplicationController
       cornell_class.calcprojdiff
       cornell_class.calcprelimdiff      
     end
-    respond_with(@rating)
+    respond_with(@rating) unless @cornell_classes.first.nil?    
     redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
   end
 
