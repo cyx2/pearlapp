@@ -36,11 +36,10 @@
                   </p>
                   
                   <!-- ======================== Average Rating ======================== --> 
-
+                  <% if @cornellclass.numratings.present? %>
                   <p>
                   <strong><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Average Rating:</strong>
                         <% 
-                        if @cornellclass.numratings.present? 
                               $i = @cornellclass.avgrating 
                               $count = 1 
                         %>
