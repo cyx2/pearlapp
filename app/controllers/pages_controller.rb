@@ -5,6 +5,9 @@ class PagesController < ApplicationController
   		@userlastratings=current_user.ratings.last(5)
   		#@var=Cornellclass.where()
   		@var=Cornellclass.where("avgrating >= ?", 1).count
+      if @var > 5
+        @var=5
+      end
   		@highestratedclasses=Cornellclass.order(avgrating: :desc).take(@var)
   	end
   end
