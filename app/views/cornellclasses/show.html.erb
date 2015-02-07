@@ -540,24 +540,6 @@
                   <p>Semester: <%= @cornellclass.semester %></p>
 
 
-                  <!--
-                  <%= @cornellclass.instructor %>
-                  <%= @cornellclass.profqual %>
-                  <%= @cornellclass.taqual %>
-                  <%= @cornellclass.lecturequal %>
-                  <%= @cornellclass.recitationqual %>
-                  <%= @cornellclass.recitationreqdyesno %>
-                  <%= @cornellclass.hwdiff %>
-                  <%= @cornellclass.examdiff %>
-                  <%= @cornellclass.examyesno %>
-                  <%= @cornellclass.lecturereqdyesno %>
-                  <%= @cornellclass.materialdiff %>
-                  <%= @cornellclass.projyesno %>
-                  <%= @cornellclass.projdiff %>
-                  <%= @cornellclass.prelimdiff %>
-                  <%= @cornellclass.semester %>
-                  -->
-
                   <br>
                   <br>
 
@@ -573,8 +555,9 @@
 
 
                   <% else %>
-                        No ratings yet
-
+                        <h1 class="center">
+                              No ratings for <%= @cornellclass.prefix + " " + @cornellclass.coursenumber.to_s %> yet! :(
+                        </h1>
                   <% end %>
             
       </div>
