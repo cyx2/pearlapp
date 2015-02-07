@@ -34,7 +34,8 @@ class RatingsController < ApplicationController
 
   def create
     # Append courseid to each rating    
-    @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", rating_params[:prefix].strip, rating_params[:course_number].strip)
+    @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?",
+     rating_params[:prefix].strip, rating_params[:course_number].strip)
     @cornell_classes.each do |cornell_class| 
       # cornell_class is a single class
       with_id_params = rating_params
