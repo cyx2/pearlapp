@@ -22,20 +22,20 @@
 			</table>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 well well-sm">
-			<h4>Most Rated Classes</h4>			
+			<h4>Highest Rated Classes</h4>			
 			<table class="table table-bordered">
 			  <thead>
 			    <tr>
 			      <th>Course</th>
-			      <th># Ratings</th>
+			      <th>Avg. Rating</th>
 			      <th></th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<% @mostratedclasses.each do |ratedclass| %>
+			  	<% @highestratedclasses.each do |ratedclass| %>
 		        <tr>
 		          <td><%= ratedclass.prefix %><%= ratedclass.coursenumber %></td>
-		          <td><%= ratedclass.numratings %></td>
+		          <td><%= ratedclass.avgrating %></td>
 		          <td><%= link_to '', ratedclass, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
 		        </tr>
 	        <% end %>
