@@ -8,7 +8,8 @@ class PagesController < ApplicationController
       if @count > 5
         @count=5
       end
-  		@highestratedclasses=Cornellclass.order("avgrating DESC").take(@count)
+  		@highestratedclasses=Cornellclass.order("avgrating DESC")
+      #.take(@count)
   	end
   end
   
