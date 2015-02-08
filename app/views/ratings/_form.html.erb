@@ -174,6 +174,18 @@
               <td></td>
               <td><%= f.radio_button :projdiff, '' %></td>
             </tr>
+            <tr>
+              <td><%= f.label 'Paper(s)' %></td>
+              <td></td>
+              <td><%= f.radio_button :paperdiff, '1' %></td>
+              <td><%= f.radio_button :paperdiff, '2' %></td>
+              <td><%= f.radio_button :paperdiff, '3' %></td>
+              <td><%= f.radio_button :paperdiff, '4' %></td>
+              <td><%= f.radio_button :paperdiff, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :paperdiff, '' %></td>
+            </tr>
             
             <tr><td colspan="10" class="center"><h4>Overall</h4></td></tr>
             <tr>
@@ -206,30 +218,37 @@
 
       <hr>
       <!-- Booleans -->
+      
+      
       <div class="field form-inline">
-        <%= f.label 'Graded Homework?' %>
-        <%= f.check_box :hwyesno, class: "checkbox" %>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Required Recitation?' %>
-        <%= f.check_box :recitationreqdyesno, class: "checkbox" %>
+        <%= f.label 'Prelims?' %>
+        <%= f.check_box :prelimyesno, class: "checkbox" %>
       </div>
       <div class="field form-inline">
         <%= f.label 'Final Exam?' %>
         <%= f.check_box :examyesno, class: "checkbox" %>
       </div>
       <div class="field form-inline">
+        <%= f.label 'Graded Homework?' %>
+        <%= f.check_box :hwyesno, class: "checkbox" %>
+      </div>
+      <div class="field form-inline">
+        <%= f.label 'Project(s)?' %>
+        <%= f.check_box :projyesno, class: "checkbox" %>
+      </div>   
+      <div class="field form-inline">
+        <%= f.label 'Paper(s)?' %>
+        <%= f.check_box :paperyesno, class: "checkbox" %>
+      </div>   
+      <div class="field form-inline">
+        <%= f.label 'Required Attendance Required?' %>
+        <%= f.check_box :recitationreqdyesno, class: "checkbox" %>
+      </div>
+      <div class="field form-inline">
         <%= f.label 'Lecture Attendance Required?' %>
         <%= f.check_box :lecturereqdyesno, class: "checkbox" %>
       </div>
-      <div class="field form-inline">
-        <%= f.label 'Significant Project(s)?' %>
-        <%= f.check_box :projyesno, class: "checkbox" %>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Prelims?' %>
-        <%= f.check_box :prelimyesno, class: "checkbox" %>
-      </div>
+         
       <div class="actions">
         <%= f.submit "Submit", class: "btn btn-primary" %>
         <%= link_to 'Back', userratings_path, class: "btn btn-default" %>

@@ -54,7 +54,8 @@ class RatingsController < ApplicationController
       cornell_class.calcexamyesno
       cornell_class.calclecturereqdyesno
       cornell_class.calcprojyesno      
-      cornell_class.calcprelimyesno    
+      cornell_class.calcprelimyesno
+      cornell_class.calcpaperyesno 
       # Quality avg calculation
       cornell_class.calcavgrating
       cornell_class.calcprofqual
@@ -66,7 +67,8 @@ class RatingsController < ApplicationController
       cornell_class.calcexamdiff
       cornell_class.calcmaterialdiff
       cornell_class.calcprojdiff
-      cornell_class.calcprelimdiff      
+      cornell_class.calcprelimdiff
+      cornell_class.calcpaperdiff
     end
     respond_with(@rating) unless @cornell_classes.first.nil?    
     redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
@@ -94,6 +96,6 @@ class RatingsController < ApplicationController
     end
 
     def rating_params
-      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, :course_number, :hwyesno, :recitationreqdyesno, :examyesno, :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester)
+      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, :course_number, :hwyesno, :recitationreqdyesno, :examyesno, :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, :paperyesno, :paperdiff)
     end
 end

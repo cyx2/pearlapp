@@ -26,6 +26,8 @@
 #  prelimyesno         :boolean
 #  prelimdiff          :integer
 #  semester            :string
+#  paperyesno          :boolean
+#  paperdiff           :integer
 #
 
 require 'test_helper'
