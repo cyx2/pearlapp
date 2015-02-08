@@ -59,6 +59,7 @@ class CornellclassesController < ApplicationController
     ############# DON'T CHANGE THIS #############
     #############################################
     ############# YOU MUST NAVIGATE AWAY FROM PAGE AFTER CLICKING ADD CLASSES #############
+    jsonstring = ""
     # Pulls all course data for specified year, based on subject list
     subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
     # Reads each subject and stores it in local variable prefix
@@ -68,7 +69,7 @@ class CornellclassesController < ApplicationController
       # Gets the semester from each sheet read
       semester = classdoc.xpath("/courses/@term").to_s
       # Reads each course and stores listed vars
-      classdoc.xpath("/courses/course").each do |course|
+      classdoc.xpath("/courses/course").each_with_index do |course, i|
         num = course["catalog_nbr"] || "Not provided"
         subj = course["subject"]    || "Not provided"
         title = (course.at("course_title/text()") || "Not provided").to_s
@@ -76,7 +77,16 @@ class CornellclassesController < ApplicationController
         inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
         # Creates a cornell class in Cornellclasses table
         Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester)
+        jsonstring = jsonstring + '"' + subj + ' ' + num + ': ' + title + '",' ####### TODO: DELETE LAST COMMA #######
       end
+    end
+
+    filepath = File.join(Rails.root, 'public', 'coursesjson.json')
+    File.open(filepath, "w+") do |f|
+      f.truncate(0)
+      f.write("[")
+      f.write(jsonstring[0,jsonstring.length-1])
+      f.write(']')
     end
     @cornellclass = Cornellclass.new
   end
@@ -102,6 +112,9 @@ class CornellclassesController < ApplicationController
 
   def userratings
   end  
+
+  def coursesjson
+  end
 
   private
     def set_cornellclass

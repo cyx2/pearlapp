@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "userratings" => 'ratings#userratings'
   get "search_results" => 'cornellclasses#search_results'
   get "findbysubject" => 'cornellclasses#findbysubject'
+  get "coursesjson" => 'cornellclasses#coursesjson'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

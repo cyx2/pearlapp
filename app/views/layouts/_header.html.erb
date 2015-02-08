@@ -19,6 +19,27 @@
 
       <%= render 'layouts/beta' %>
                
+        <!-- Light-hand nav search -->
+        <% if user_signed_in? %>
+          <ul class="nav navbar-nav">
+            <li>
+              <form class="navbar-form" role="search" action="search_results" id="nav-search-form" method="get">
+                <div class="form-group" id="prefetch-mainsearch">
+                  <input type="string" class="form-control typeahead-mainsearch" id="nav-search-text" name="search_text" placeholder="Search">
+                </div>
+                <button class="btn btn-primary" id="nav-search-bar" onclick="document.getElementById("nav-search-form").submit()">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+              </form>
+              <div class="navbar-form">
+                <button class="btn btn-primary" id="show-search-toggle">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+
         <!-- Right-hand permanent nav links -->          
         <ul class="nav navbar-nav navbar-right">
           <li>
@@ -82,22 +103,7 @@
                   <% end %>
                 </li>
               </ul>
-            </li>
-            <li>
-              <form class="navbar-form" role="search" action="search_results" id="nav-search-form" method="get">
-                <div class="form-group">
-                  <input type="string" class="form-control" id="nav-search-text" name="search_text" placeholder="Search">
-                </div>
-                <button class="btn btn-primary" id="nav-search-bar" onclick="document.getElementById("nav-search-form").submit()">
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </button>
-              </form>
-              <div class="navbar-form">
-                <button class="btn btn-primary" id="show-search-toggle">
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </button>
-              </div>
-            </li>
+            </li>            
           <% else %>
             <li>
               <%= link_to new_user_session_path do %>
