@@ -54,7 +54,7 @@ $(document).ready(function() {
     cornellclasses.initialize();
 
     // instantiate the typeahead UI
-    $('#prefetch .typeahead').typeahead(null, {
+    $('#prefetch-mainsearch .typeahead-mainsearch').typeahead(null, {
       name: 'cornellclasses',
       displayKey: 'name',
       source: cornellclasses.ttAdapter()
