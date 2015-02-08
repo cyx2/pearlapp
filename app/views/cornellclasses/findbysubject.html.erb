@@ -1,6 +1,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th class="center">Term</th>
       <th class="center">Title</th>
       <th class="center">Course</th>
       <th class="center">Instructor</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @cornellclasses.each do |cornellclass| %>
       <tr>
+        <td><%= cornellclass.semester %></td>
         <td class="col-lg-4 col-md-4 col-sm-3 col-xs-2"><%= cornellclass.title %></td>
         <td><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
         <td class="col-lg-2 col-md-2 col-sm-2 col-xs-1"><%= cornellclass.instructor %></td>

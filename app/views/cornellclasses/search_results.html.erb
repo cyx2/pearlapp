@@ -9,6 +9,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Term</th>
       <th>Title</th>
       <th>Course</th>
       <th>Instructor</th>
@@ -22,6 +23,7 @@
   <tbody>
     <% @search_results.each do |cornellclass| %>
       <tr>
+        <td><%= cornellclass.semester %></td>
         <td><%= cornellclass.title %></td>
         <td><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
         <td><%= cornellclass.instructor %></td>
