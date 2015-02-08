@@ -1,13 +1,13 @@
 <div class="container-fluid center">
 	<div class="row">
-		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 well well-sm">
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel panel-default">
 			<h4>Most Recent Ratings</h4>			
 			<table class="table table-bordered">
 			  <thead>
 			    <tr>
-			      <th>Rating</th>
-			      <th>Course</th>
-			      <th></th>
+			      <th class="center">Rating</th>
+			      <th class="center">Course</th>
+			      <th class="center"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -21,14 +21,14 @@
 			  </tbody>
 			</table>
 		</div>
-		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 well well-sm">
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel panel-default">
 			<h4>Highest Rated Classes</h4>			
 			<table class="table table-bordered">
 			  <thead>
 			    <tr>
-			      <th>Course</th>
-			      <th>Avg. Rating</th>
-			      <th></th>
+			      <th class="center">Course</th>
+			      <th class="center">Avg. Rating</th>
+			      <th class="center"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -42,29 +42,31 @@
 			  </tbody>
 			</table>
 		</div>
-		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 well well-sm">
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 panel panel-default">
 			<h4>Your Recent Ratings</h4>	
 			<% if @userlastratings.count == 0 %>
-			  		<p><em>You haven't rated any classes yet!</em></p>
-			  		<%= link_to new_rating_path, :class => "btn btn-default btn-xs center" do %>			  		
-						  <span class="glyphicon glyphicon-pencil"></span>
-						  Rate something!
-						<% end %>
+				<div style="padding-bottom: 5px">
+		  		<p><em>You haven't rated any classes yet!</em></p>
+		  		<%= link_to new_rating_path, :class => "btn btn-default btn-xs center" do %>			  		
+					  <span class="glyphicon glyphicon-pencil"></span>
+					  Rate something!
+					<% end %>
+				</div>
   		<% else %>		
 				<table class="table table-bordered">
 				  <thead>
 				    <tr>
-				      <th>Rating</th>
-				      <th>Course</th>
-				      <th></th>
+				      <th class="center">Rating</th>
+				      <th class="center">Course</th>
+				      <th class="center"></th>
 				    </tr>
 				  </thead>
 				  <tbody>					  	
 				  	<% @userlastratings.each do |lastrating| %>
 			        <tr>
-			          <td><%= lastrating.rating %></td>
-			          <td><%= lastrating.prefix %><%= lastrating.course_number %></td>
-			          <td><%= link_to '', lastrating, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-info-sign" %></td>
+			          <td class="center"><%= lastrating.rating %></td>
+			          <td class="center"><%= lastrating.prefix %><%= lastrating.course_number %></td>
+			          <td class="center"><%= link_to '', lastrating, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-info-sign" %></td>
 			        </tr>
 		        <% end %>
 				  </tbody>
