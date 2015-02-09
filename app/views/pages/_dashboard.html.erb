@@ -5,17 +5,18 @@
 			<table class="table table-bordered">
 			  <thead>
 			    <tr>
-			      <th class="center">Rating</th>
-			      <th class="center">Course</th>
+			    	<th class="center">Course</th>
+			      <th class="center"># Ratings</th>
+			      
 			      <th class="center"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<% @lastratings.each do |recentrating| %>
+			  	<% @lastratings.each do |mostrated| %>
 		        <tr>
-		          <td><%= recentrating.rating %></td>
-		          <td><%= recentrating.prefix %><%= recentrating.course_number %></td>
-		          <td><%= link_to '', recentrating.showclass.first, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
+		          <td><%= mostrated.prefix %><%= mostrated.coursenumber %></td>
+		          <td><%= mostrated.numratings %></td>
+		          <td><%= link_to '', mostrated, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
 		        </tr>
 	        <% end %>
 			  </tbody>
