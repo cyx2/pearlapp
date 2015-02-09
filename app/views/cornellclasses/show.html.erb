@@ -34,7 +34,7 @@
                   <strong>Course Number:</strong>
                   <a class="btn btn-default" href="https://classes.cornell.edu/browse/roster/SP15/class/<%= @cornellclass.prefix.upcase %>/<%= @cornellclass.coursenumber.to_s %>" target="window" role="button"><%= @cornellclass.courseid %></a>
                   </p>
-                  
+
                   <!-- ======================== Average Rating ======================== --> 
                   <% if @cornellclass.numratings.present? %>
                   <p>
@@ -197,7 +197,7 @@
 
                   <!-- ======================== HW Difficulty ======================== -->
 
-                  <% if @cornellclass.hwyesno == true &&  @cornellclass.paperdiff != 0 %>   
+                  <% if @cornellclass.paperyesno == true &&  @cornellclass.paperdiff != 0 %>   
                   <p>
                   <strong>Paper Difficulty:</strong>
 
