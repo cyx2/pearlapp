@@ -26,6 +26,8 @@
 #  prelimyesno         :boolean
 #  prelimdiff          :integer
 #  semester            :string
+#  paperyesno          :boolean
+#  paperdiff           :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

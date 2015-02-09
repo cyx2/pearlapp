@@ -6,7 +6,7 @@ class CornellsubjectsController < ApplicationController
 
   def index
     @cornellsubjects = Cornellsubject.all
-    respond_with(@cornellsubjects)
+    #respond_with(@cornellsubjects)
   end
 
   def show

@@ -28,6 +28,8 @@
 #  prelimyesno         :boolean
 #  prelimdiff          :float
 #  semester            :string
+#  paperyesno          :boolean
+#  paperdiff           :float
 #
 
 class Cornellclass < ActiveRecord::Base
@@ -87,6 +89,10 @@ class Cornellclass < ActiveRecord::Base
 		self.prelimdiff=self.showratings.average(:prelimdiff).to_f.round(3)
 		self.save
 	end
+	def calcpaperdiff
+		self.paperdiff=self.showratings.average(:paperdiff).to_f.round(3)
+		self.save
+	end
 	
   # Boolean avg calculation
 	def calchwyesno
@@ -97,6 +103,7 @@ class Cornellclass < ActiveRecord::Base
 			self.hwyesno=true
 		elsif @t < @f
 			self.hwyesno=false
+			self.hwdiff=0
 		else
 			self.hwyesno=nil
 		end
@@ -123,6 +130,7 @@ class Cornellclass < ActiveRecord::Base
 			self.examyesno=true
 		elsif @t < @f
 			self.examyesno=false
+			self.examdiff=0
 		else
 			self.examyesno=nil
 		end
@@ -149,6 +157,7 @@ class Cornellclass < ActiveRecord::Base
 			self.projyesno=true
 		elsif @t < @f
 			self.projyesno=false
+			self.projdiff=0
 		else
 			self.projyesno=nil
 		end
@@ -162,8 +171,23 @@ class Cornellclass < ActiveRecord::Base
 			self.prelimyesno=true
 		elsif @t < @f
 			self.prelimyesno=false
+			self.prelimdiff=0
 		else
 			self.prelimyesno=nil
+		end
+		self.save
+	end
+	def calcpaperyesno
+		@t=self.showratings.where(paperyesno: true).count
+		@f=self.showratings.where(paperyesno: false).count
+
+		if @t > @f
+			self.paperyesno=true
+		elsif @t < @f
+			self.paperyesno=false
+			self.paperdiff=0
+		else
+			self.paperyesno=nil
 		end
 		self.save
 	end

@@ -14,11 +14,13 @@
 
 <br>
 
+<!--
 <ul class="nav nav-tabs">
   <li role="presentation" id="overallLI"><a id="button0">At a glance</a></li>
   <li role="presentation" id="professorLI"><a id="button1">Professor</a></li>
   <li role="presentation" id="assignmentsLI"><a id="button2">Assignments</a></li>
 </ul>
+-->
 
 <div class="panel-body">
 
@@ -32,13 +34,12 @@
                   <strong>Course Number:</strong>
                   <a class="btn btn-default" href="https://classes.cornell.edu/browse/roster/SP15/class/<%= @cornellclass.prefix.upcase %>/<%= @cornellclass.coursenumber.to_s %>" target="window" role="button"><%= @cornellclass.courseid %></a>
                   </p>
-                  
-                  <!-- ======================== Average Rating ======================== --> 
 
+                  <!-- ======================== Average Rating ======================== --> 
+                  <% if @cornellclass.numratings.present? %>
                   <p>
                   <strong><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Average Rating:</strong>
                         <% 
-                        if @cornellclass.numratings.present? 
                               $i = @cornellclass.avgrating 
                               $count = 1 
                         %>
@@ -168,6 +169,64 @@
                   <br>
                   <br>
 
+                  <!-- ======================== Paper Yes or No ======================== -->      
+
+                  <p>
+                        <strong>Paper:</strong>
+
+                        <% 
+                        if @cornellclass.paperyesno == true
+                              $bubble1 = "filledStar1 circleCenter"
+                              $bubble2 = "filledStar0 circleCenterI"
+                        else
+                              $bubble1 = "filledStar0 circleCenterI"
+                              $bubble2 = "filledStar1 circleCenter"
+                        end
+                        %>
+
+                        <div class="<%= $bubble1 %>"> 
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </div>
+                        <div class="<%= $bubble2 %>">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </div>
+                  </p>
+
+                  <br>
+                  <br>
+
+                  <!-- ======================== HW Difficulty ======================== -->
+
+                  <% if @cornellclass.paperyesno == true &&  @cornellclass.paperdiff != 0 %>   
+                  <p>
+                  <strong>Paper Difficulty:</strong>
+
+                        <%    $count = 1 
+                              $i = @cornellclass.paperdiff
+                              while $count <= $i do %>    
+                                    <div class="filledStar<%= $count %>">&nbsp</div>
+                        <%          $count += 1 
+                              end 
+                        %>
+
+                        <%    
+                              $difference = @cornellclass.paperdiff - @cornellclass.paperdiff.to_i
+                              if($difference >= 0.3 && $difference <= 0.7) 
+                        %>
+                                    <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+                                    <% $i = $i + 1;
+                              end
+
+                              while $i < 5 do 
+                        %>
+                                    <div class="filledStar0">&nbsp</div>
+                        <%          $i += 1 
+                              end %>
+                              <br>
+                              <br>
+                  </p>
+                  <% end %>
+
                   <!-- ======================== Lecture Required ======================== -->      
 
                   <p>
@@ -203,6 +262,7 @@
 
                   <!-- ======================== Professor Quality ======================== -->      
                   
+                  <% unless @cornellclass.profqual == 0 %>
                   <p>
                   <strong>Professor Quality:</strong>
 
@@ -230,6 +290,7 @@
                               <br>
                               <br>
                   </p>
+                  <% end %>
 
                   <!-- ======================== TA Quality ======================== --> 
 
@@ -600,24 +661,6 @@
       </div>
     </div>
 
-                  <!--
-                  <%= @cornellclass.instructor %>
-                  <%= @cornellclass.profqual %>
-                  <%= @cornellclass.taqual %>
-                  <%= @cornellclass.lecturequal %>
-                  <%= @cornellclass.recitationqual %>
-                  <%= @cornellclass.recitationreqdyesno %>
-                  <%= @cornellclass.hwdiff %>
-                  <%= @cornellclass.examdiff %>
-                  <%= @cornellclass.examyesno %>
-                  <%= @cornellclass.lecturereqdyesno %>
-                  <%= @cornellclass.materialdiff %>
-                  <%= @cornellclass.projyesno %>
-                  <%= @cornellclass.projdiff %>
-                  <%= @cornellclass.prelimdiff %>
-                  <%= @cornellclass.semester %>
-                  -->
-
                   <br>
                   <br>
 
@@ -633,8 +676,9 @@
 
 
                   <% else %>
-                        No ratings yet
-
+                        <h1 class="center">
+                              No ratings for <%= @cornellclass.prefix + " " + @cornellclass.coursenumber.to_s %> yet! :(
+                        </h1>
                   <% end %>
             
       </div>
