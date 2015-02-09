@@ -1,13 +1,19 @@
 class PagesController < ApplicationController
   def home  	
   	if user_signed_in?
-  		@lastratings=Rating.last(5)
-  		@userlastratings=current_user.ratings.last(5)
-  		@count=Cornellclass.where("avgrating >= ?", 1).count
-      if @count > 5
-        @count=5
+  		@c1=Cornellclass.where("numratings >= ?", 1).count
+      if @c1 > 5
+        @c1=5
       end
-  		@highestratedclasses=Cornellclass.where("avgrating >= ?", 1).order("avgrating DESC").take(@count)
+      @lastratings=Cornellclass.where("numratings >= ?", 1).order("numratings DESC").take(@c1)
+  		
+      @userlastratings=current_user.ratings.last(5)
+  		
+      @c2=Cornellclass.where("avgrating >= ?", 1).count
+      if @c2 > 5
+        @c2=5
+      end
+  		@highestratedclasses=Cornellclass.where("avgrating >= ?", 1).order("avgrating DESC").take(@c2)
   	end
   end
   
