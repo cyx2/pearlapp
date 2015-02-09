@@ -536,7 +536,69 @@
                   <!-- Semester -->
 
                   <p>Semester: <%= @cornellclass.semester %></p>
+                  
 
+                  <div class="ratingBox panel panel-default">
+                        <div class="panel-heading center">
+                              <h2>At a Glance</h2>
+                        </div>
+                        <div class="panel-body">
+                              <h4>Overall Rating</h4>
+                              <p>
+                                    <% 
+                                    if @cornellclass.numratings.present? 
+                                          $i = @cornellclass.avgrating 
+                                          $count = 1 
+                                    %>
+
+                                    <%    
+                                          while $count <= $i do %>    
+                                                <div class="filledStar<%= $count %>">&nbsp</div>
+                                    <%          $count += 1 
+                                          end 
+                                    %>
+
+                                    <%    
+                                          $difference = @cornellclass.avgrating - @cornellclass.avgrating.to_i
+                                          if($difference >= 0.3 && $difference <= 0.7) 
+                                    %>
+                                                <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+                                                <% $i = $i + 1;
+                                          end
+
+                                          while $i < 5 do 
+                                    %>
+                                                <div class="filledStar0">&nbsp</div>
+                                    <%          $i += 1 
+                                          end %>
+                                          <br>
+                                          <br>
+                              </p>
+                        <hr>
+                      
+                              <div class="table">
+                                    <tbody>
+                                          <tr>
+                                                <td>
+                                                      Professor Quality<div class="progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: 20%;">20%
+                                                            </div>
+                                                      </div>
+                                                </td>
+                                                <td>
+                                                      Lecture Quality<div class="progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: 20%;">60%
+                                                            </div>
+                                                      </div>
+                                                </td>
+                                          </tr> 
+                                    </tbody>
+                              </div>
+                
+          
+        <% end %>
+      </div>
+    </div>
 
                   <!--
                   <%= @cornellclass.instructor %>
