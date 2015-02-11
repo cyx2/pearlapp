@@ -10,14 +10,13 @@
 
         Overall Rating:
         <p>
-          <% 
-          if @cornellclass.numratings.present? 
+          <%  
             $i = @cornellclass.avgrating 
             $count = 1 
             %>
 
             <%    
-            while $count <= $i do %>    
+          while $count <= $i do %>    
             <div class="filledStar<%= $count %>">&nbsp</div>
             <%          $count += 1 
           end 
@@ -35,7 +34,7 @@
             %>
             <div class="filledStar0">&nbsp</div>
             <%          $i += 1 
-            end %>
+          end %>
             <br>
             <br>
         </p>
@@ -62,7 +61,4 @@
     </div>
 
   </div>
-
-
-  <% end %>
 </div>
