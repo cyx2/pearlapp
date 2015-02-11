@@ -35,12 +35,22 @@
         <%= f.select(:semester, ['FA11', 'FA12', 'FA13', 'FA14', 'FA15', 'SP11', 'SP12', 'SP13', 'SP14', 'SP15'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
       </div>
 
-      <hr>     
-      <!-- Multiple Choice 0-5 Quality -->  
-      <h4 class="center">Quality</h4>
+      <br><br>
+   
+      <!-- Multiple Choice 0-5 Quality -->
       <div>        
         <table class="table table-hover">
           <tbody>
+            <tr data-toggle="popover"  
+                title="Course Quality" 
+                data-content="Course quality is your impression of how valuable each aspect of the course was. The higher the rating, the better the quality of the course" 
+                data-trigger="hover"
+                data-placement="top">
+              <td colspan="10" class="center">
+                <h4>Quality</h4>
+              </td>
+            </tr>
+            <tr>
             <tr>
               <td></td>
               <td><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></td>
@@ -101,7 +111,15 @@
               <td></td>
               <td><%= f.radio_button :recitationqual, '' %></td>
             </tr>
-            <tr><td colspan="10" class="center"><h4>Level of Difficulty</h4></td></tr>
+            <tr data-toggle="popover"  
+                title="Level of Difficulty" 
+                data-content="Level of difficulty is your impression of how difficult the course was in relation to your expectatation.  A higher rating indicates a higher level of difficulty." 
+                data-trigger="hover"
+                data-placement="top">
+              <td colspan="10" class="center">
+                <h4>Level of Difficulty</h4>
+              </td>
+            </tr>
             <tr>
               <td></td>
               <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td>
@@ -187,7 +205,15 @@
               <td><%= f.radio_button :paperdiff, '' %></td>
             </tr>
             
-            <tr><td colspan="10" class="center"><h4>Overall</h4></td></tr>
+            <tr data-toggle="popover"  
+                title="Overall Rating" 
+                data-content="The overall rating is your general impression of the course as a whole.  A higher rating indicates a better quality course." 
+                data-trigger="hover"
+                data-placement="top">
+              <td colspan="10" class="center">
+                <h4>Overall</h4>
+              </td>
+            </tr>
             <tr>
               <td></td>
               <td><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></td>
@@ -220,36 +246,57 @@
       <!-- Booleans -->
       
       
-      <div class="field form-inline">
-        <%= f.label 'Prelims?' %>
-        <%= f.check_box :prelimyesno, class: "checkbox" %>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Final Exam?' %>
-        <%= f.check_box :examyesno, class: "checkbox" %>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Graded Homework?' %>
-        <%= f.check_box :hwyesno, class: "checkbox" %>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Project(s)?' %>
-        <%= f.check_box :projyesno, class: "checkbox" %>
-      </div>   
-      <div class="field form-inline">
-        <%= f.label 'Paper(s)?' %>
-        <%= f.check_box :paperyesno, class: "checkbox" %>
-      </div>   
-      <div class="field form-inline">
-        <%= f.label 'Required Attendance Required?' %>
-        <%= f.check_box :recitationreqdyesno, class: "checkbox" %>
-      </div>
-      <div class="field form-inline">
-        <%= f.label 'Lecture Attendance Required?' %>
-        <%= f.check_box :lecturereqdyesno, class: "checkbox" %>
-      </div>
+      <table class="table table-hover container">
+        <tr>
+          <td colspan="12" class="center">
+            <h4>Selectables</h4>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label 'Prelims?' %></td>
+          <td><%= f.check_box :prelimyesno, class: "checkbox" %></td>
+           <td class="col-md-9 col-lg-9 col-sm-7"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label 'Final Exam?' %></td>
+          <td><%= f.check_box :examyesno, class: "checkbox" %></td>
+           <td class="col-md-9 col-lg-9 col-sm-7"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label 'Graded Homework?' %></td>
+          <td><%= f.check_box :hwyesno, class: "checkbox" %></td>
+           <td class="col-md-9 col-lg-9 col-sm-7"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label 'Project(s)?' %></td>
+          <td><%= f.check_box :projyesno, class: "checkbox" %></td>
+           <td class="col-md-9 col-lg-9 col-sm-7"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label 'Paper(s)?' %></td>
+          <td><%= f.check_box :paperyesno, class: "checkbox" %></td>
+           <td class="col-md-9 col-lg-9 col-sm-7"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label 'Recitation Required?' %></td>
+          <td><%= f.check_box :recitationreqdyesno, class: "checkbox" %></td>
+           <td class="col-md-9 col-lg-9 col-sm-7"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label 'Lecture Required?' %></td>
+          <td><%= f.check_box :lecturereqdyesno, class: "checkbox" %></td>
+           <td class="col-md-9 col-lg-9 col-sm-7"></td>
+        </tr>
+      </table>
          
-      <div class="actions">
+      <div class="actions center">
         <%= f.submit "Submit", class: "btn btn-primary" %>
         <%= link_to 'Back', userratings_path, class: "btn btn-default" %>
       </div>
