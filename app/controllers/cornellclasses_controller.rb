@@ -82,8 +82,10 @@ class CornellclassesController < ApplicationController
         title = (course.at("course_title/text()") || "Not provided").to_s
         cid = (course.at("sections/section/@class_number") || "Not provided").to_s
         inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
+
+        name = subj + ' ' + num + ': ' + title
         # Creates a cornell class in Cornellclasses table
-        Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester)
+        Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name)
         jsonstring = jsonstring + '"' + subj + ' ' + num + ': ' + title + '",' ####### TODO: DELETE LAST COMMA #######
       end
     end
@@ -134,6 +136,6 @@ class CornellclassesController < ApplicationController
 
 
     def cornellclass_params
-      params.require(:cornellclass).permit(:title, :prefix, :coursenumber, :courseid, :avgrating, :numratings, :created_at, :updated_at,  :hwyesno, :recitationreqdyesno, :examyesno, :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, :paperyesno, :paperdiff)
+      params.require(:cornellclass).permit(:title, :prefix, :coursenumber, :courseid, :avgrating, :numratings, :created_at, :updated_at,  :hwyesno, :recitationreqdyesno, :examyesno, :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, :paperyesno, :paperdiff, :name)
     end
 end
