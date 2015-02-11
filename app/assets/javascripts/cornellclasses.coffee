@@ -9,3 +9,9 @@
 # $(document).ready(() -> $("#button2").click(() -> $("#assignments").show() $("#professor").hide() $("#overall").hide() $("#assignmentsLI").addClass("active") $("#professorLI").removeClass("active") $("#overallLI").removeClass("active") ))
 
 # $(document).ready(() -> $("#overall").show() $("#professor").hide() $("#assignments").hide())
+
+$ ->
+  $('#overall-classes').imagesLoaded ->
+    $('#overall-classes').masonry
+      itemSelector: '.ratingBox'
+      isFitWidth: true

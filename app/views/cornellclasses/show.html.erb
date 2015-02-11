@@ -22,591 +22,36 @@
 </ul>
 -->
 
-<div class="panel-body">
 
-  <div class="container">
-
-    <div id="overall">
-
-
-
+    <div>
       <p>
         <strong>Course Number:</strong>
         <a class="btn btn-default" href="https://classes.cornell.edu/browse/roster/SP15/class/<%= @cornellclass.prefix.upcase %>/<%= @cornellclass.coursenumber.to_s %>" target="window" role="button"><%= @cornellclass.courseid %></a>
+        <br>Semester: <%= @cornellclass.semester %>
       </p>
+    </div>
+
+    <div id="overall-classes">
 
       <!-- ======================== Average Rating ======================== --> 
       <% if @cornellclass.numratings.present? %>
-      <p>
-        <strong><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Average Rating:</strong>
-        <% 
-        $i = @cornellclass.avgrating 
-        $count = 1 
-        %>
-
-        <%    
-        while $count <= $i do %>    
-        <div class="filledStar<%= $count %>">&nbsp</div>
-        <%          $count += 1 
-      end 
-      %>
-
-      <%    
-      $difference = @cornellclass.avgrating - @cornellclass.avgrating.to_i
-      if($difference >= 0.3 && $difference <= 0.7) 
-        %>
-        <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-        <% $i = $i + 1;
-      end
-
-      while $i < 5 do 
-        %>
-        <div class="filledStar0">&nbsp</div>
-        <%          $i += 1 
-        end %>
-        <br>
-        <br>
-      </p>
-
-      <!-- ======================== Number of Ratings ======================== -->      
-
-      <p>
-        <strong><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Number of Ratings:</strong>
-        <div class="filledStar1 circleCenter"> 
-          <%= 
-          if @cornellclass.numratings.present? 
-            @cornellclass.numratings
-          else 
-            0 
-            end%> 
-          </div>
-        </p>
-
-        <br>
-        <br>
-
-        <!-- ======================== Homework Yes or No ======================== -->      
-
-        <p>
-          <strong>Homework:</strong>
-
-          <% 
-          if @cornellclass.hwyesno == true
-            $bubble1 = "filledStar1 circleCenter"
-            $bubble2 = "filledStar0 circleCenterI"
-          else
-            $bubble1 = "filledStar0 circleCenterI"
-            $bubble2 = "filledStar1 circleCenter"
-          end
-          %>
-
-          <div class="<%= $bubble1 %>"> 
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          </div>
-          <div class="<%= $bubble2 %>">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </div>
-        </p>
-
-        <br>
-        <br>
-
-        <!-- ======================== HW Difficulty ======================== -->
-
-        <% if @cornellclass.hwyesno == true &&  @cornellclass.hwdiff != 0 %>   
-        <p>
-          <strong>Homework Difficulty:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.hwdiff
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.hwdiff - @cornellclass.hwdiff.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== Prelim Yes or No ======================== -->      
-
-        <p>
-          <strong>Prelims:</strong>
-
-          <% 
-          if @cornellclass.prelimyesno == true
-            $bubble1 = "filledStar1 circleCenter"
-            $bubble2 = "filledStar0 circleCenterI"
-          else
-            $bubble1 = "filledStar0 circleCenterI"
-            $bubble2 = "filledStar1 circleCenter"
-          end
-          %>
-
-          <div class="<%= $bubble1 %>"> 
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          </div>
-          <div class="<%= $bubble2 %>">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </div>
-        </p>
-
-        <br>
-        <br>
-
-        <!-- ======================== Paper Yes or No ======================== -->      
-
-        <p>
-          <strong>Paper:</strong>
-
-          <% 
-          if @cornellclass.paperyesno == true
-            $bubble1 = "filledStar1 circleCenter"
-            $bubble2 = "filledStar0 circleCenterI"
-          else
-            $bubble1 = "filledStar0 circleCenterI"
-            $bubble2 = "filledStar1 circleCenter"
-          end
-          %>
-
-          <div class="<%= $bubble1 %>"> 
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          </div>
-          <div class="<%= $bubble2 %>">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </div>
-        </p>
-
-        <br>
-        <br>
-
-        <!-- ======================== HW Difficulty ======================== -->
-
-        <% if @cornellclass.paperyesno == true &&  @cornellclass.paperdiff != 0 %>   
-        <p>
-          <strong>Paper Difficulty:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.paperdiff
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.paperdiff - @cornellclass.paperdiff.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== Lecture Required ======================== -->      
-
-        <p>
-          <strong>Lecture Required:</strong>
-
-          <% 
-          if @cornellclass.lecturereqdyesno == true
-            $bubble1 = "filledStar1 circleCenter"
-            $bubble2 = "filledStar0 circleCenterI"
-          else
-            $bubble1 = "filledStar0 circleCenterI"
-            $bubble2 = "filledStar1 circleCenter"
-          end
-          %>
-
-          <div class="<%= $bubble1 %>"> 
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          </div>
-          <div class="<%= $bubble2 %>">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </div>
-        </p>
-
-        <!-- ======================== Professor ======================== -->      
-
-        <br>
-        <br>
-
-        <p>
-          <strong>Instructor:</strong>
-          <%= @cornellclass.instructor %>
-        </p>
-
-        <!-- ======================== Professor Quality ======================== -->      
-
-        <% unless @cornellclass.profqual == 0 %>
-        <p>
-          <strong>Professor Quality:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.profqual
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.profqual - @cornellclass.profqual.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== TA Quality ======================== --> 
-
-        <% unless @cornellclass.taqual == 0 %>   
-        <p>
-          <strong>TA Quality:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.taqual
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.taqual - @cornellclass.taqual.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== Lecture Quality ======================== -->
-
-        <% unless @cornellclass.lecturequal == 0 %>   
-        <p>
-          <strong>Lecture Quality:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.lecturequal
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.lecturequal - @cornellclass.lecturequal.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== Recitation Required ======================== -->      
-
-        <p>
-          <strong>Recitation Required:</strong>
-
-          <% 
-          if @cornellclass.recitationreqdyesno == true
-            $bubble1 = "filledStar1 circleCenter"
-            $bubble2 = "filledStar0 circleCenterI"
-          else
-            $bubble1 = "filledStar0 circleCenterI"
-            $bubble2 = "filledStar1 circleCenter"
-          end
-          %>
-
-          <div class="<%= $bubble1 %>"> 
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          </div>
-          <div class="<%= $bubble2 %>">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </div>
-        </p>
-
-        <br>
-        <br>
-
-        <!-- ======================== Recitation Quality ======================== -->
-
-        <% unless @cornellclass.recitationqual == 0 %>   
-        <p>
-          <strong>Recitation Quality:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.recitationqual
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.recitationqual - @cornellclass.recitationqual.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== Material Difficulty ======================== -->
-
-        <% unless @cornellclass.materialdiff == 0 %>   
-        <p>
-          <strong>Material Difficulty:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.materialdiff
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.materialdiff - @cornellclass.materialdiff.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== Project Required ======================== -->      
-
-        <p>
-          <strong>Projects:</strong>
-
-          <% 
-          if @cornellclass.projyesno == true
-            $bubble1 = "filledStar1 circleCenter"
-            $bubble2 = "filledStar0 circleCenterI"
-          else
-            $bubble1 = "filledStar0 circleCenterI"
-            $bubble2 = "filledStar1 circleCenter"
-          end
-          %>
-
-          <div class="<%= $bubble1 %>"> 
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          </div>
-          <div class="<%= $bubble2 %>">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </div>
-        </p>
-
-        <br>
-        <br>
-
-        <!-- ======================== Project Difficulty ======================== -->
-
-        <% if @cornellclass.projyesno == true && @cornellclass.projyesno != 0 %>   
-        <p>
-          <strong>Project Difficulty:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.projdiff
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.projdiff - @cornellclass.projdiff.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== Prelim Difficulty ======================== -->
-
-        <% if @cornellclass.prelimyesno == true &&  @cornellclass.prelimdiff != 0 %>   
-        <p>
-          <strong>Prelim Difficulty:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.prelimdiff
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.prelimdiff - @cornellclass.prelimdiff.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
-        <!-- ======================== Final Exam Required ======================== -->      
-
-        <p>
-          <strong>Final Exam Required:</strong>
-
-          <% 
-          if @cornellclass.examyesno == true
-            $bubble1 = "filledStar1 circleCenter"
-            $bubble2 = "filledStar0 circleCenterI"
-          else
-            $bubble1 = "filledStar0 circleCenterI"
-            $bubble2 = "filledStar1 circleCenter"
-          end
-          %>
-
-          <div class="<%= $bubble1 %>"> 
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          </div>
-          <div class="<%= $bubble2 %>">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </div>
-        </p>
-
-        <br>
-        <br>
-
-        <!-- ======================== Final Exam Difficulty ======================== -->
-
-        <% if @cornellclass.examyesno == true &&  @cornellclass.examdiff != 0 %>   
-        <p>
-          <strong>Final Exam Difficulty:</strong>
-
-          <%    $count = 1 
-          $i = @cornellclass.examdiff
-          while $count <= $i do %>    
-          <div class="filledStar<%= $count %>">&nbsp</div>
-          <%          $count += 1 
-        end 
-        %>
-
-        <%    
-        $difference = @cornellclass.examdiff - @cornellclass.examdiff.to_i
-        if($difference >= 0.3 && $difference <= 0.7) 
-          %>
-          <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-          <% $i = $i + 1;
-        end
-
-        while $i < 5 do 
-          %>
-          <div class="filledStar0">&nbsp</div>
-          <%          $i += 1 
-          end %>
-          <br>
-          <br>
-        </p>
-        <% end %>
-
+      
         <!-- Semester -->
 
-        <p>Semester: <%= @cornellclass.semester %></p>
+        
 
 
         <div class="ratingBox panel panel-default">
-          <div class="panel-heading center">
+          <div class="panel center">
             <h2>At a Glance</h2>
           </div>
           <div class="panel-body">
-            <h4>Professor: <%= @cornellclass.instructor %></h4>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+            Professor: <%= @cornellclass.instructor %>
 
-            <h4>Overall Rating:</h4>
+            Overall Rating:
             <p>
               <% 
               if @cornellclass.numratings.present? 
@@ -637,9 +82,11 @@
                 <br>
                 <br>
               </p>
+            </div>
+            </div>
               <hr>
 
-              <div class="container-fluid">
+              
                 <div class="row">
                   <div class="col-md-6">
                     Professor Quality
@@ -663,6 +110,284 @@
             </div>
           </div>
 
+                <!-- SECOND BOX -->
+          <div class="ratingBox panel panel-default">
+            <div class="panel center">
+              <h2>Course Details</h2>
+            </div>
+          
+            <div class="panel-body">
+              <div class="container-fluid">
+
+                <div class="row">
+                  <div class="col-md-6">
+                    Course Material Difficulty
+
+                    <% unless @cornellclass.materialdiff == 0 %>   
+                      <p>
+                        <%    $count = 1 
+                        $i = @cornellclass.materialdiff
+                        while $count <= $i do %>    
+                        <div class="filledStar<%= $count %>">&nbsp</div>
+                        <%          $count += 1 
+                      end 
+                      %>
+
+                      <%    
+                      $difference = @cornellclass.materialdiff - @cornellclass.materialdiff.to_i
+                      if($difference >= 0.3 && $difference <= 0.7) 
+                        %>
+                        <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+                        <% $i = $i + 1;
+                      end
+
+                      while $i < 5 do 
+                        %>
+                        <div class="filledStar0">&nbsp</div>
+                        <%          $i += 1 
+                        end %>
+                        <br>
+                        <br>
+                      </p>
+                    <% end %>
+
+                  </div>
+                </div>
+
+                <hr>
+
+              Mandatory Lecture:<br>
+                      <% 
+                if @cornellclass.lecturereqdyesno == true
+                  $bubble1 = "filledStar1 circleCenter"
+                  $bubble2 = "filledStar0 circleCenterI"
+                else
+                  $bubble1 = "filledStar0 circleCenterI"
+                  $bubble2 = "filledStar1 circleCenter"
+                end
+                %>
+
+                <div class="<%= $bubble1 %>"> 
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </div>
+                <div class="<%= $bubble2 %>">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </div>
+                <br>
+                <br>
+                <hr>
+
+                <div class="row">
+                  <div class="col-md-6">
+                Preliminary Exams:<br>
+                        <% 
+                  if @cornellclass.prelimyesno == true
+                    $bubble1 = "filledStar1 circleCenter"
+                    $bubble2 = "filledStar0 circleCenterI"
+                  else
+                    $bubble1 = "filledStar0 circleCenterI"
+                    $bubble2 = "filledStar1 circleCenter"
+                  end
+                  %>
+
+                  <div class="<%= $bubble1 %>"> 
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                  </div>
+                  <div class="<%= $bubble2 %>">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </div>
+                </div>
+                  
+                      <div class="col-md-6">
+                         Prelim Difficulty
+                        <div class="progress">                    
+                          <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.prelimdiff*20.0 %>%;"> <%= @cornellclass.prelimdiff %>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- END ROW  -->    
+
+                    <hr>
+        
+                    <div class="row">
+                  <div class="col-md-6">
+                Homework or Problem Sets:<br>
+                        <% 
+                  if @cornellclass.hwyesno == true
+                    $bubble1 = "filledStar1 circleCenter"
+                    $bubble2 = "filledStar0 circleCenterI"
+                  else
+                    $bubble1 = "filledStar0 circleCenterI"
+                    $bubble2 = "filledStar1 circleCenter"
+                  end
+                  %>
+
+                  <div class="<%= $bubble1 %>"> 
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                  </div>
+                  <div class="<%= $bubble2 %>">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </div>
+                </div>
+                  
+                      <div class="col-md-6">
+                         Assignment Difficulty
+                        <div class="progress">                    
+                          <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.hwdiff*20.0 %>%;"> <%= @cornellclass.hwdiff %>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- END ROW  -->
+
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-md-3">
+                        
+                          Final Exam:<br>
+                          <% 
+                          if @cornellclass.examyesno == true
+                            $bubble1 = "filledStar1 circleCenter"
+                            $bubble2 = "filledStar0 circleCenterI"
+                          else
+                            $bubble1 = "filledStar0 circleCenterI"
+                            $bubble2 = "filledStar1 circleCenter"
+                          end
+                          %>
+
+                          <div class="<%= $bubble1 %>"> 
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                          </div>
+                          <div class="<%= $bubble2 %>">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </div>
+
+                       </div>
+                            
+                        <div class="col-md-3">
+                          Final Project:<br>
+                            <% 
+                            if @cornellclass.projyesno == true
+                              $bubble1 = "filledStar1 circleCenter"
+                              $bubble2 = "filledStar0 circleCenterI"
+                            else
+                              $bubble1 = "filledStar0 circleCenterI"
+                              $bubble2 = "filledStar1 circleCenter"
+                            end
+                            %>
+
+                            <div class="<%= $bubble1 %>"> 
+                              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </div>
+                            <div class="<%= $bubble2 %>">
+                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          
+                          <% if @cornellclass.examyesno == true && @cornellclass.examyesno != 0 %>   
+                            Final Exam Difficulty:<br>
+                            <div class="progress">                    
+                              <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.examdiff*20.0 %>%;"> <%= @cornellclass.examdiff %>
+                              </div>
+                            </div>
+                          <% end %>
+
+                          <% if @cornellclass.projyesno == true && @cornellclass.projyesno != 0 %>   
+                                Final Project Difficulty:<br>
+                            <div class="progress">                    
+                              <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.projdiff*20.0 %>%;"> <%= @cornellclass.projdiff %>
+                              </div>
+                            </div>
+                          <% end %>
+
+                        </div>
+
+                      </div>
+                    </div>
+                    
+                  </div><!-- END FLUID CONTAINER -->
+            </div><!-- END SECOND BOX -->
+
+          <div class="ratingBox panel panel-default">
+                      <div class="panel center">
+                        <h2>Teaching Staff</h2>
+                      </div>
+
+                      <div class="panel-body">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <% unless @cornellclass.taqual == 0 %>   
+                                  TA Quality:<br>
+
+                                  <%    $count = 1 
+                                  $i = @cornellclass.taqual
+                                  while $count <= $i do %>    
+                                  <div class="filledStar<%= $count %>">&nbsp</div>
+                                  <%          $count += 1 
+                                end 
+                                %>
+
+                                <%    
+                                $difference = @cornellclass.taqual - @cornellclass.taqual.to_i
+                                if($difference >= 0.3 && $difference <= 0.7) 
+                                  %>
+                                  <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+                                  <% $i = $i + 1;
+                                end
+
+                                while $i < 5 do 
+                                  %>
+                                  <div class="filledStar0">&nbsp</div>
+                                  <%          $i += 1 
+                                  end %>
+                                  <br>
+                                  <br>
+                              <% end %>
+                            </div>
+                          </div>
+
+                          <hr>
+                          <div class="row">
+                            <div class="col-md-6">
+                              Recitation Required:<br>
+                                <% 
+                                if @cornellclass.recitationreqdyesno == true
+                                  $bubble1 = "filledStar1 circleCenter"
+                                  $bubble2 = "filledStar0 circleCenterI"
+                                else
+                                  $bubble1 = "filledStar0 circleCenterI"
+                                  $bubble2 = "filledStar1 circleCenter"
+                                end
+                                %>
+
+                                <div class="<%= $bubble1 %>"> 
+                                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                </div>
+                                <div class="<%= $bubble2 %>">
+                                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+                            <div class="col-md-6">
+                              <% unless @cornellclass.recitationqual == 0 %> 
+                              Recitation Quality:<br> 
+                              <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.recitationqual*20.0 %>%;"> <%= @cornellclass.recitationqual %>
+                                </div>
+                              </div>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          
+
           <br>
           <br>
 
@@ -683,5 +408,4 @@
         </h1>
         <% end %>
 
-      </div>
-    </div>
+  
