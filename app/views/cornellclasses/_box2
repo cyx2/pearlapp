@@ -1,0 +1,196 @@
+<div class="panel center">
+  <h2>Course Details</h2>
+</div>
+
+<div class="panel-body">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-6">
+        Course Material Difficulty
+
+        <% unless @cornellclass.materialdiff == 0 %>   
+          <p>
+            <%    $count = 1 
+            $i = @cornellclass.materialdiff
+            while $count <= $i do %>    
+            <div class="filledStar<%= $count %>">&nbsp</div>
+            <%          $count += 1 
+          end 
+          %>
+
+          <%    
+          $difference = @cornellclass.materialdiff - @cornellclass.materialdiff.to_i
+          if($difference >= 0.3 && $difference <= 0.7) 
+            %>
+            <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+            <% $i = $i + 1;
+          end
+
+          while $i < 5 do 
+            %>
+            <div class="filledStar0">&nbsp</div>
+            <%          $i += 1 
+            end %>
+            <br>
+            <br>
+          </p>
+        <% end %>
+
+      </div>
+    </div>
+
+    <hr>
+
+  Mandatory Lecture:<br>
+          <% 
+    if @cornellclass.lecturereqdyesno == true
+      $bubble1 = "filledStar1 circleCenter"
+      $bubble2 = "filledStar0 circleCenterI"
+    else
+      $bubble1 = "filledStar0 circleCenterI"
+      $bubble2 = "filledStar1 circleCenter"
+    end
+    %>
+
+    <div class="<%= $bubble1 %>"> 
+      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    </div>
+    <div class="<%= $bubble2 %>">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </div>
+    <br>
+    <br>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+    Preliminary Exams:<br>
+            <% 
+      if @cornellclass.prelimyesno == true
+        $bubble1 = "filledStar1 circleCenter"
+        $bubble2 = "filledStar0 circleCenterI"
+      else
+        $bubble1 = "filledStar0 circleCenterI"
+        $bubble2 = "filledStar1 circleCenter"
+      end
+      %>
+
+      <div class="<%= $bubble1 %>"> 
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      </div>
+      <div class="<%= $bubble2 %>">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </div>
+    </div>
+      
+          <div class="col-md-6">
+             Prelim Difficulty
+            <div class="progress">                    
+              <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.prelimdiff*20.0 %>%;"> <%= @cornellclass.prelimdiff %>
+              </div>
+            </div>
+          </div>
+        </div> <!-- END ROW  -->    
+
+        <hr>
+
+        <div class="row">
+      <div class="col-md-6">
+    Homework or Problem Sets:<br>
+            <% 
+      if @cornellclass.hwyesno == true
+        $bubble1 = "filledStar1 circleCenter"
+        $bubble2 = "filledStar0 circleCenterI"
+      else
+        $bubble1 = "filledStar0 circleCenterI"
+        $bubble2 = "filledStar1 circleCenter"
+      end
+      %>
+
+      <div class="<%= $bubble1 %>"> 
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      </div>
+      <div class="<%= $bubble2 %>">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </div>
+    </div>
+      
+          <div class="col-md-6">
+             Assignment Difficulty
+            <div class="progress">                    
+              <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.hwdiff*20.0 %>%;"> <%= @cornellclass.hwdiff %>
+              </div>
+            </div>
+          </div>
+        </div> <!-- END ROW  -->
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-3">
+            
+              Final Exam:<br>
+              <% 
+              if @cornellclass.examyesno == true
+                $bubble1 = "filledStar1 circleCenter"
+                $bubble2 = "filledStar0 circleCenterI"
+              else
+                $bubble1 = "filledStar0 circleCenterI"
+                $bubble2 = "filledStar1 circleCenter"
+              end
+              %>
+
+              <div class="<%= $bubble1 %>"> 
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+              </div>
+              <div class="<%= $bubble2 %>">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </div>
+
+           </div>
+                
+            <div class="col-md-3">
+              Final Project:<br>
+                <% 
+                if @cornellclass.projyesno == true
+                  $bubble1 = "filledStar1 circleCenter"
+                  $bubble2 = "filledStar0 circleCenterI"
+                else
+                  $bubble1 = "filledStar0 circleCenterI"
+                  $bubble2 = "filledStar1 circleCenter"
+                end
+                %>
+
+                <div class="<%= $bubble1 %>"> 
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </div>
+                <div class="<%= $bubble2 %>">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+              
+              <% if @cornellclass.examyesno == true && @cornellclass.examyesno != 0 %>   
+                Final Exam Difficulty:<br>
+                <div class="progress">                    
+                  <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.examdiff*20.0 %>%;"> <%= @cornellclass.examdiff %>
+                  </div>
+                </div>
+              <% end %>
+
+              <% if @cornellclass.projyesno == true && @cornellclass.projyesno != 0 %>   
+                    Final Project Difficulty:<br>
+                <div class="progress">                    
+                  <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.projdiff*20.0 %>%;"> <%= @cornellclass.projdiff %>
+                  </div>
+                </div>
+              <% end %>
+
+            </div>
+
+          </div>
+        </div>
+        
+      </div><!-- END FLUID CONTAINER -->

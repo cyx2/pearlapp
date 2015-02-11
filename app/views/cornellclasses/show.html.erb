@@ -22,390 +22,46 @@
 </ul>
 -->
 
+<div>
+  <p>
+    <strong>Course Number:</strong>
+    <a class="btn btn-default" href="https://classes.cornell.edu/browse/roster/SP15/class/<%= @cornellclass.prefix.upcase %>/<%= @cornellclass.coursenumber.to_s %>" target="window" role="button"><%= @cornellclass.courseid %></a>
+    <br>Semester: <%= @cornellclass.semester %>
+  </p>
+</div>
 
-    <div>
-      <p>
-        <strong>Course Number:</strong>
-        <a class="btn btn-default" href="https://classes.cornell.edu/browse/roster/SP15/class/<%= @cornellclass.prefix.upcase %>/<%= @cornellclass.coursenumber.to_s %>" target="window" role="button"><%= @cornellclass.courseid %></a>
-        <br>Semester: <%= @cornellclass.semester %>
-      </p>
+<% if @cornellclass.numratings.present? %>
+
+  <div id="overall-classes">
+    
+    
+    <!-- Semester -->  
+    <div class="ratingBox panel panel-default">
+      <%= render 'cornellclasses/box1' %>          
     </div>
 
-    <div id="overall-classes">
+            <!-- SECOND BOX -->
+    <div class="ratingBox panel panel-default">
+      <%= render 'cornellclasses/box2' %>
+    </div><!-- END SECOND BOX -->
 
-      <!-- ======================== Average Rating ======================== --> 
-      <% if @cornellclass.numratings.present? %>
-      
-        <!-- Semester -->
+    <div class="ratingBox panel panel-default">
+      <%= render 'cornellclasses/box3' %>     
+    </div>
+  </div>            
 
-        
+  <br>
+  <br>
 
+  <% if user_signed_in? && current_user.id == 1 %>
+    <%= link_to 'Edit', edit_cornellclass_path(@cornellclass) %> |
+    <%= link_to 'Back', cornellclasses_path %>
+  <% end %>
 
-        <div class="ratingBox panel panel-default">
-          <div class="panel center">
-            <h2>At a Glance</h2>
-          </div>
-          <div class="panel-body">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-6">
-            Professor: <%= @cornellclass.instructor %>
-
-            Overall Rating:
-            <p>
-              <% 
-              if @cornellclass.numratings.present? 
-                $i = @cornellclass.avgrating 
-                $count = 1 
-                %>
-
-                <%    
-                while $count <= $i do %>    
-                <div class="filledStar<%= $count %>">&nbsp</div>
-                <%          $count += 1 
-              end 
-              %>
-
-              <%    
-              $difference = @cornellclass.avgrating - @cornellclass.avgrating.to_i
-              if($difference >= 0.3 && $difference <= 0.7) 
-                %>
-                <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-                <% $i = $i + 1;
-              end
-
-              while $i < 5 do 
-                %>
-                <div class="filledStar0">&nbsp</div>
-                <%          $i += 1 
-                end %>
-                <br>
-                <br>
-              </p>
-            </div>
-            </div>
-              <hr>
-
-              
-                <div class="row">
-                  <div class="col-md-6">
-                    Professor Quality
-                    <div class="progress">                    
-                      <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    Lecture Quality
-                    <div class="progress">                    
-                      <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.lecturequal*20.0 %>%;"> <%= @cornellclass.lecturequal %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <% end %>
-            </div>
-          </div>
-
-                <!-- SECOND BOX -->
-          <div class="ratingBox panel panel-default">
-            <div class="panel center">
-              <h2>Course Details</h2>
-            </div>
-          
-            <div class="panel-body">
-              <div class="container-fluid">
-
-                <div class="row">
-                  <div class="col-md-6">
-                    Course Material Difficulty
-
-                    <% unless @cornellclass.materialdiff == 0 %>   
-                      <p>
-                        <%    $count = 1 
-                        $i = @cornellclass.materialdiff
-                        while $count <= $i do %>    
-                        <div class="filledStar<%= $count %>">&nbsp</div>
-                        <%          $count += 1 
-                      end 
-                      %>
-
-                      <%    
-                      $difference = @cornellclass.materialdiff - @cornellclass.materialdiff.to_i
-                      if($difference >= 0.3 && $difference <= 0.7) 
-                        %>
-                        <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-                        <% $i = $i + 1;
-                      end
-
-                      while $i < 5 do 
-                        %>
-                        <div class="filledStar0">&nbsp</div>
-                        <%          $i += 1 
-                        end %>
-                        <br>
-                        <br>
-                      </p>
-                    <% end %>
-
-                  </div>
-                </div>
-
-                <hr>
-
-              Mandatory Lecture:<br>
-                      <% 
-                if @cornellclass.lecturereqdyesno == true
-                  $bubble1 = "filledStar1 circleCenter"
-                  $bubble2 = "filledStar0 circleCenterI"
-                else
-                  $bubble1 = "filledStar0 circleCenterI"
-                  $bubble2 = "filledStar1 circleCenter"
-                end
-                %>
-
-                <div class="<%= $bubble1 %>"> 
-                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                </div>
-                <div class="<%= $bubble2 %>">
-                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </div>
-                <br>
-                <br>
-                <hr>
-
-                <div class="row">
-                  <div class="col-md-6">
-                Preliminary Exams:<br>
-                        <% 
-                  if @cornellclass.prelimyesno == true
-                    $bubble1 = "filledStar1 circleCenter"
-                    $bubble2 = "filledStar0 circleCenterI"
-                  else
-                    $bubble1 = "filledStar0 circleCenterI"
-                    $bubble2 = "filledStar1 circleCenter"
-                  end
-                  %>
-
-                  <div class="<%= $bubble1 %>"> 
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                  </div>
-                  <div class="<%= $bubble2 %>">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                  </div>
-                </div>
-                  
-                      <div class="col-md-6">
-                         Prelim Difficulty
-                        <div class="progress">                    
-                          <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.prelimdiff*20.0 %>%;"> <%= @cornellclass.prelimdiff %>
-                          </div>
-                        </div>
-                      </div>
-                    </div> <!-- END ROW  -->    
-
-                    <hr>
-        
-                    <div class="row">
-                  <div class="col-md-6">
-                Homework or Problem Sets:<br>
-                        <% 
-                  if @cornellclass.hwyesno == true
-                    $bubble1 = "filledStar1 circleCenter"
-                    $bubble2 = "filledStar0 circleCenterI"
-                  else
-                    $bubble1 = "filledStar0 circleCenterI"
-                    $bubble2 = "filledStar1 circleCenter"
-                  end
-                  %>
-
-                  <div class="<%= $bubble1 %>"> 
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                  </div>
-                  <div class="<%= $bubble2 %>">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                  </div>
-                </div>
-                  
-                      <div class="col-md-6">
-                         Assignment Difficulty
-                        <div class="progress">                    
-                          <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.hwdiff*20.0 %>%;"> <%= @cornellclass.hwdiff %>
-                          </div>
-                        </div>
-                      </div>
-                    </div> <!-- END ROW  -->
-
-                    <hr>
-
-                    <div class="row">
-                      <div class="col-md-3">
-                        
-                          Final Exam:<br>
-                          <% 
-                          if @cornellclass.examyesno == true
-                            $bubble1 = "filledStar1 circleCenter"
-                            $bubble2 = "filledStar0 circleCenterI"
-                          else
-                            $bubble1 = "filledStar0 circleCenterI"
-                            $bubble2 = "filledStar1 circleCenter"
-                          end
-                          %>
-
-                          <div class="<%= $bubble1 %>"> 
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                          </div>
-                          <div class="<%= $bubble2 %>">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                          </div>
-
-                       </div>
-                            
-                        <div class="col-md-3">
-                          Final Project:<br>
-                            <% 
-                            if @cornellclass.projyesno == true
-                              $bubble1 = "filledStar1 circleCenter"
-                              $bubble2 = "filledStar0 circleCenterI"
-                            else
-                              $bubble1 = "filledStar0 circleCenterI"
-                              $bubble2 = "filledStar1 circleCenter"
-                            end
-                            %>
-
-                            <div class="<%= $bubble1 %>"> 
-                              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            </div>
-                            <div class="<%= $bubble2 %>">
-                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          
-                          <% if @cornellclass.examyesno == true && @cornellclass.examyesno != 0 %>   
-                            Final Exam Difficulty:<br>
-                            <div class="progress">                    
-                              <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.examdiff*20.0 %>%;"> <%= @cornellclass.examdiff %>
-                              </div>
-                            </div>
-                          <% end %>
-
-                          <% if @cornellclass.projyesno == true && @cornellclass.projyesno != 0 %>   
-                                Final Project Difficulty:<br>
-                            <div class="progress">                    
-                              <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.projdiff*20.0 %>%;"> <%= @cornellclass.projdiff %>
-                              </div>
-                            </div>
-                          <% end %>
-
-                        </div>
-
-                      </div>
-                    </div>
-                    
-                  </div><!-- END FLUID CONTAINER -->
-            </div><!-- END SECOND BOX -->
-
-          <div class="ratingBox panel panel-default">
-                      <div class="panel center">
-                        <h2>Teaching Staff</h2>
-                      </div>
-
-                      <div class="panel-body">
-                        <div class="container-fluid">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <% unless @cornellclass.taqual == 0 %>   
-                                  TA Quality:<br>
-
-                                  <%    $count = 1 
-                                  $i = @cornellclass.taqual
-                                  while $count <= $i do %>    
-                                  <div class="filledStar<%= $count %>">&nbsp</div>
-                                  <%          $count += 1 
-                                end 
-                                %>
-
-                                <%    
-                                $difference = @cornellclass.taqual - @cornellclass.taqual.to_i
-                                if($difference >= 0.3 && $difference <= 0.7) 
-                                  %>
-                                  <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
-                                  <% $i = $i + 1;
-                                end
-
-                                while $i < 5 do 
-                                  %>
-                                  <div class="filledStar0">&nbsp</div>
-                                  <%          $i += 1 
-                                  end %>
-                                  <br>
-                                  <br>
-                              <% end %>
-                            </div>
-                          </div>
-
-                          <hr>
-                          <div class="row">
-                            <div class="col-md-6">
-                              Recitation Required:<br>
-                                <% 
-                                if @cornellclass.recitationreqdyesno == true
-                                  $bubble1 = "filledStar1 circleCenter"
-                                  $bubble2 = "filledStar0 circleCenterI"
-                                else
-                                  $bubble1 = "filledStar0 circleCenterI"
-                                  $bubble2 = "filledStar1 circleCenter"
-                                end
-                                %>
-
-                                <div class="<%= $bubble1 %>"> 
-                                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                </div>
-                                <div class="<%= $bubble2 %>">
-                                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                </div>
-                                <br>
-                                <br>
-                            </div>
-                            <div class="col-md-6">
-                              <% unless @cornellclass.recitationqual == 0 %> 
-                              Recitation Quality:<br> 
-                              <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.recitationqual*20.0 %>%;"> <%= @cornellclass.recitationqual %>
-                                </div>
-                              </div>
-                              <% end %>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-          
-
-          <br>
-          <br>
-
-          <% if user_signed_in? && current_user.id == 1 %>
-          <%= link_to 'Edit', edit_cornellclass_path(@cornellclass) %> |
-          <%= link_to 'Back', cornellclasses_path %>
-          <% end %>
-
-        </div>
-
-
-
-
-
-        <% else %>
-        <h1 class="center">
-          No ratings for <%= @cornellclass.prefix + " " + @cornellclass.coursenumber.to_s %> yet! :(
-        </h1>
-        <% end %>
+<% else %>
+  <h1 class="center">
+    No ratings for <%= @cornellclass.prefix + " " + @cornellclass.coursenumber.to_s %> yet! :(
+  </h1>
+<% end %>
 
   

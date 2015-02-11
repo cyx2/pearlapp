@@ -1,0 +1,73 @@
+<div class="panel center">
+                        <h2>Teaching Staff</h2>
+                      </div>
+
+                      <div class="panel-body">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <% unless @cornellclass.taqual == 0 %>   
+                                  TA Quality:<br>
+
+                                  <%    $count = 1 
+                                  $i = @cornellclass.taqual
+                                  while $count <= $i do %>    
+                                  <div class="filledStar<%= $count %>">&nbsp</div>
+                                  <%          $count += 1 
+                                end 
+                                %>
+
+                                <%    
+                                $difference = @cornellclass.taqual - @cornellclass.taqual.to_i
+                                if($difference >= 0.3 && $difference <= 0.7) 
+                                  %>
+                                  <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+                                  <% $i = $i + 1;
+                                end
+
+                                while $i < 5 do 
+                                  %>
+                                  <div class="filledStar0">&nbsp</div>
+                                  <%          $i += 1 
+                                  end %>
+                                  <br>
+                                  <br>
+                              <% end %>
+                            </div>
+                          </div>
+
+                          <hr>
+                          <div class="row">
+                            <div class="col-md-6">
+                              Recitation Required:<br>
+                                <% 
+                                if @cornellclass.recitationreqdyesno == true
+                                  $bubble1 = "filledStar1 circleCenter"
+                                  $bubble2 = "filledStar0 circleCenterI"
+                                else
+                                  $bubble1 = "filledStar0 circleCenterI"
+                                  $bubble2 = "filledStar1 circleCenter"
+                                end
+                                %>
+
+                                <div class="<%= $bubble1 %>"> 
+                                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                </div>
+                                <div class="<%= $bubble2 %>">
+                                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+                            <div class="col-md-6">
+                              <% unless @cornellclass.recitationqual == 0 %> 
+                              Recitation Quality:<br> 
+                              <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.recitationqual*20.0 %>%;"> <%= @cornellclass.recitationqual %>
+                                </div>
+                              </div>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>

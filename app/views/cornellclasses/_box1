@@ -1,0 +1,68 @@
+<div class="panel center">
+  <h2>At a Glance</h2>
+</div>
+
+<div class="panel-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        Professor: <%= @cornellclass.instructor %>
+
+        Overall Rating:
+        <p>
+          <% 
+          if @cornellclass.numratings.present? 
+            $i = @cornellclass.avgrating 
+            $count = 1 
+            %>
+
+            <%    
+            while $count <= $i do %>    
+            <div class="filledStar<%= $count %>">&nbsp</div>
+            <%          $count += 1 
+          end 
+          %>
+
+          <%    
+          $difference = @cornellclass.avgrating - @cornellclass.avgrating.to_i
+          if($difference >= 0.3 && $difference <= 0.7) 
+            %>
+            <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+            <% $i = $i + 1;
+          end
+
+          while $i < 5 do 
+            %>
+            <div class="filledStar0">&nbsp</div>
+            <%          $i += 1 
+            end %>
+            <br>
+            <br>
+        </p>
+      </div>
+    </div>
+
+    <hr> 
+     
+    <div class="row">
+      <div class="col-md-6">
+        Professor Quality
+        <div class="progress">                    
+          <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        Lecture Quality
+        <div class="progress">                    
+          <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.lecturequal*20.0 %>%;"> <%= @cornellclass.lecturequal %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <% end %>
+</div>
