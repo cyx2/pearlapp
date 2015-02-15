@@ -11,7 +11,9 @@
         </button>
         <%= link_to root_path, class: "navbar-brand" do %>
           Pearl
-          <span class="label label-warning label-xs">beta</span>
+          <% unless user_signed_in? %>
+            <span class="label label-warning label-xs">beta</span>
+          <% end %>
         <% end %>
       </div>
 
