@@ -18,6 +18,7 @@
 //= require turbolinks
 //= require masonry/jquery.masonry
 //= require_tree .
+
 $(document).ready(function(){
     $("#show-search-toggle").click(function(){
     	$("#show-search-toggle").hide();
@@ -30,6 +31,8 @@ $(document).ready(function(){
 		$("#nav-search-form").hide();
       	$("#show-search-toggle").show();
     });
+
+    $("#homelogin").fadeTo(1000, 1)
 });
 
 $(document).ready(function() {
