@@ -32,7 +32,7 @@ $(document).ready(function(){
       	$("#show-search-toggle").show();
     });
 
-    $("#homelogin").fadeTo(1000, 1)
+    $("#homelogin").fadeTo('slow', 1)
 });
 
 $(document).ready(function() {
