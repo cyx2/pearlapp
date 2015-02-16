@@ -39,8 +39,12 @@ $(document).ready(function(){
     $("#homelogin-graphic-4").animate({width: "80%"}, 'slow')
 
     $('.dropdown-toggle').click(function() {
-        $('.dropdown-menu').slideToggle('fast')
+      $('.dropdown-menu').slideToggle('fast')
+        $(document).click(function(){
+        $('.dropdown-menu').hide()
+      });
     });
+    
 
     var cornellclasses = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
