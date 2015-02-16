@@ -32,7 +32,7 @@ $(document).ready(function(){
       	$("#show-search-toggle").show();
     });
 
-    $("#homelogin").fadeTo('slow', 1)
+    $("#homelogin-grid").fadeTo('slow', 1)
     $("#homelogin-graphic-1").animate({width: "40%"}, 'slow')
     $("#homelogin-graphic-2").animate({width: "20%"}, 'slow')
     $("#homelogin-graphic-3").animate({width: "60%"}, 'slow')
