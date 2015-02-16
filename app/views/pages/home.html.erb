@@ -76,10 +76,16 @@
 					</div>
 				  
 				  <div class="form-group">
-		        <%= f.email_field :email, class: "form-control", :autofocus => true, :placeholder => "Email" %>
+				  	<div class="input-group" style="width: 100%;">
+					  	<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+			        <%= f.email_field :email, class: "form-control", :autofocus => true, :placeholder => "Email" %>
+			      </div>
 		      </div>
 				  <div class="form-group">
-				  	<%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
+				  	<div class="input-group" style="width: 100%;">
+					  	<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+					  	<%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
+					  </div>
 				  </div>
 				  
 				  <div class="form-group homelogin-remember">
