@@ -43,62 +43,6 @@
 
 	<% else %>
 
-	<div class="container container-fluid">
-		<div class="row" id="homelogin-grid">
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 homelogin-graphic">
-				<br><br>
-				<div class="progress">
-				  <div id="homelogin-graphic-1" class="progress-bar progress-bar-success" style="width: 0%">
-				  </div>
-				</div>
-				<div class="progress">
-				  <div id="homelogin-graphic-2" class="progress-bar progress-bar-rating" style="width: 0%">
-				  </div>
-				</div>
-				<div class="progress">
-				  <div id="homelogin-graphic-3" class="progress-bar progress-bar-warning" style="width: 0%">
-				  </div>
-				</div>
-				<div class="progress">
-				  <div id="homelogin-graphic-4" class="progress-bar progress-bar-danger" style="width: 0%">
-				  </div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 panel panel-default" id="homelogin" style="padding-top: 1rem;">
-				<%= form_for(:user, :url => session_path(:user)) do |f| %>
-					<div>
-						<div class="homelogin-title">
-							<p><em>Sign in</em></p>
-						</div>
-						<div class="homelogin-create">
-							or <em><%= link_to "create an account", new_user_registration_path %></em>
-						</div>
-					</div>
-				  
-				  <div class="form-group">
-				  	<div class="input-group" style="width: 100%;">
-					  	<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-			        <%= f.email_field :email, class: "form-control", :autofocus => true, :placeholder => "Email" %>
-			      </div>
-		      </div>
-				  <div class="form-group">
-				  	<div class="input-group" style="width: 100%;">
-					  	<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-					  	<%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
-					  </div>
-				  </div>
-				  
-				  <div class="form-group homelogin-remember">
-				  	<%= f.check_box :remember_me %>
-				  	&nbsp;Remember me
-				  </div>
-				  <div class="form-group homelogin-login">
-		        <%= f.submit "Sign in", class: "btn btn-primary" %>
-		      </div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
+		<%= render 'pages/homelogin' %>
 
 <% end %>
