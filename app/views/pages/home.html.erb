@@ -44,10 +44,25 @@
 	<% else %>
 
 	<div class="container container-fluid">
-		<div class="row">
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<img src="https://cf.dropboxstatic.com/static/images/empty_states/sign-in@2x-vflrhf4zv.png" alt="Dropbox" style="width: 50%; margin-left: auto; margin-right: auto; display: block;">
-				</img>
+		<div class="row" id="homelogin-grid">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 homelogin-graphic">
+				<br><br>
+				<div class="progress">
+				  <div id="homelogin-graphic-1" class="progress-bar progress-bar-success" style="width: 0%">
+				  </div>
+				</div>
+				<div class="progress">
+				  <div id="homelogin-graphic-2" class="progress-bar progress-bar-rating" style="width: 0%">
+				  </div>
+				</div>
+				<div class="progress">
+				  <div id="homelogin-graphic-3" class="progress-bar progress-bar-warning" style="width: 0%">
+				  </div>
+				</div>
+				<div class="progress">
+				  <div id="homelogin-graphic-4" class="progress-bar progress-bar-danger" style="width: 0%">
+				  </div>
+				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 well" id="homelogin">
 				<%= form_for(:user, :url => session_path(:user)) do |f| %>

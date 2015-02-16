@@ -7,14 +7,15 @@ $navbar-default-bg: white;
 $navbar-default-link-color: #3498db;
 $navbar-default-link-hover-color: #f39c12;
 
-$brand-primary:  #3498db;
+$brand-primary: #3498db;
 $jumbotron-bg: #bdc3c7;
 $btn-default-color: #3498db;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.progress-bar{
+// For Cornellclasses page
+.progress-bar-rating{
   background-color: #4abff0;
 }
 
