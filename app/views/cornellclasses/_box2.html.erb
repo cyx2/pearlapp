@@ -90,7 +90,7 @@
       <div class="col-md-6">
         Prelim Difficulty:<br>
         <div class="progress">                    
-          <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.prelimdiff*20.0 %>%"> <%= @cornellclass.prelimdiff %>
+          <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.prelimdiff*20.0 %>%"> <%= @cornellclass.prelimdiff %>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@
       <div class="col-md-6">
         Assignment Difficulty:<br>
         <div class="progress">                    
-          <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.hwdiff*20.0 %>%;"> <%= @cornellclass.hwdiff %>
+          <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.hwdiff*20.0 %>%;"> <%= @cornellclass.hwdiff %>
           </div>
         </div>
       </div>
@@ -170,7 +170,7 @@
         <% if @cornellclass.examyesno == true && @cornellclass.examyesno != 0 %>   
           Final Exam Difficulty:<br>
           <div class="progress">                    
-            <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.examdiff*20.0 %>%;"> <%= @cornellclass.examdiff %>
+            <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.examdiff*20.0 %>%;"> <%= @cornellclass.examdiff %>
             </div>
           </div>
         <% end %>
@@ -178,7 +178,7 @@
         <% if @cornellclass.projyesno == true && @cornellclass.projyesno != 0 %>   
           Final Project Difficulty:<br>
           <div class="progress">                    
-            <div class="progress-bar" role="progressbar" style="width: <%= @cornellclass.projdiff*20.0 %>%;"> <%= @cornellclass.projdiff %>
+            <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.projdiff*20.0 %>%;"> <%= @cornellclass.projdiff %>
             </div>
           </div>
         <% end %>
