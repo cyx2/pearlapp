@@ -41,7 +41,7 @@ $(document).ready(function(){
     $('.dropdown-toggle').click(function() {
       $('.dropdown-menu').slideToggle('fast')
         $(document).click(function(){
-        $('.dropdown-menu').hide()
+          $('.dropdown-menu').slideUp('fast')
       });
     });
     
