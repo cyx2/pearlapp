@@ -14,6 +14,10 @@ $btn-default-color: #3498db;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.dashboard-bottom-link {
+  margin-bottom: 1rem;
+}
+
 // For Cornellclasses page
 .progress-bar-rating{
   background-color: #4abff0;

@@ -6,27 +6,25 @@
   </div>
 </div>
 
-<table class="table table-striped">
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Term</th>
-      <th>Title</th>
-      <th>Course</th>
-      <th>Instructor</th>
-      <th>Class Nbr</th>
-      <th>Avg Rating</th>
-      <th># Ratings</th>
+      <th class="center">Term</th>
+      <th class="center">Title</th>
+      <th class="center">Course</th>
+      <th class="center">Class Nbr</th>
+      <th class="center">Avg Rating</th>
+      <th class="center"># Ratings</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="center">
     <% @search_results.each do |cornellclass| %>
       <tr>
         <td><%= cornellclass.semester %></td>
         <td><%= cornellclass.title %></td>
         <td><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
-        <td><%= cornellclass.instructor %></td>
         <td><%= cornellclass.courseid %></td>
         <td><%= cornellclass.avgrating %></td>
         <td><%= cornellclass.numratings %></td>

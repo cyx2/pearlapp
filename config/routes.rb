@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "search_results" => 'cornellclasses#search_results'
   get "findbysubject" => 'cornellclasses#findbysubject'
   get "coursesjson" => 'cornellclasses#coursesjson'
+  get "mostrated" => 'pages#mostrated'
+  get "highestrated" => 'pages#highestrated'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

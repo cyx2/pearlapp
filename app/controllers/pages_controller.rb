@@ -18,4 +18,13 @@ class PagesController < ApplicationController
   
   def team
   end
+
+  def mostrated
+    @cornellclasses=Cornellclass.where("numratings >= ?", 1).order("numratings DESC").take(50)
+  end
+
+  def highestrated
+    @cornellclasses=Cornellclass.where("avgrating >= ?", 1).order("avgrating DESC").take(50)
+  end
+
 end
