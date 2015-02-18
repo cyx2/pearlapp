@@ -89,12 +89,16 @@ class CornellclassesController < ApplicationController
 
           name = subj + ' ' + num + ': ' + title
           name = name.tr('"', '')
-          # Creates a cornell class in Cornellclasses table
-          Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name)
-          f.write('"' + name + '"')
-          if (!(pi == (subjectdoc.xpath("//subject/@subject").length - 1) && i == (classdoc.xpath("/courses/course").length - 1))) ####### TODO: DELETE LAST COMMA #######
-            f.write(',')
+
+          if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
+            # Creates a cornell class in Cornellclasses table
+            Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name)
+            f.write('"' + name + '"')
+            if (!(pi == (subjectdoc.xpath("//subject/@subject").length - 1) && i == (classdoc.xpath("/courses/course").length - 1))) ####### TODO: DELETE LAST COMMA #######
+              f.write(',')
+            end
           end
+
         end
       end
       f.write(']')

@@ -5,14 +5,13 @@ class PagesController < ApplicationController
       if @c1 > 5
         @c1=5
       end
-      @lastratings=Cornellclass.where("numratings >= ?", 1).order("numratings DESC").take(@c1)
-  		
-      @userlastratings=current_user.ratings.last(5)
-  		
       @c2=Cornellclass.where("avgrating >= ?", 1).count
       if @c2 > 5
         @c2=5
       end
+
+      @lastratings=Cornellclass.where("numratings >= ?", 1).order("numratings DESC").take(@c1)
+      @userlastratings=current_user.ratings.last(5)
   		@highestratedclasses=Cornellclass.where("avgrating >= ?", 1).order("avgrating DESC").take(@c2)
   	end
   end
