@@ -50,7 +50,7 @@ $(document).ready(function(){
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       limit: 10,
-      prefetch: {
+      remote: {
         // url points to a json file that contains an array of country names, see
         // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
         url: 'http://localhost:3000/coursesjson.json', // ********* TODO: relative path?? ********* 
