@@ -9,14 +9,14 @@
     </tr>
   </thead>
 
-  <tbody class="center">
+  <tbody>
     <% @cornellclasses.each do |cornellclass| %>
       <tr>
         <td class="col-lg-4 col-md-4 col-sm-3 col-xs-2"><%= cornellclass.title %></td>
-        <td><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
-        <td><%= cornellclass.avgrating %></td>
-        <td><%= cornellclass.numratings %></td>
-        <td>
+        <td class="center"><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
+        <td class="center"><%= cornellclass.avgrating %></td>
+        <td class="center"><%= cornellclass.numratings %></td>
+        <td class="center">
           <%= link_to '', cornellclass, class: "btn btn-default btn-xs center glyphicon glyphicon-list-alt" %>
         </td>
         <!--

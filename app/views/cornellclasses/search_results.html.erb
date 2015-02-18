@@ -18,14 +18,14 @@
     </tr>
   </thead>
 
-  <tbody class="center">
+  <tbody>
     <% @search_results.each do |cornellclass| %>
       <tr>
         <td><%= cornellclass.title %></td>
-        <td><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
-        <td><%= cornellclass.courseid %></td>
-        <td><%= cornellclass.avgrating %></td>
-        <td><%= cornellclass.numratings %></td>
+        <td class="center"><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
+        <td class="center"><%= cornellclass.courseid %></td>
+        <td class="center"><%= cornellclass.avgrating %></td>
+        <td class="center"><%= cornellclass.numratings %></td>
         <td>
           <%= link_to '', cornellclass, class: "btn btn-default btn-xs center glyphicon glyphicon-list-alt" %>
         </td>
