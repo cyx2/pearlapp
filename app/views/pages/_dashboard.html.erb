@@ -2,49 +2,66 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 			<h4>Most Rated Classes</h4>			
-			<table class="table">
-			  <thead>
-			    <tr>
-			    	<th class="center">Course</th>
-			      <th class="center"># Ratings</th>
-			      
-			      <th class="center"></th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<% @lastratings.each do |mostrated| %>
-		        <tr>
-		          <td><%= mostrated.prefix %><%= mostrated.coursenumber %></td>
-		          <td><%= mostrated.numratings %></td>
-		          <td><%= link_to '', mostrated, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
-		        </tr>
-	        <% end %>
-			  </tbody>
-			</table>
+			
+			<% if @userlastratings.count == 0 %>
+				<div style="padding-bottom: 5px">
+		  		<p><em>No ratings yet!</em></p>
+				</div>
+  		<% else %>			
+				<table class="table">
+				  <thead>
+				    <tr>
+				    	<th class="center">Course</th>
+				      <th class="center"># Ratings</th>
+				      
+				      <th class="center"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<% @lastratings.each do |mostrated| %>
+			        <tr>
+			          <td><%= mostrated.prefix %><%= mostrated.coursenumber %></td>
+			          <td><%= mostrated.numratings %></td>
+			          <td><%= link_to '', mostrated, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
+			        </tr>
+		        <% end %>
+				  </tbody>
+				</table>
+			<% end %>
+
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<h4>Highest Rated Classes</h4>			
-			<table class="table">
-			  <thead>
-			    <tr>
-			      <th class="center">Course</th>
-			      <th class="center">Avg. Rating</th>
-			      <th class="center"></th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<% @highestratedclasses.each do |ratedclass| %>
-		        <tr>
-		          <td><%= ratedclass.prefix %><%= ratedclass.coursenumber %></td>
-		          <td><%= ratedclass.avgrating %></td>
-		          <td><%= link_to '', ratedclass, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
-		        </tr>
-	        <% end %>
-			  </tbody>
-			</table>
+			<h4>Highest Rated Classes</h4>	
+
+			<% if @userlastratings.count == 0 %>
+				<div style="padding-bottom: 5px">
+		  		<p><em>No ratings yet!</em></p>
+				</div>
+  		<% else %>
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th class="center">Course</th>
+				      <th class="center">Avg. Rating</th>
+				      <th class="center"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<% @highestratedclasses.each do |ratedclass| %>
+			        <tr>
+			          <td><%= ratedclass.prefix %><%= ratedclass.coursenumber %></td>
+			          <td><%= ratedclass.avgrating %></td>
+			          <td><%= link_to '', ratedclass, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
+			        </tr>
+		        <% end %>
+				  </tbody>
+				</table>
+			<% end %>
+
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<h4>Your Recent Ratings</h4>	
+			<h4>Your Recent Ratings</h4>
+
 			<% if @userlastratings.count == 0 %>
 				<div style="padding-bottom: 5px">
 		  		<p><em>You haven't rated any classes yet!</em></p>
@@ -74,5 +91,6 @@
 				</table>
 			<% end %>
 		</div>
+		
 	</div>
 </div>
