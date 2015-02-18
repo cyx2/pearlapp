@@ -11,7 +11,7 @@ class CornellclassesController < ApplicationController
 
   def findbysubject
     @p = params[:prefix]
-    @cornellclasses = Cornellclass.where(prefix: @p)
+    @cornellclasses = Cornellclass.where(prefix: @p).order('coursenumber ASC')
   end
   
   def search_results
@@ -55,7 +55,7 @@ class CornellclassesController < ApplicationController
         prefix = prefix.strip
       end
       
-      @search_results = Cornellclass.where("UPPER(prefix) LIKE '%' || UPPER(?) || '%' AND (coursenumber = ? OR 0 = ?) AND (lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%')", prefix, coursenumber.to_i, coursenumber.to_i, freeform, freeform).paginate(:page => params[:page], :per_page => 50)
+      @search_results = Cornellclass.where("UPPER(prefix) LIKE '%' || UPPER(?) || '%' AND (coursenumber = ? OR 0 = ?) AND (lower(title) LIKE '%' || lower(?) || '%' OR lower(instructor) LIKE '%' || lower(?) || '%')", prefix, coursenumber.to_i, coursenumber.to_i, freeform, freeform).paginate(:page => params[:page], :per_page => 50).order('prefix ASC')
       respond_with(@search_results)
     end
   end
