@@ -19,20 +19,22 @@
     </div>
 
     <!-- Context Information -->
-    <div class="panel-body"> 
-      <div class="field form-inline">
-        <%= f.label :rater %><br>
-        <%= current_user.name %>
-      </div>      
-      <div class="field form-inline">
-        <label>Course</label>
-        <div id="prefetch-mainsearch">
-          <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="rating[search_text]" placeholder="BEE4500: Bioinstrumentation" autofocus>
+    <div class="row container-fluid">
+      <div class="panel-body col-lg-6 col-md-6 col-sm-12 col-xs-12"> 
+        <div class="field form-inline">
+          <%= f.label :rater %><br>
+          <%= current_user.name %>
+        </div>      
+        <div class="field form-inline">
+          <label>Course</label>
+          <div id="prefetch-mainsearch">
+            <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="rating[search_text]" placeholder="BEE4500: Bioinstrumentation" autofocus>
+          </div>
         </div>
-      </div>
-      <div>
-        <%= f.label 'Term' %><br>
-        <%= f.select(:semester, ['FA11', 'FA12', 'FA13', 'FA14', 'FA15', 'SP11', 'SP12', 'SP13', 'SP14', 'SP15'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
+        <div>
+          <%= f.label 'Term' %><br>
+          <%= f.select(:semester, ['FA14', 'FA13', 'FA12','FA11'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
+        </div>
       </div>
 
       <br><br>
