@@ -84,7 +84,8 @@ class CornellclassesController < ApplicationController
         cid = (course.at("sections/section/@class_number") || "Not provided").to_s
         inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
 
-        name = subj + ' ' + num + ': ' + title.tr(':', '')
+        title = title.tr(':', '')
+        name = subj + ' ' + num + ': ' + title
         name = name.tr('"', '')
 
         if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
