@@ -73,6 +73,10 @@
           <td><strong>Prelim Difficulty</strong></td>
           <td><%= @rating.prelimdiff %></td>
         </tr>
+        <tr>
+          <td><strong>Paper/Case Study Difficulty</strong></td>
+          <td><%= @rating.paperdiff %></td>
+        </tr>
 
         <!-- Booleans -->
         <tr>
@@ -116,9 +120,19 @@
           </td>
         </tr>
         <tr>
-          <td><strong>Significant Project(s)?</strong></td>
+          <td><strong>Significant Projects?</strong></td>
           <td>
             <% if @rating.projyesno == true %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Papers/Case Studies?</strong></td>
+          <td>
+            <% if @rating.paperyesno == true %>
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <% else %>
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

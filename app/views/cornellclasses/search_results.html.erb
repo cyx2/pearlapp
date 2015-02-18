@@ -9,7 +9,6 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th class="center">Term</th>
       <th class="center">Title</th>
       <th class="center">Course</th>
       <th class="center">Class Nbr</th>
@@ -22,7 +21,6 @@
   <tbody class="center">
     <% @search_results.each do |cornellclass| %>
       <tr>
-        <td><%= cornellclass.semester %></td>
         <td><%= cornellclass.title %></td>
         <td><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
         <td><%= cornellclass.courseid %></td>
