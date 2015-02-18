@@ -84,7 +84,9 @@ class RatingsController < ApplicationController
   end
 
   def update
-    @rating.update(rating_params)
+    without_search_param = rating_params
+    without_search_param.delete :search_text
+    @rating.update(without_search_param)
     respond_with(@rating)
   end
 
