@@ -25,10 +25,10 @@
         <%= current_user.name %>
       </div>      
       <div class="field form-inline">
-        <%= f.label :prefix %>,
-        <%= f.label :course_number %><br>
-        <%= f.text_field :prefix, class: "form-control", placeholder: "CS" %>
-        <%= f.number_field :course_number, class: "form-control", placeholder: "3410" %>
+        <label>Course</label>
+        <div id="prefetch-mainsearch">
+          <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="rating[search_text]" placeholder="BEE4500: Bioinstrumentation" autofocus>
+        </div>
       </div>
       <div>
         <%= f.label 'Term' %><br>
