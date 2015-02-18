@@ -20,11 +20,11 @@ class PagesController < ApplicationController
   end
 
   def mostrated
-    @cornellclasses=Cornellclass.where("numratings >= ?", 1).order("numratings DESC").take(50)
+    @cornellclasses=Cornellclass.where("numratings >= ?", 1).order("numratings DESC").take(25)
   end
 
   def highestrated
-    @cornellclasses=Cornellclass.where("avgrating >= ?", 1).order("avgrating DESC").take(50)
+    @cornellclasses=Cornellclass.where("avgrating >= ?", 1).order("avgrating DESC").take(25)
   end
 
 end
