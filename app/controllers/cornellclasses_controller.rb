@@ -65,42 +65,40 @@ class CornellclassesController < ApplicationController
   end
 
   def new
-    ############# Make sure you know what you're doing #############
+  ############# Make sure you know what you're doing #############
+    jsonstring = ""
+
+    # Pulls all course data for specified year, based on subject list
+    subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/FA14/xml/"))
+    # Reads each subject and stores it in local variable prefix
+    subjectdoc.xpath("//subject/@subject").each do |prefix|
+      # Link to course pages, substituting in prefix in URL
+      classdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/FA14/#{prefix}/xml/"))
+      # Gets the semester from each sheet read
+      semester = classdoc.xpath("/courses/@term").to_s
+      # Reads each course and stores listed vars
+      classdoc.xpath("/courses/course").each do |course|
+        num = course["catalog_nbr"] || "Not provided"
+        subj = course["subject"]    || "Not provided"
+        title = (course.at("course_title/text()") || "Not provided").to_s
+        cid = (course.at("sections/section/@class_number") || "Not provided").to_s
+        inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
+
+        name = subj + ' ' + num + ': ' + title.tr(':', '')
+        name = name.tr('"', '')
+
+        if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
+          # Creates a cornell class in Cornellclasses table
+          Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name)
+          jsonstring = jsonstring + '"' + name + '",'
+        end
+      end
+    end
     filepath = File.join(Rails.root, 'public', 'coursesjson.json')
     File.open(filepath, "w+") do |f|
       f.truncate(0)
       f.write("[")
-
-      # Pulls all course data for specified year, based on subject list
-      subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/FA14/xml/"))
-      # Reads each subject and stores it in local variable prefix
-      subjectdoc.xpath("//subject/@subject").each_with_index do |prefix, pi|
-        # Link to course pages, substituting in prefix in URL
-        classdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/FA14/#{prefix}/xml/"))
-        # Gets the semester from each sheet read
-        semester = classdoc.xpath("/courses/@term").to_s
-        # Reads each course and stores listed vars
-        classdoc.xpath("/courses/course").each_with_index do |course, i|
-          num = course["catalog_nbr"] || "Not provided"
-          subj = course["subject"]    || "Not provided"
-          title = (course.at("course_title/text()") || "Not provided").to_s
-          cid = (course.at("sections/section/@class_number") || "Not provided").to_s
-          inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
-
-          name = subj + ' ' + num + ': ' + title
-          name = name.tr('"', '')
-
-          if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
-            # Creates a cornell class in Cornellclasses table
-            Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name)
-            f.write('"' + name + '"')
-            if (!(pi == (subjectdoc.xpath("//subject/@subject").length - 1) && i == (classdoc.xpath("/courses/course").length - 1))) ####### TODO: DELETE LAST COMMA #######
-              f.write(',')
-            end
-          end
-
-        end
-      end
+      f.write(jsonstring[0..jsonstring.length-2])
       f.write(']')
     end
     @cornellclass = Cornellclass.new
