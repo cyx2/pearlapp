@@ -13,9 +13,19 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="panel-title">
-        <h1>Rate a Class</h1>
-      </div>
+
+      <% if @rating.course_number.present? %>
+        <div class="panel-title">
+          <h1>
+            Editing your <%= @rating.prefix %><%= @rating.course_number %> rating
+          </h1>
+        </div>
+      <% else %>      
+        <div class="panel-title">
+          <h1>Rate a Class</h1>
+        </div>
+      <% end %>
+
     </div>
 
     <!-- Context Information -->
@@ -24,17 +34,23 @@
         <div class="field form-inline">
           <%= f.label :rater %><br>
           <%= current_user.name %>
-        </div>      
-        <div class="field form-inline">
-          <label>Course</label>
-          <div id="prefetch-mainsearch">
-            <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="rating[search_text]" placeholder="BEE4500: Bioinstrumentation" autofocus>
-          </div>
         </div>
-        <div>
+
+        <% unless @rating.course_number.present? %>
+          <div class="field form-inline">
+            <label>Course</label>
+            <div id="prefetch-mainsearch">
+              <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="rating[search_text]" placeholder="BEE4500: Bioinstrumentation" autofocus>
+            </div>
+          </div>
+          <div>
           <%= f.label 'Term' %><br>
           <%= f.select(:semester, ['SP15', 'FA14', 'SP14', 'FA13', 'SP13', 'FA12', 'SP12', 'FA11', 'SP11'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
         </div>
+        <% end %>
+
+
+        
       </div>
 
       <br><br>
