@@ -146,6 +146,9 @@ class CornellclassesController < ApplicationController
 
 
     def cornellclass_params
-      params.require(:cornellclass).permit(:title, :prefix, :coursenumber, :courseid, :avgrating, :numratings, :created_at, :updated_at,  :hwyesno, :recitationreqdyesno, :examyesno, :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, :paperyesno, :paperdiff, :name)
+      params.require(:cornellclass).permit(:title, :prefix, :coursenumber, :courseid, :avgrating, 
+        :numratings, :created_at, :updated_at,  :hwyesno, :recitationreqdyesno, :examyesno, 
+        :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, 
+        :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, :paperyesno, :paperdiff, :name)
     end
 end
