@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211034102) do
+ActiveRecord::Schema.define(version: 20150219012356) do
 
   create_table "cornellclasses", force: :cascade do |t|
     t.string   "title"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20150211034102) do
     t.string   "semester"
     t.boolean  "paperyesno"
     t.integer  "paperdiff"
+    t.text     "moretosay"
   end
 
   add_index "ratings", ["courseid"], name: "index_ratings_on_courseid"

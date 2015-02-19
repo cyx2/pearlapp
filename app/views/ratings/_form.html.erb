@@ -247,56 +247,56 @@
       <hr>
       <!-- Booleans -->
       
-      
-      <table class="table table-hover container">
-        <tr>
-          <td colspan="12" class="center">
-            <h4>Selectables</h4>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.label 'Prelims?' %></td>
-          <td><%= f.check_box :prelimyesno, class: "checkbox" %></td>
-           <td class="col-md-9 col-lg-9 col-sm-7"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.label 'Final Exam?' %></td>
-          <td><%= f.check_box :examyesno, class: "checkbox" %></td>
-           <td class="col-md-9 col-lg-9 col-sm-7"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.label 'Graded Homework?' %></td>
-          <td><%= f.check_box :hwyesno, class: "checkbox" %></td>
-           <td class="col-md-9 col-lg-9 col-sm-7"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.label 'Projects?' %></td>
-          <td><%= f.check_box :projyesno, class: "checkbox" %></td>
-           <td class="col-md-9 col-lg-9 col-sm-7"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.label 'Papers/Case Studies?' %></td>
-          <td><%= f.check_box :paperyesno, class: "checkbox" %></td>
-           <td class="col-md-9 col-lg-9 col-sm-7"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.label 'Recitation Required?' %></td>
-          <td><%= f.check_box :recitationreqdyesno, class: "checkbox" %></td>
-           <td class="col-md-9 col-lg-9 col-sm-7"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.label 'Lecture Required?' %></td>
-          <td><%= f.check_box :lecturereqdyesno, class: "checkbox" %></td>
-           <td class="col-md-9 col-lg-9 col-sm-7"></td>
-        </tr>
-      </table>
+      <div>
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <td colspan="10" class="center">
+                <h4>Selectables</h4>
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Prelims?' %></td>
+              <td><%= f.check_box :prelimyesno, class: "checkbox" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Final Exam?' %></td>
+              <td><%= f.check_box :examyesno, class: "checkbox" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Graded Homework?' %></td>
+              <td><%= f.check_box :hwyesno, class: "checkbox" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Projects?' %></td>
+              <td><%= f.check_box :projyesno, class: "checkbox" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Papers/Case Studies?' %></td>
+              <td><%= f.check_box :paperyesno, class: "checkbox" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Recitation Required?' %></td>
+              <td><%= f.check_box :recitationreqdyesno, class: "checkbox" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Lecture Required?' %></td>
+              <td><%= f.check_box :lecturereqdyesno, class: "checkbox" %></td>
+            </tr>
+
+            <tr>
+              <td colspan="10" class="center">
+                <h4>More to say?</h4>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="10" class="center">
+                <div><%= f.text_area :moretosay, class: "form-control" %></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
          
       <div class="actions center">
         <%= f.submit "Submit", class: "btn btn-primary" %>

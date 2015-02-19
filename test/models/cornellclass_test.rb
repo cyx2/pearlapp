@@ -30,6 +30,7 @@
 #  semester            :string
 #  paperyesno          :boolean
 #  paperdiff           :float
+#  name                :string
 #
 
 require 'test_helper'

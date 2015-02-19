@@ -30,6 +30,7 @@
 #  semester            :string
 #  paperyesno          :boolean
 #  paperdiff           :float
+#  name                :string
 #
 
 class Cornellclass < ActiveRecord::Base

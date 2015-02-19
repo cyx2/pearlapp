@@ -17,6 +17,11 @@
     <table class="table">
       <tbody>
         <!-- Context Information -->
+        <!-- Time Stamp -->
+        <tr>
+          <td><strong>Created On</strong></td>
+          <td><%= @rating.created_at %></td>
+        </tr>
         <tr>
           <td><strong>Rater</strong></td>
           <td><%= @rating.user.name %></td>
@@ -149,11 +154,9 @@
             <% end %>
           </td>
         </tr>
-
-        <!-- Time Stamp -->
         <tr>
-          <td><strong>Created On</strong></td>
-          <td><%= @rating.created_at %></td>
+          <td><strong>Additional Words</strong></td>
+          <td><%= @rating.moretosay %></td>
         </tr>
       </tbody>
     </table>

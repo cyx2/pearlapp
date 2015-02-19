@@ -28,6 +28,7 @@
 #  semester            :string
 #  paperyesno          :boolean
 #  paperdiff           :integer
+#  moretosay           :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

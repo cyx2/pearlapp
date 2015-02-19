@@ -28,6 +28,7 @@
 #  semester            :string
 #  paperyesno          :boolean
 #  paperdiff           :integer
+#  moretosay           :text
 #
 
 require 'test_helper'

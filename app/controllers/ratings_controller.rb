@@ -107,6 +107,10 @@ class RatingsController < ApplicationController
     end
 
     def rating_params
-      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, :course_number, :search_text, :hwyesno, :recitationreqdyesno, :examyesno, :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, :paperyesno, :paperdiff)
+      params.require(:rating).permit(:rater, :rating, :created_at, :updated_at, :prefix, 
+        :course_number, :search_text, :hwyesno, :recitationreqdyesno, :examyesno, 
+        :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, 
+        :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, 
+        :paperyesno, :paperdiff, :moretosay)
     end
 end
