@@ -28,8 +28,7 @@
         <td><%= rating.created_at.month %>/<%= rating.created_at.day %></td>
         <td>
           <%= link_to 'Show', rating, class: "btn btn-default btn-xs" %> | 
-          <%= link_to 'Edit', edit_rating_path(rating), class: "btn btn-default btn-xs" %> | 
-          <%= link_to 'Delete', @rating, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+          <%= link_to 'Edit', edit_rating_path(rating), class: "btn btn-default btn-xs" %>
         </td>
       </tr>
     <% end %>
