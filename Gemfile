@@ -26,9 +26,7 @@ gem 'jquery-ui-rails', '~> 5.0.3'
 
 gem 'twitter-typeahead-rails', '~> 0.10.5'
 
-# Production environment
-gem 'unicorn'
-gem 'rack-timeout'
+
 
 group :development, :test do
   gem 'byebug' 	
@@ -41,4 +39,6 @@ end
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'
+	gem 'unicorn'
+	gem 'rack-timeout'
 end
