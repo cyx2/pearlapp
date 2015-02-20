@@ -22,7 +22,7 @@
 			        <tr>
 			          <td><%= mostrated.prefix %><%= mostrated.coursenumber %></td>
 			          <td><%= mostrated.numratings %></td>
-			          <td><%= link_to '', mostrated, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
+			          <td><%= link_to '', mostrated, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-info-sign" %></td>
 			        </tr>
 		        <% end %>
 				  </tbody>
@@ -54,7 +54,7 @@
 			        <tr>
 			          <td><%= ratedclass.prefix %><%= ratedclass.coursenumber %></td>
 			          <td><%= ratedclass.avgrating %></td>
-			          <td><%= link_to '', ratedclass, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-eye-open" %></td>
+			          <td><%= link_to '', ratedclass, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-info-sign" %></td>
 			        </tr>
 		        <% end %>
 				  </tbody>
@@ -82,16 +82,16 @@
 				<table class="table">
 				  <thead>
 				    <tr>
-				      <th class="center">Rating</th>
-				      <th class="center">Course</th>
+				    	<th class="center">Course</th>
+				      <th class="center">Rating</th>				      
 				      <th class="center"></th>
 				    </tr>
 				  </thead>
 				  <tbody>					  	
 				  	<% @userlastratings.each do |lastrating| %>
 			        <tr>
-			          <td class="center"><%= lastrating.rating %></td>
-			          <td class="center"><%= lastrating.prefix %><%= lastrating.course_number %></td>
+			        	<td class="center"><%= lastrating.prefix %><%= lastrating.course_number %></td>
+			          <td class="center"><%= lastrating.rating %></td>			          
 			          <td class="center"><%= link_to '', lastrating, class: "btn btn-default btn-xs center glyphicon glyphicon glyphicon-info-sign" %></td>
 			        </tr>
 		        <% end %>
