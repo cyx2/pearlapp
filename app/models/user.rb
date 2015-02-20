@@ -29,5 +29,6 @@ class User < ActiveRecord::Base
 
   # Validator requires these fields for a user.
   validates :name, presence: true
-  validates :email, uniqueness: true  
+  validates :email, presence: true, uniqueness: true  
+  validates :password, presence: true
 end
