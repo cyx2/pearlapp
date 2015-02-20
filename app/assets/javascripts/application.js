@@ -44,7 +44,6 @@ $(document).ready(function(){
           $('.dropdown-menu').slideUp('fast')
       });
     });
-    
 
     var cornellclasses = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
