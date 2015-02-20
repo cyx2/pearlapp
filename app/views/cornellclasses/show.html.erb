@@ -48,7 +48,7 @@
       <%= render 'cornellclasses/box3' %>     
     </div>
 
-    <% unless @cornellclass.showratings.where("moretosay = ?", nil).count == @cornellclass.showratings.count %>
+    <% unless @cornellclass.showratings.where("moretosay = ?", "").count == @cornellclass.showratings.count %>
       <div class="ratingBox panel panel-default" style="width: 100%;">
         <%= render 'cornellclasses/box4' %>     
       </div>
