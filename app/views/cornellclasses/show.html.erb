@@ -9,10 +9,12 @@
     <h3 class="center">
       <%= @cornellclass.title %>
     </h3>
-
-    <div class="center">
-      <%= link_to "Rate", new_rating_path, class: "btn btn-success btn-classrate" %>
-    </div>
+    
+    <% if @cornellclass.numratings.present? %>
+      <div class="center">
+        <%= link_to "Rate", new_rating_path, class: "btn btn-success btn-classrate" %>
+      </div>
+    <% end %>
   </div>
 </div> 
 
