@@ -9,6 +9,10 @@
     <h3 class="center">
       <%= @cornellclass.title %>
     </h3>
+
+    <div class="center">
+      <%= link_to "Rate", new_rating_path, class: "btn btn-success btn-classrate" %>
+    </div>
   </div>
 </div> 
 
@@ -22,13 +26,8 @@
 </ul>
 -->
 
-<div>
-  <p>
-    <strong>Course Number:</strong>
-    <a class="btn btn-default" href="https://classes.cornell.edu/browse/roster/<%= @cornellclass.semester %>/class/<%= @cornellclass.prefix.upcase %>/<%= @cornellclass.coursenumber.to_s %>" target="window" role="button"><%= @cornellclass.courseid %></a>
-    <!-- <br>Semester: <%= @cornellclass.semester %> -->
-  </p>
-</div>
+
+
 
 <% if @cornellclass.numratings.present? %>
 
@@ -71,7 +70,7 @@
       No ratings for <%= @cornellclass.prefix + " " + @cornellclass.coursenumber.to_s %> yet! :(
     </p>
     <p>
-       <%= link_to "Rate Me!", new_rating_path(:course_number => @cornellclass.coursenumber, :prefix => @cornellclass.prefix, :courseid => @cornellclass.courseid), class: "cornellsubjectbox btn btn-default" %>
+       <%= link_to "Rate Me!", new_rating_path, class: "btn btn-default" %>
     </p>
   </h1>
 <% end %>

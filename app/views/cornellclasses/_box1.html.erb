@@ -39,6 +39,10 @@
             <br>
         </p>
       </div>
+      <div class="col-md-6">
+        Course Number:
+        <a class="btn btn-default" href="https://classes.cornell.edu/browse/roster/<%= @cornellclass.semester %>/class/<%= @cornellclass.prefix.upcase %>/<%= @cornellclass.coursenumber.to_s %>" target="window" role="button"><%= @cornellclass.courseid %></a>
+      </div>
     </div>
 
     <hr> 
