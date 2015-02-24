@@ -1,4 +1,4 @@
-// Place all the styles related to the cornellclasses controller here.
+	// Place all the styles related to the cornellclasses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
@@ -46,6 +46,7 @@
 	border-radius: solid;
 	margin: 0 2px 0 0;
 	-webkit-animation: alex1 .25s linear .15s forwards; /* Chrome, Safari, Opera */
+	-moz-animation: alex1 .25s linear .15s forwards;
 }
 
 .filledStar2{
@@ -58,6 +59,7 @@
 	border-radius: solid;
 	margin: 0 2px 0 0;
 	-webkit-animation: alex2 .25s linear .3s forwards; 
+	-moz-animation: alex2 .25s linear .3s forwards; 
 }
 
 .filledStar3{
@@ -70,6 +72,7 @@
 	border-radius: solid;
 	margin: 0 2px 0 0;
 	-webkit-animation: alex3 .25s linear .45s forwards; 
+	-moz-animation: alex3 .25s linear .45s forwards; 
 }
 
 .filledStar4{
@@ -82,6 +85,7 @@
 	border-radius: solid;
 	margin: 0 2px 0 0;
 	-webkit-animation: alex4 .25s linear .6s forwards; 
+	-moz-animation: alex4 .25s linear .6s forwards; 
 }
 
 .filledStar5{
@@ -94,6 +98,8 @@
 	border-radius: solid;
 	margin: 0 2px 0 0;
 	-webkit-animation: alex5 .25s linear .75s forwards; 
+	-moz-animation: alex5 .25s linear .75s forwards; 
+
 } 
 
 
@@ -123,6 +129,8 @@
 	margin: 0 0 0 0;
 	background: white;
 	-webkit-animation: alex6 .25s linear .15s forwards;
+	-moz-animation: alex6 .25s linear .15s forwards;
+
 }
 
 .filledHalfL2{
@@ -137,6 +145,8 @@
 	margin: 0 0 0 0;
 	background: white;
 	-webkit-animation: alex6 .25s linear .3s forwards; 
+	-moz-animation: alex6 .25s linear .3s forwards; 
+
 }
 
 .filledHalfL3{
@@ -151,6 +161,7 @@
 	margin: 0 0 0 0;
 	background: white;
 	-webkit-animation: alex6 .25s linear .45s forwards; 
+	-moz-animation: alex6 .25s linear .45s forwards; 
 }
 
 .filledHalfL4{
@@ -165,6 +176,8 @@
 	margin: 0 0 0 0;
 	background: white;
 	-webkit-animation: alex6 .25s linear .6s forwards; 
+	-moz-animation: alex6 .25s linear .6s forwards; 
+
 }
 
 .filledHalfL5{
@@ -179,6 +192,7 @@
 	margin: 0 0 0 0;
 	background: white;
 	-webkit-animation: alex6 .25s linear .75s forwards; 
+	-moz-animation: alex6 .25s linear .75s forwards; 
 }
 
 @-webkit-keyframes alex1 {
@@ -207,6 +221,36 @@
 }
 
 @-webkit-keyframes alex6 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-moz-keyframes alex1 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-moz-keyframes alex2 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-moz-keyframes alex3 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-moz-keyframes alex4 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-moz-keyframes alex5 {
+    from {background: white;}
+    to {background: #4abff0;}
+}
+
+@-moz-keyframes alex6 {
     from {background: white;}
     to {background: #4abff0;}
 }
