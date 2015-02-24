@@ -46,22 +46,36 @@
     </div>
 
     <hr> 
-     
+    
     <div class="row">
-      <div class="col-md-6">
-        Professor Quality
-        <div class="progress">                    
-          <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
+
+      <% if @cornellclass.lecturequal > 0 %>
+        <div class="col-md-6">
+          Professor Quality
+          <div class="progress">                    
+            <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        Lecture Quality
-        <div class="progress">                    
-          <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.lecturequal*20.0 %>%;"> <%= @cornellclass.lecturequal %>
+        <div class="col-md-6">
+          Lecture Quality
+          <div class="progress">                    
+            <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.lecturequal*20.0 %>%;"> <%= @cornellclass.lecturequal %>
+            </div>
           </div>
         </div>
-      </div>
+
+      <% else %>
+
+        <div class="col-md-12">
+          Professor Quality
+          <div class="progress">                    
+            <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
     </div>
 
   </div>

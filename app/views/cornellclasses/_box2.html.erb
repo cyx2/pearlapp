@@ -5,11 +5,10 @@
 <div class="panel-body">
   <div class="container-fluid">
 
-    <div class="row">
-      <div class="col-md-6">
-        Course Material Difficulty
-
-        <% unless @cornellclass.materialdiff == 0 %>   
+    <% unless @cornellclass.materialdiff == 0 %>   
+      <div class="row">
+        <div class="col-md-6">
+          Course Material Difficulty
           <p>
           <%    $count = 1 
           $i = @cornellclass.materialdiff
@@ -34,12 +33,14 @@
           <br>
           <br>
           </p>
-        <% end %>
-
+          </div>
       </div>
-    </div>
 
-    <hr>
+      <hr>
+    <% end %>
+
+      
+    
     <div class="row">
       <div class="col-md-6">
         Mandatory Lecture:<br>
@@ -67,69 +68,112 @@
     <hr>
 
     <div class="row">
-      <div class="col-md-6">
-        Preliminary Exams:<br>
-              <% 
-        if @cornellclass.prelimyesno == true
-          $bubble1 = "filledStar1 circleCenter"
-          $bubble2 = "filledStar0 circleCenterI"
-        else
-          $bubble1 = "filledStar0 circleCenterI"
-          $bubble2 = "filledStar1 circleCenter"
-        end
-        %>
 
-        <div class="<%= $bubble1 %>"> 
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-        </div>
-        <div class="<%= $bubble2 %>">
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </div>
-      </div>
-      
-      <div class="col-md-6">
-        Prelim Difficulty:<br>
-        <div class="progress">                    
-          <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.prelimdiff*20.0 %>%"> <%= @cornellclass.prelimdiff %>
+      <% if @cornellclass.prelimyesno == true %>
+        <div class="col-md-6">
+          Preliminary Exams:<br>
+                <% 
+          if @cornellclass.prelimyesno == true
+            $bubble1 = "filledStar1 circleCenter"
+            $bubble2 = "filledStar0 circleCenterI"
+          else
+            $bubble1 = "filledStar0 circleCenterI"
+            $bubble2 = "filledStar1 circleCenter"
+          end
+          %>
+
+          <div class="<%= $bubble1 %>"> 
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          </div>
+          <div class="<%= $bubble2 %>">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </div>
         </div>
-      </div>
+        
+        <div class="col-md-6">
+          Prelim Difficulty:<br>
+          <div class="progress">                    
+            <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.prelimdiff*20.0 %>%"> <%= @cornellclass.prelimdiff %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-md-12">
+          Preliminary Exams:<br>
+                <% 
+          if @cornellclass.prelimyesno == true
+            $bubble1 = "filledStar1 circleCenter"
+            $bubble2 = "filledStar0 circleCenterI"
+          else
+            $bubble1 = "filledStar0 circleCenterI"
+            $bubble2 = "filledStar1 circleCenter"
+          end
+          %>
+
+          <div class="<%= $bubble1 %>"> 
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          </div>
+          <div class="<%= $bubble2 %>">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </div>
+        </div>
+      <% end %>
     </div> <!-- END ROW  -->    
 
     <hr>
 
     <div class="row">
-      <div class="col-md-6">
-        Homework or Problem Sets:<br>
-        <% if @cornellclass.hwyesno == true
-          $bubble1 = "filledStar1 circleCenter"
-          $bubble2 = "filledStar0 circleCenterI"
-        else
-          $bubble1 = "filledStar0 circleCenterI"
-          $bubble2 = "filledStar1 circleCenter"
-        end %>
+      <% if @cornellclass.hwyesno == true %>
+        <div class="col-md-6">
+          Assignments:<br>
+          <% if @cornellclass.hwyesno == true
+            $bubble1 = "filledStar1 circleCenter"
+            $bubble2 = "filledStar0 circleCenterI"
+          else
+            $bubble1 = "filledStar0 circleCenterI"
+            $bubble2 = "filledStar1 circleCenter"
+          end %>
 
-        <div class="<%= $bubble1 %>"> 
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-        </div>
-        <div class="<%= $bubble2 %>">
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </div>
-      </div>
-      
-      <div class="col-md-6">
-        Assignment Difficulty:<br>
-        <div class="progress">                    
-          <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.hwdiff*20.0 %>%;"> <%= @cornellclass.hwdiff %>
+          <div class="<%= $bubble1 %>"> 
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          </div>
+          <div class="<%= $bubble2 %>">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </div>
         </div>
-      </div>
+        
+        <div class="col-md-6">
+          Assignment Difficulty:<br>
+          <div class="progress">                    
+            <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.hwdiff*20.0 %>%;"> <%= @cornellclass.hwdiff %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-md-12">
+          Assignments:<br>
+          <% if @cornellclass.hwyesno == true
+            $bubble1 = "filledStar1 circleCenter"
+            $bubble2 = "filledStar0 circleCenterI"
+          else
+            $bubble1 = "filledStar0 circleCenterI"
+            $bubble2 = "filledStar1 circleCenter"
+          end %>
+
+          <div class="<%= $bubble1 %>"> 
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          </div>
+          <div class="<%= $bubble2 %>">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </div>
+        </div>
+      <% end %>
     </div> <!-- END ROW  -->
 
     <hr>
 
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-6">
         Final Exam:<br>
         <% if @cornellclass.examyesno == true
           $bubble1 = "filledStar1 circleCenter"
@@ -147,7 +191,7 @@
         </div>
       </div>
                 
-      <div class="col-md-3">
+      <div class="col-md-6">
         Project:<br>
         <% if @cornellclass.projyesno == true
           $bubble1 = "filledStar1 circleCenter"
@@ -164,7 +208,12 @@
           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </div>
       </div>
+    </div>
+  
+    
 
+    <div class="row">
+      <br><br>
       <div class="col-md-6">
               
         <% if @cornellclass.examyesno == true && @cornellclass.examyesno != 0 %>   
@@ -174,6 +223,8 @@
             </div>
           </div>
         <% end %>
+      </div>
+      <div class="col-md-6">
 
         <% if @cornellclass.projyesno == true && @cornellclass.projyesno != 0 %>   
           Final Project Difficulty:<br>
