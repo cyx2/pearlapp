@@ -31,6 +31,7 @@
 #  paperyesno          :boolean
 #  paperdiff           :float
 #  name                :string
+#  credits             :string
 #
 
 require 'test_helper'

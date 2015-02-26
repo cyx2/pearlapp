@@ -87,6 +87,7 @@ class CornellclassesController < ApplicationController
         title = (course.at("course_title/text()") || "Not provided").to_s
         cid = (course.at("sections/section/@class_number") || "Not provided").to_s
         inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
+        credits = (course.at("units/text()") || "Not provided").to_s
 
         title = title.tr(':', '')
         name = subj + ' ' + num + ': ' + title
@@ -94,7 +95,7 @@ class CornellclassesController < ApplicationController
 
         if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
           # Creates a cornell class in Cornellclasses table
-          Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name)
+          Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name, :credits => credits)
           jsonstring = jsonstring + '"' + name + '",'
         end
       end

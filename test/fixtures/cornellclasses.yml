@@ -31,6 +31,7 @@
 #  paperyesno          :boolean
 #  paperdiff           :float
 #  name                :string
+#  credits             :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
