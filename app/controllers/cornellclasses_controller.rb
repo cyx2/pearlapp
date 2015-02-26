@@ -75,28 +75,34 @@ class CornellclassesController < ApplicationController
     # Pulls all course data for specified year, based on subject list
     subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
     # Reads each subject and stores it in local variable prefix
-    subjectdoc.xpath("//subject/@subject").each do |prefix|
-      # Link to course pages, substituting in prefix in URL
-      classdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/#{prefix}/xml/"))
-      # Gets the semester from each sheet read
-      semester = classdoc.xpath("/courses/@term").to_s
-      # Reads each course and stores listed vars
-      classdoc.xpath("/courses/course").each do |course|
-        num = course["catalog_nbr"] || "Not provided"
-        subj = course["subject"]    || "Not provided"
-        title = (course.at("course_title/text()") || "Not provided").to_s
-        cid = (course.at("sections/section/@class_number") || "Not provided").to_s
-        inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
-        credits = (course.at("units/text()") || "Not provided").to_s
 
-        title = title.tr(':', '')
-        name = subj + ' ' + num + ': ' + title
-        name = name.tr('"', '')
+    semesterlist = ['FA14', 'SP15']
 
-        if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
-          # Creates a cornell class in Cornellclasses table
-          Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name, :credits => credits)
-          jsonstring = jsonstring + '"' + name + '",'
+    semesterlist.each do |semester|
+
+      subjectdoc.xpath("//subject/@subject").each do |prefix|
+        # Link to course pages, substituting in prefix in URL
+        classdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/#{semester}/#{prefix}/xml/"))
+        # Gets the semester from each sheet read
+        semester = classdoc.xpath("/courses/@term").to_s
+        # Reads each course and stores listed vars
+        classdoc.xpath("/courses/course").each do |course|
+          num = course["catalog_nbr"] || "Not provided"
+          subj = course["subject"]    || "Not provided"
+          title = (course.at("course_title/text()") || "Not provided").to_s
+          cid = (course.at("sections/section/@class_number") || "Not provided").to_s
+          inst = (course.at("sections/section/meeting/instructors/instructor/text()") || "Not provided").to_s
+          credits = (course.at("units/text()") || "Not provided").to_s
+
+          title = title.tr(':', '')
+          name = subj + ' ' + num + ': ' + title
+          name = name.tr('"', '')
+
+          if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
+            # Creates a cornell class in Cornellclasses table
+            Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name, :credits => credits)
+            jsonstring = jsonstring + '"' + name + '",'
+          end
         end
       end
     end
