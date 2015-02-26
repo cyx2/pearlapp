@@ -59,11 +59,10 @@
       <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">        
         <table class="table table-hover" style="margin-bottom: 0;">
           <tbody>
-            <tr data-toggle="popover"  
-                title="Course Quality" 
+            <tr data-toggle="popover"
                 data-content="Course quality is your impression of how valuable each aspect of the course was. The higher the rating, the better the quality of the course" 
                 data-trigger="hover"
-                data-placement="top">
+                data-placement="bottom">
               <td colspan="10" class="center">
                 <h4>Quality</h4>
               </td>
@@ -129,11 +128,10 @@
               <td></td>
               <td><%= f.radio_button :recitationqual, '' %></td>
             </tr>
-            <tr data-toggle="popover"  
-                title="Level of Difficulty" 
+            <tr data-toggle="popover" 
                 data-content="Level of difficulty is your impression of how difficult the course was in relation to your expectatation.  A higher rating indicates a higher level of difficulty." 
                 data-trigger="hover"
-                data-placement="top">
+                data-placement="bottom">
               <td colspan="10" class="center">
                 <h4>Level of Difficulty</h4>
               </td>
@@ -223,8 +221,7 @@
               <td><%= f.radio_button :paperdiff, '' %></td>
             </tr>
             
-            <tr data-toggle="popover"  
-                title="Overall Rating" 
+            <tr data-toggle="popover"
                 data-content="The overall rating is your general impression of the course as a whole.  A higher rating indicates a better quality course." 
                 data-trigger="hover"
                 data-placement="top">
