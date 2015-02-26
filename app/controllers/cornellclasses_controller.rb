@@ -108,6 +108,40 @@ class CornellclassesController < ApplicationController
     #   f.write(jsonstring[0..jsonstring.length-2])
     #   f.write(']')
     # end
+
+    Cornellclass.all.each do |cornell_class|
+      cornell_class.countratings       
+    end
+
+    c= Cornellclass.where("numratings > ?", 0)
+
+    c.all.each do |cornell_class|
+      # Boolean avg calculation ## Must be above others
+      # because numerical calc functions depend on bools
+      cornell_class.calchwyesno
+      cornell_class.calcrecitationreqdyesno
+      cornell_class.calcexamyesno
+      cornell_class.calclecturereqdyesno
+      cornell_class.calcprojyesno      
+      cornell_class.calcprelimyesno
+      cornell_class.calcpaperyesno 
+      # Quality avg calculation
+      cornell_class.calcavgrating
+      cornell_class.calcprofqual
+      cornell_class.calctaqual
+      cornell_class.calclecturequal
+      cornell_class.calcrecitationqual
+      # Difficulty avg calculation
+      cornell_class.calchwdiff
+      cornell_class.calcexamdiff
+      cornell_class.calcmaterialdiff
+      cornell_class.calcprojdiff
+      cornell_class.calcprelimdiff
+      cornell_class.calcpaperdiff
+    end
+
+
+
     @cornellclass = Cornellclass.new
   end
 
