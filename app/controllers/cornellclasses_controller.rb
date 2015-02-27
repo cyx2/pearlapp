@@ -98,7 +98,8 @@ class CornellclassesController < ApplicationController
           name = subj + ' ' + num + ': ' + title
           name = name.tr('"', '')
 
-          if (Cornellclass.where(prefix: subj, coursenumber: num, name: name).count == 0)
+          # if (Cornellclass.where(prefix: subj, coursenumber: num, name: name).count == 0)
+          if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
             # Creates a cornell class in Cornellclasses table
             Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name, :credits => credits)
             jsonstring = jsonstring + '"' + name + '",'
