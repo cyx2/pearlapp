@@ -41,7 +41,7 @@ class Rating < ActiveRecord::Base
 	validates :rating, :prefix, :course_number, :semester, presence: true		
 
 	def showclass
-		Cornellclass.where(courseid: self.courseid)		
+		Cornellclass.where(coursenumber: self.course_number, prefix: self.prefix)		
 	end
 
 	def format

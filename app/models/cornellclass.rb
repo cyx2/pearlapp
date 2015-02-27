@@ -38,7 +38,7 @@ class Cornellclass < ActiveRecord::Base
 	has_many :users, :through => :ratings
 
 	def showratings
-		Rating.where(courseid: self.courseid)
+		Rating.where(prefix: self.prefix, course_number: self.coursenumber)
 	end
 	# Aggregate data calculation      
   # Context calculation
