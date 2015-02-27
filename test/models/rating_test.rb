@@ -31,6 +31,7 @@
 #  moretosay           :text
 #  labreqdyesno        :boolean
 #  labqual             :integer
+#  grade               :integer
 #
 
 require 'test_helper'

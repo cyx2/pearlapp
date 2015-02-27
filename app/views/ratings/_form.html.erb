@@ -38,11 +38,20 @@
 
     <!-- Context Information -->
     <div class="container-fluid">
-      <div class="panel-body col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
-        <div class="field form-inline">
-          <%= f.label :rater %><br>
-          <%= current_user.name %>
+      <div class="panel-body"> 
+
+        <div class="row">
+          <div class="field form-inline col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <%= f.label :rater %><br>
+            <%= current_user.name %>
+          </div>
+          <div class="field form-inline col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <%= f.label :grade %><br>
+
+            <%= f.select(:grade, [['Optional', ''], ['A', 4], ['B', 3], ['C', 2], ['D or lower', 1]], {}, { :class => 'form-control', :style => 'width: auto' }) %>
+          </div>
         </div>
+        
 
         <% if !@rating.course_number.present? && !@prefix.present? %>
           <div class="field form-inline">

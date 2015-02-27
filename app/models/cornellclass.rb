@@ -34,6 +34,7 @@
 #  credits             :string
 #  labreqdyesno        :boolean
 #  labqual             :float
+#  avggrade            :float
 #
 
 class Cornellclass < ActiveRecord::Base
@@ -210,6 +211,11 @@ class Cornellclass < ActiveRecord::Base
 		else
 			self.paperyesno=nil
 		end
+		self.save
+	end
+
+	def calcavggrade
+		self.avggrade=self.showratings.average(:grade).to_f.round(1)
 		self.save
 	end
 

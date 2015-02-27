@@ -34,6 +34,7 @@
 #  credits             :string
 #  labreqdyesno        :boolean
 #  labqual             :float
+#  avggrade            :float
 #
 
 require 'test_helper'

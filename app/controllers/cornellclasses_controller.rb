@@ -186,6 +186,6 @@ class CornellclassesController < ApplicationController
         :numratings, :created_at, :updated_at,  :hwyesno, :recitationreqdyesno, :examyesno, 
         :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, :hwdiff, 
         :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, :paperyesno, :paperdiff, :name,
-        :labreqdyesno, :labqual)
+        :labreqdyesno, :labqual, :avggrade)
     end
 end
