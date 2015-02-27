@@ -1,6 +1,6 @@
 <div class="well well-sm">
   <h1 class="center">
-    Top <%= @cornellclasses.count %> Highest Rated Classes
+    Top <%= @cornellclasses.count %> Most Highest Classes
   </h1>
 </div>
 
@@ -11,27 +11,20 @@
       <th class="center">Course</th>
       <th class="center">Avg Overall Rating</th>
       <th class="center"># Ratings</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @cornellclasses.each do |cornellclass| %>
       <tr>
-        <td class="col-lg-4 col-md-4 col-sm-3 col-xs-2"><%= cornellclass.title %></td>
-        <td class="center"><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
-        <td class="center"><%= cornellclass.avgrating %></td>
-        <td class="center"><%= cornellclass.numratings %></td>
-        <td>
-          <%= link_to '', cornellclass, class: "btn btn-default btn-xs center glyphicon glyphicon-list-alt" %>
+        <td class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
+          <%= link_to cornellclass do %>
+            <%= cornellclass.title %>
+          <% end %>
         </td>
-        <!--
-        <td>
-          <%= link_to '', new_rating_path, class: "btn btn-success btn-xs center glyphicon glyphicon-pencil" %>
-        </td>
-        <td><%= link_to 'Edit', edit_cornellclass_path(cornellclass) %></td>
-        <td><%= link_to 'Destroy', cornellclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        -->
+        <td class="center col-lg-4 col-md-4 col-sm-3"><%= cornellclass.prefix %> <%= cornellclass.coursenumber %></td>
+        <td class="center col-lg-2 col-md-2 col-sm-3"><%= cornellclass.avgrating %></td>
+        <td class="center col-lg-2 col-md-2 col-sm-3"><%= cornellclass.numratings %></td>
       </tr>
     <% end %>
   </tbody>

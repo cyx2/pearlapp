@@ -10,7 +10,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        Recitation Required:<br>
+        Lecture Required:<br>
           <% if @cornellclass.lecturereqdyesno == true
               $bubble1 = "filledStar1 circleCenter"
               $bubble2 = "filledStar0 circleCenterI"
@@ -30,7 +30,7 @@
       </div>
       <div class="col-md-6">
         <% if @cornellclass.lecturereqdyesno == true %> 
-          Recitation Quality:<br> 
+          Lecture Quality:<br> 
           <div class="progress">                    
             <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.lecturequal*20.0 %>%;"> <%= @cornellclass.lecturequal %>
             </div>
