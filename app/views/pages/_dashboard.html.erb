@@ -13,6 +13,7 @@
 				    <tr>
 				    	<th class="center">Course</th>
 				      <th class="center"># Ratings</th>
+				      <th></th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -24,6 +25,11 @@
 				          <% end %>
 			          </td>
 			          <td><%= mostrated.numratings %></td>
+			          <td>
+			          	<%= link_to new_rating_path(:course_number => mostrated.coursenumber, :prefix => mostrated.prefix), class: "btn btn-default btn-xs center" do %>
+										<span class="glyphicon glyphicon-pencil"></span>
+			          	<% end %>
+			          </td>
 			        </tr>
 		        <% end %>
 				  </tbody>
@@ -47,6 +53,7 @@
 				    <tr>
 				      <th class="center">Course</th>
 				      <th class="center">Avg. Rating</th>
+				      <th></th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -58,6 +65,11 @@
 				          <% end %>
 			          </td>
 			          <td><%= ratedclass.avgrating %></td>
+			          <td>
+			          	<%= link_to new_rating_path(:course_number => ratedclass.coursenumber, :prefix => ratedclass.prefix), class: "btn btn-default btn-xs center" do %>
+										<span class="glyphicon glyphicon-pencil"></span>
+			          	<% end %>
+			          </td>
 			        </tr>
 		        <% end %>
 				  </tbody>
