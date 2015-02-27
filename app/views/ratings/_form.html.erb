@@ -54,7 +54,8 @@
         
 
         <% if !@rating.course_number.present? && !@prefix.present? %>
-          <div class="field form-inline">
+          <!-- ID error is for the null string recognition script -->
+          <div class="field form-inline" id="error">
             <label>Course</label>
             <div id="prefetch-mainsearch">
               <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="rating[search_text]" placeholder="BEE4500: Bioinstrumentation" autofocus>

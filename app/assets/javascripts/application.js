@@ -45,6 +45,15 @@ $(document).ready(function(){
       });
     });
 
+    // $("#search_text").focusout(function(){
+    // if ($("#search_text").val()=="") {
+    //     $("#error").addClass("has-error");
+    // }
+    // });
+    // $("#search_text").focusin(function(){
+    //     $("#error").removeClass("has-error");
+    // });
+
     var cornellclasses = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
