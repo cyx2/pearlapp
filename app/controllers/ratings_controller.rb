@@ -41,7 +41,38 @@ class RatingsController < ApplicationController
       @rating = current_user.ratings.build(rating_params)
       @rating.save
       @rating.format
-      respond_with(@rating)   
+
+      @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", rating_params[:prefix], rating_params[:course_number])
+      @cornell_classes.each do |cornell_class|
+        # Aggregate data calculation      
+        # Context calculation
+        cornell_class.countratings 
+        # Boolean avg calculation ## Must be above others
+        # because numerical calc functions depend on bools
+        cornell_class.calchwyesno
+        cornell_class.calcrecitationreqdyesno
+        cornell_class.calcexamyesno
+        cornell_class.calclecturereqdyesno
+        cornell_class.calcprojyesno      
+        cornell_class.calcprelimyesno
+        cornell_class.calcpaperyesno 
+        # Quality avg calculation
+        cornell_class.calcavgrating
+        cornell_class.calcprofqual
+        cornell_class.calctaqual
+        cornell_class.calclecturequal
+        cornell_class.calcrecitationqual
+        # Difficulty avg calculation
+        cornell_class.calchwdiff
+        cornell_class.calcexamdiff
+        cornell_class.calcmaterialdiff
+        cornell_class.calcprojdiff
+        cornell_class.calcprelimdiff
+        cornell_class.calcpaperdiff
+        respond_with(@rating) unless @cornell_classes.nil?    
+        redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.nil?
+      end
+      # respond_with(@rating) unless @cornell_classes.nil?
     else
       # Append courseid to each rating
       search_text = rating_params[:search_text]

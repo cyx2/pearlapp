@@ -87,17 +87,23 @@
 				    <tr>
 				    	<th class="center">Course</th>
 				      <th class="center">Rating</th>
+				      <th></th>
 				    </tr>
 				  </thead>
 				  <tbody>					  	
 				  	<% @userlastratings.each do |lastrating| %>
 			        <tr>
 			        	<td class="center">
-			        		<%= link_to lastrating do %>
+			        		<%= link_to Cornellclass.where(prefix: lastrating.prefix, coursenumber: lastrating.course_number).first do %>
 				            <%= lastrating.prefix %><%= lastrating.course_number %>
 				          <% end %>
 			        	</td>
 			          <td class="center"><%= lastrating.rating %></td>
+			          <td>
+			          	<%= link_to lastrating, :class => "btn btn-default btn-xs center" do %>			  		
+					  				<span class="glyphicon glyphicon-pencil"></span>
+									<% end %>
+								</td>
 			        </tr>
 		        <% end %>
 				  </tbody>
