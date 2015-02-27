@@ -127,7 +127,7 @@
               <td><%= f.radio_button :lecturequal, '' %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Recitation/Lab' %></td>
+              <td><label for="recitationqual">Recitation/Lab</label></td>
               <td></td>
               <td><%= f.radio_button :recitationqual, '1' %></td>
               <td><%= f.radio_button :recitationqual, '2' %></td>
@@ -183,7 +183,7 @@
               <td><%= f.radio_button :prelimdiff, '' %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Final Exam' %></td>
+              <td><label for="examdiff">Final Exam</label></td>
               <td></td>
               <td><%= f.radio_button :examdiff, '1' %></td>
               <td><%= f.radio_button :examdiff, '2' %></td>
@@ -195,7 +195,7 @@
               <td><%= f.radio_button :examdiff, '' %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Course Material & Topics' %></td>
+              <td><label for="materialdiff">Course Material & Topics</label></td>
               <td></td>
               <td><%= f.radio_button :materialdiff, '1' %></td>
               <td><%= f.radio_button :materialdiff, '2' %></td>
@@ -207,7 +207,7 @@
               <td><%= f.radio_button :materialdiff, '' %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Final Project' %></td>
+              <td><label for="projdiff">Final Project</label></td>
               <td></td>
               <td><%= f.radio_button :projdiff, '1' %></td>
               <td><%= f.radio_button :projdiff, '2' %></td>
@@ -219,7 +219,7 @@
               <td><%= f.radio_button :projdiff, '' %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Papers/Case Studies' %></td>
+              <td><label for="paperdiff">Papers/Case Studies</label></td>
               <td></td>
               <td><%= f.radio_button :paperdiff, '1' %></td>
               <td><%= f.radio_button :paperdiff, '2' %></td>
@@ -252,7 +252,7 @@
               <td><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>     
             </tr>
             <tr>
-              <td><%= f.label 'Overall Course Opinion' %></td>
+              <td><label for="rating">Overall Course Opinion</label></td>
               <td></td>
               <td><%= f.radio_button :rating, '1' %></td>
               <td><%= f.radio_button :rating, '2' %></td>
@@ -275,35 +275,40 @@
           <tbody>
             <tr>
               <td colspan="10" class="center">
-                <h4>Selectables</h4>
+                <h4>Coursework Requirements</h4>
               </td>
             </tr>
             <tr>
-              <td><%= f.label 'Prelims?' %></td>
+              <td><%= f.label 'Prelims' %></td>
               <td><%= f.check_box :prelimyesno, class: "checkbox" %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Final Exam?' %></td>
+              <td><label for="examyesno">Final Exam</label></td>
               <td><%= f.check_box :examyesno, class: "checkbox" %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Graded Homework?' %></td>
+              <td><label for="hwyesno">Graded Homework</label></td>
               <td><%= f.check_box :hwyesno, class: "checkbox" %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Final Project?' %></td>
+              <td><label for="projyesno">Final Project</label></td>
               <td><%= f.check_box :projyesno, class: "checkbox" %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Papers/Case Studies?' %></td>
+              <td><label for="paperyesno">Papers/Case Studies</label></td>
               <td><%= f.check_box :paperyesno, class: "checkbox" %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Recitation/Lab Required?' %></td>
+              <td colspan="10" class="center">
+                <h4>Attendance Requirements</h4>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="materialdiff">Recitation/Lab</label></td>
               <td><%= f.check_box :recitationreqdyesno, class: "checkbox" %></td>
             </tr>
             <tr>
-              <td><%= f.label 'Lecture Required?' %></td>
+              <td><%= f.label 'Lecture' %></td>
               <td><%= f.check_box :lecturereqdyesno, class: "checkbox" %></td>
             </tr>
 
