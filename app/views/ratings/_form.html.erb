@@ -14,13 +14,21 @@
   <div class="panel panel-default">
     <div class="panel-heading">
 
-      <% if @rating.course_number.present? %>
+      <% if @rating.rating.present? %>
         <div class="panel-title">
           <h1>
             Editing your <%= @rating.prefix %><%= @rating.course_number %> rating
           </h1>
         </div>
-      <% else %>      
+      <% elsif @prefix.present? %>      
+        <div class="panel-title">
+          <h1>
+            You're rating <%= @prefix %> <%= @coursenumber %>
+          </h1>
+          <%= f.hidden_field :prefix, :value => @prefix %>
+          <%= f.hidden_field :course_number, :value => @coursenumber %>
+        </div>
+      <% else %>
         <div class="panel-title">
           <h1>Rate a Class</h1>
         </div>
@@ -36,7 +44,7 @@
           <%= current_user.name %>
         </div>
 
-        <% unless @rating.course_number.present? %>
+        <% if !@rating.course_number.present? && !@prefix.present? %>
           <div class="field form-inline">
             <label>Course</label>
             <div id="prefetch-mainsearch">
@@ -46,7 +54,9 @@
           <div>
           <%= f.label 'Term' %><br>
           <%= f.select(:semester, ['SP15', 'FA14', 'SP14', 'FA13', 'SP13', 'FA12', 'SP12', 'FA11', 'SP11'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
-        </div>
+          </div>  
+        <% elsif !@rating.rating.present? %>
+          <%= f.select(:semester, ['SP15', 'FA14', 'SP14', 'FA13', 'SP13', 'FA12', 'SP12', 'FA11', 'SP11'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
         <% end %>
 
 

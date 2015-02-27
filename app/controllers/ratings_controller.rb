@@ -24,6 +24,8 @@ class RatingsController < ApplicationController
   end
 
   def new
+    @coursenumber=params[:course_number]
+    @prefix=params[:prefix]
     # Append user_id to each rating
     @rating = current_user.ratings.build
     respond_with(@rating)
@@ -33,52 +35,61 @@ class RatingsController < ApplicationController
   end
 
   def create
-    # Append courseid to each rating
-    search_text = rating_params[:search_text]
-    if (search_text.include?(':') && (search_text.split(': ')).length == 2)
-      parsed_search = search_text.split(': ')
-      prefix = parsed_search.first.split(' ').first
-      coursenumber = parsed_search.first.split(' ').last
-      freeform = search_text.last
-      @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", prefix, coursenumber)
-      @cornell_classes.each do |cornell_class| 
-        # cornell_class is a single class
-        with_id_params = rating_params
-        with_id_params.delete :search_text
-        with_id_params[:prefix] = prefix
-        with_id_params[:course_number] = coursenumber
-        with_id_params[:courseid] = cornell_class.courseid
-        # Append user_id to each rating
-        @rating = current_user.ratings.build(with_id_params)
-        @rating.save
-        @rating.format      
-        # Aggregate data calculation      
-        # Context calculation
-        cornell_class.countratings 
-        # Boolean avg calculation ## Must be above others
-        # because numerical calc functions depend on bools
-        cornell_class.calchwyesno
-        cornell_class.calcrecitationreqdyesno
-        cornell_class.calcexamyesno
-        cornell_class.calclecturereqdyesno
-        cornell_class.calcprojyesno      
-        cornell_class.calcprelimyesno
-        cornell_class.calcpaperyesno 
-        # Quality avg calculation
-        cornell_class.calcavgrating
-        cornell_class.calcprofqual
-        cornell_class.calctaqual
-        cornell_class.calclecturequal
-        cornell_class.calcrecitationqual
-        # Difficulty avg calculation
-        cornell_class.calchwdiff
-        cornell_class.calcexamdiff
-        cornell_class.calcmaterialdiff
-        cornell_class.calcprojdiff
-        cornell_class.calcprelimdiff
-        cornell_class.calcpaperdiff
-        respond_with(@rating) unless @cornell_classes.first.nil?    
-        redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
+
+    if !params[:search_text].present?
+      # Append user_id to each rating
+      @rating = current_user.ratings.build(rating_params)
+      @rating.save
+      @rating.format
+      respond_with(@rating)   
+    else
+      # Append courseid to each rating
+      search_text = rating_params[:search_text]
+      if (search_text.include?(':') && (search_text.split(': ')).length == 2)
+        parsed_search = search_text.split(': ')
+        prefix = parsed_search.first.split(' ').first
+        coursenumber = parsed_search.first.split(' ').last
+        freeform = search_text.last
+        @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", prefix, coursenumber)
+        @cornell_classes.each do |cornell_class| 
+          # cornell_class is a single class
+          with_id_params = rating_params
+          with_id_params.delete :search_text
+          with_id_params[:prefix] = prefix
+          with_id_params[:course_number] = coursenumber
+          with_id_params[:courseid] = cornell_class.courseid
+          # Append user_id to each rating
+          @rating = current_user.ratings.build(with_id_params)
+          @rating.save
+          @rating.format      
+          # Aggregate data calculation      
+          # Context calculation
+          cornell_class.countratings 
+          # Boolean avg calculation ## Must be above others
+          # because numerical calc functions depend on bools
+          cornell_class.calchwyesno
+          cornell_class.calcrecitationreqdyesno
+          cornell_class.calcexamyesno
+          cornell_class.calclecturereqdyesno
+          cornell_class.calcprojyesno      
+          cornell_class.calcprelimyesno
+          cornell_class.calcpaperyesno 
+          # Quality avg calculation
+          cornell_class.calcavgrating
+          cornell_class.calcprofqual
+          cornell_class.calctaqual
+          cornell_class.calclecturequal
+          cornell_class.calcrecitationqual
+          # Difficulty avg calculation
+          cornell_class.calchwdiff
+          cornell_class.calcexamdiff
+          cornell_class.calcmaterialdiff
+          cornell_class.calcprojdiff
+          cornell_class.calcprelimdiff
+          cornell_class.calcpaperdiff
+          respond_with(@rating) unless @cornell_classes.first.nil?    
+          redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
+        end
       end
     end
   end
@@ -94,6 +105,30 @@ class RatingsController < ApplicationController
     @rating.destroy
     #respond_with(@rating)
     redirect_to userratings_path, notice: "Your rating was successfully deleted."
+  end
+
+  def rateclassnew
+    @coursenumber=params[:course_number]
+    @prefix=params[:prefix]
+    @rating = current_user.ratings.build
+    respond_with(@rating)
+  end
+
+  def rateclasspost
+    @coursenumber=params[:course_number]
+    @prefix=params[:prefix]
+
+    with_id_params = rating_params
+    with_id_params[:prefix] = @prefix
+    with_id_params[:course_number] = @coursenumber
+    # Append user_id to each rating
+    @rating = current_user.ratings.build(with_id_params)
+    @rating.save
+    @rating.format
+    @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", prefix, coursenumber)
+    respond_with(@rating) unless @cornell_classes.first.nil?    
+    redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
+
   end
 
   private

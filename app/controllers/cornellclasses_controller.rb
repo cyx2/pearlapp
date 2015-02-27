@@ -171,12 +171,6 @@ class CornellclassesController < ApplicationController
     respond_with(@cornellclass)
   end
 
-  def userratings
-  end  
-
-  def coursesjson
-  end
-
   private
     def set_cornellclass
       @cornellclass = Cornellclass.find(params[:id])

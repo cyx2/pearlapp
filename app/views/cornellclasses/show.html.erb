@@ -10,9 +10,9 @@
       <%= @cornellclass.title %>
     </h3>
     
-    <% if @cornellclass.numratings.present? %>
+    <% if @cornellclass.numratings > 0 %>
       <div class="center">
-        <%= link_to "Rate", new_rating_path, class: "btn btn-success btn-classrate" %>
+        <%= link_to "Rate", new_rating_path(:course_number => @cornellclass.coursenumber, :prefix => @cornellclass.prefix), class: "btn btn-success btn-classrate" %>
       </div>
     <% end %>
   </div>
@@ -31,7 +31,7 @@
 
 
 
-<% if @cornellclass.numratings.present? %>
+<% if @cornellclass.numratings > 0 %>
 
   <div id="overall-classes" class="transitions-enabled">
     
@@ -72,7 +72,7 @@
       No ratings for <%= @cornellclass.prefix + " " + @cornellclass.coursenumber.to_s %> yet! :(
     </p>
     <p>
-       <%= link_to "Rate Me!", new_rating_path, class: "btn btn-default" %>
+       <%= link_to "Rate Me!", new_rating_path(:course_number => @cornellclass.coursenumber, :prefix => @cornellclass.prefix), class: "btn btn-default" %>
     </p>
   </h1>
 <% end %>
