@@ -29,6 +29,8 @@
 #  paperyesno          :boolean
 #  paperdiff           :integer
 #  moretosay           :text
+#  labreqdyesno        :boolean
+#  labqual             :integer
 #
 
 class Rating < ActiveRecord::Base	

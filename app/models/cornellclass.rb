@@ -32,6 +32,8 @@
 #  paperdiff           :float
 #  name                :string
 #  credits             :string
+#  labreqdyesno        :boolean
+#  labqual             :float
 #
 
 class Cornellclass < ActiveRecord::Base
@@ -69,6 +71,10 @@ class Cornellclass < ActiveRecord::Base
 		self.recitationqual=self.showratings.average(:recitationqual).to_f.round(3)
 		self.save
 	end
+	def calclabqual
+		self.labqual=self.showratings.average(:labqual).to_f.round(3)
+		self.save
+	end
 
 	# Difficulty avg calculation
 	def calchwdiff
@@ -97,6 +103,19 @@ class Cornellclass < ActiveRecord::Base
 	end
 	
   # Boolean avg calculation
+  def calclabyesno
+		@t=self.showratings.where(labreqdyesno: true).count
+		@f=self.showratings.where(labreqdyesno: false).count
+
+		if @t > @f
+			self.labreqdyesno=true
+		elsif @t < @f
+			self.labreqdyesno=false
+		else
+			self.labreqdyesno=nil
+		end
+		self.save
+	end
 	def calchwyesno
 		@t=self.showratings.where(hwyesno: true).count
 		@f=self.showratings.where(hwyesno: false).count

@@ -56,6 +56,10 @@
           <td><strong>Recitation Quality</strong></td>
           <td><%= @rating.recitationqual %></td>
         </tr>
+        <tr>
+          <td><strong>Recitation Quality</strong></td>
+          <td><%= @rating.labqual %></td>
+        </tr>
 
         <!-- Multiple Choice 0-5 Difficulty -->
         <tr>
@@ -148,6 +152,16 @@
           <td><strong>Prelims?</strong></td>
           <td>
             <% if @rating.prelimyesno == true %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Lab?</strong></td>
+          <td>
+            <% if @rating.labreqdyesno == true %>
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <% else %>
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

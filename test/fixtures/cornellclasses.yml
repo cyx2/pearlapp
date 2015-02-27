@@ -32,6 +32,8 @@
 #  paperdiff           :float
 #  name                :string
 #  credits             :string
+#  labreqdyesno        :boolean
+#  labqual             :float
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

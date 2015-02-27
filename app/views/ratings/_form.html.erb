@@ -127,7 +127,7 @@
               <td><%= f.radio_button :lecturequal, '' %></td>
             </tr>
             <tr>
-              <td><label for="recitationqual">Recitation/Lab</label></td>
+              <td><label for="recitationqual">Recitation</label></td>
               <td></td>
               <td><%= f.radio_button :recitationqual, '1' %></td>
               <td><%= f.radio_button :recitationqual, '2' %></td>
@@ -137,6 +137,18 @@
               <td></td>
               <td></td>
               <td><%= f.radio_button :recitationqual, '' %></td>
+            </tr>
+            <tr>
+              <td><label for="labqual">Lab</label></td>
+              <td></td>
+              <td><%= f.radio_button :labqual, '1' %></td>
+              <td><%= f.radio_button :labqual, '2' %></td>
+              <td><%= f.radio_button :labqual, '3' %></td>
+              <td><%= f.radio_button :labqual, '4' %></td>
+              <td><%= f.radio_button :labqual, '5' %></td>
+              <td></td>
+              <td></td>
+              <td><%= f.radio_button :labqual, '' %></td>
             </tr>
             <tr data-toggle="popover" 
                 data-content="Level of difficulty is your impression of how difficult the course was in relation to your expectatation.  A higher rating indicates a higher level of difficulty." 
@@ -304,8 +316,12 @@
               </td>
             </tr>
             <tr>
-              <td><label for="materialdiff">Recitation/Lab</label></td>
+              <td><label for="recitationreqdyesno">Recitation</label></td>
               <td><%= f.check_box :recitationreqdyesno, class: "checkbox" %></td>
+            </tr>
+            <tr>
+              <td><label for="labreqdyesno">Lab</label></td>
+              <td><%= f.check_box :labreqdyesno, class: "checkbox" %></td>
             </tr>
             <tr>
               <td><%= f.label 'Lecture' %></td>

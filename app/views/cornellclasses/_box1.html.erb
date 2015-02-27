@@ -54,7 +54,7 @@
     
     <div class="row">
 
-      <% if @cornellclass.lecturequal > 0 %>
+      <% if @cornellclass.taqual > 0 %>
         <div class="col-md-6">
           Professor Quality
           <div class="progress">                    
@@ -63,11 +63,13 @@
           </div>
         </div>
         <div class="col-md-6">
-          Lecture Quality
+          TA Quality
           <div class="progress">                    
-            <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.lecturequal*20.0 %>%;"> <%= @cornellclass.lecturequal %>
+            <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.lecturequal*20.0 %>%;"> <%= @cornellclass.taqual %>
             </div>
-          </div>
+          </div>          
+
+
         </div>
 
       <% else %>

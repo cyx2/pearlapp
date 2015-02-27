@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226172315) do
+ActiveRecord::Schema.define(version: 20150227195058) do
 
   create_table "cornellclasses", force: :cascade do |t|
     t.string   "title"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20150226172315) do
     t.float    "paperdiff"
     t.string   "name"
     t.string   "credits"
+    t.boolean  "labreqdyesno"
+    t.float    "labqual"
   end
 
   add_index "cornellclasses", ["courseid"], name: "index_cornellclasses_on_courseid"
@@ -81,6 +83,8 @@ ActiveRecord::Schema.define(version: 20150226172315) do
     t.boolean  "paperyesno"
     t.integer  "paperdiff"
     t.text     "moretosay"
+    t.boolean  "labreqdyesno"
+    t.integer  "labqual"
   end
 
   add_index "ratings", ["courseid"], name: "index_ratings_on_courseid"

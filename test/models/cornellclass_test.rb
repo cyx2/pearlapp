@@ -32,6 +32,8 @@
 #  paperdiff           :float
 #  name                :string
 #  credits             :string
+#  labreqdyesno        :boolean
+#  labqual             :float
 #
 
 require 'test_helper'

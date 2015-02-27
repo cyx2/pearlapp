@@ -29,6 +29,8 @@
 #  paperyesno          :boolean
 #  paperdiff           :integer
 #  moretosay           :text
+#  labreqdyesno        :boolean
+#  labqual             :integer
 #
 
 require 'test_helper'

@@ -105,19 +105,21 @@ class RatingsController < ApplicationController
           cornell_class.calcprojyesno      
           cornell_class.calcprelimyesno
           cornell_class.calcpaperyesno 
+          cornell_class.calclabyesno
           # Quality avg calculation
           cornell_class.calcavgrating
           cornell_class.calcprofqual
           cornell_class.calctaqual
           cornell_class.calclecturequal
           cornell_class.calcrecitationqual
+          cornell_class.calclabqual
           # Difficulty avg calculation
           cornell_class.calchwdiff
           cornell_class.calcexamdiff
           cornell_class.calcmaterialdiff
           cornell_class.calcprojdiff
           cornell_class.calcprelimdiff
-          cornell_class.calcpaperdiff
+          cornell_class.calcpaperdiff          
           respond_with(@rating) unless @cornell_classes.first.nil?    
           redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
         end
@@ -177,6 +179,6 @@ class RatingsController < ApplicationController
         :course_number, :search_text, :hwyesno, :recitationreqdyesno, :examyesno, 
         :lecturereqdyesno, :projyesno, :profqual, :taqual, :lecturequal, :recitationqual, 
         :hwdiff, :examdiff, :materialdiff, :projdiff, :prelimyesno, :prelimdiff, :semester, 
-        :paperyesno, :paperdiff, :moretosay)
+        :paperyesno, :paperdiff, :moretosay, :labreqdyesno, :labqual)
     end
 end
