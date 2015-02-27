@@ -36,7 +36,7 @@ class RatingsController < ApplicationController
 
   def create
 
-    if !params[:search_text].present?
+    if !rating_params[:search_text].present?
       # Append user_id to each rating
       @rating = current_user.ratings.build(rating_params)
       @rating.save
