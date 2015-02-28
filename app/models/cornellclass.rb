@@ -51,55 +51,23 @@ class Cornellclass < ActiveRecord::Base
 		self.save
 	end
 
-	# Quality avg calculation
-	def calcavgrating
+	def calculate
+		# Quality avg calculation
 		self.avgrating=self.showratings.average(:rating).to_f.round(3)
-		self.save
-	end
-	def calcprofqual
 		self.profqual=self.showratings.average(:profqual).to_f.round(3)
-		self.save
-	end
-	def calctaqual
 		self.taqual=self.showratings.average(:taqual).to_f.round(3)
-		self.save
-	end
-	def calclecturequal
 		self.lecturequal=self.showratings.average(:lecturequal).to_f.round(3)
-		self.save
-	end
-	def calcrecitationqual
 		self.recitationqual=self.showratings.average(:recitationqual).to_f.round(3)
-		self.save
-	end
-	def calclabqual
 		self.labqual=self.showratings.average(:labqual).to_f.round(3)
-		self.save
-	end
-
-	# Difficulty avg calculation
-	def calchwdiff
+		# Difficulty avg calculation
 		self.hwdiff=self.showratings.average(:hwdiff).to_f.round(3)
-		self.save
-	end
-	def calcexamdiff
 		self.examdiff=self.showratings.average(:examdiff).to_f.round(3)
-		self.save
-	end
-	def calcmaterialdiff
 		self.materialdiff=self.showratings.average(:materialdiff).to_f.round(3)
-		self.save
-	end
-	def calcprojdiff
 		self.projdiff=self.showratings.average(:projdiff).to_f.round(3)
-		self.save
-	end
-	def calcprelimdiff
 		self.prelimdiff=self.showratings.average(:prelimdiff).to_f.round(3)
-		self.save
-	end
-	def calcpaperdiff
 		self.paperdiff=self.showratings.average(:paperdiff).to_f.round(3)
+		# Calculate avg grade
+		self.avggrade=self.showratings.average(:grade).to_f.round(1)
 		self.save
 	end
 	
@@ -211,11 +179,6 @@ class Cornellclass < ActiveRecord::Base
 		else
 			self.paperyesno=nil
 		end
-		self.save
-	end
-
-	def calcavggrade
-		self.avggrade=self.showratings.average(:grade).to_f.round(1)
 		self.save
 	end
 

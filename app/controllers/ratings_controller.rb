@@ -36,8 +36,11 @@ class RatingsController < ApplicationController
 
   def create
 
+    # If no search text present, user made an error at general rating page or they are rating from the view class page
     if !rating_params[:search_text].present?
-      if (rating_params[:prefix].present? && rating_params[:coursenumber].present?)
+
+      # This checks to see if the prefix and course_number are present.  If rating from the view class page, it should be present.
+      if rating_params[:prefix].present? && rating_params[:course_number].present?
         # Append user_id to each rating
         @rating = current_user.ratings.build(rating_params)
         @rating.save
@@ -58,22 +61,8 @@ class RatingsController < ApplicationController
           cornell_class.calcprelimyesno
           cornell_class.calcpaperyesno 
           cornell_class.calclabyesno
-          # Quality avg calculation
-          cornell_class.calcavgrating
-          cornell_class.calcprofqual
-          cornell_class.calctaqual
-          cornell_class.calclecturequal
-          cornell_class.calcrecitationqual
-          cornell_class.calclabqual
-          # Difficulty avg calculation
-          cornell_class.calchwdiff
-          cornell_class.calcexamdiff
-          cornell_class.calcmaterialdiff
-          cornell_class.calcprojdiff
-          cornell_class.calcprelimdiff
-          cornell_class.calcpaperdiff    
-
-          cornell_class.calcavggrade
+          # Numerical calculation
+          cornell_class.calculate
           
           respond_with(@rating) unless @cornell_classes.nil?    
           redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.nil?
@@ -81,7 +70,8 @@ class RatingsController < ApplicationController
       else
         redirect_to (:back), notice: "No class prefix or number entered"
       end
-        # respond_with(@rating) unless @cornell_classes.nil?
+
+    # If the user is rating from the general rate page and there is search text
     else
       # Append courseid to each rating
       search_text = rating_params[:search_text]
@@ -115,28 +105,18 @@ class RatingsController < ApplicationController
           cornell_class.calcprelimyesno
           cornell_class.calcpaperyesno 
           cornell_class.calclabyesno
-          # Quality avg calculation
-          cornell_class.calcavgrating
-          cornell_class.calcprofqual
-          cornell_class.calctaqual
-          cornell_class.calclecturequal
-          cornell_class.calcrecitationqual
-          cornell_class.calclabqual
-          # Difficulty avg calculation
-          cornell_class.calchwdiff
-          cornell_class.calcexamdiff
-          cornell_class.calcmaterialdiff
-          cornell_class.calcprojdiff
-          cornell_class.calcprelimdiff
-          cornell_class.calcpaperdiff    
-
-          cornell_class.calcavggrade
+          # Numerical calculation
+          cornell_class.calculate
 
           respond_with(@rating) unless @cornell_classes.first.nil?    
           redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
         end
       end
+
+    # End of main logic loop
     end
+
+  # End of method 
   end
 
   def update
@@ -150,30 +130,6 @@ class RatingsController < ApplicationController
     @rating.destroy
     #respond_with(@rating)
     redirect_to userratings_path, notice: "Your rating was successfully deleted."
-  end
-
-  def rateclassnew
-    @coursenumber=params[:course_number]
-    @prefix=params[:prefix]
-    @rating = current_user.ratings.build
-    respond_with(@rating)
-  end
-
-  def rateclasspost
-    @coursenumber=params[:course_number]
-    @prefix=params[:prefix]
-
-    with_id_params = rating_params
-    with_id_params[:prefix] = @prefix
-    with_id_params[:course_number] = @coursenumber
-    # Append user_id to each rating
-    @rating = current_user.ratings.build(with_id_params)
-    @rating.save
-    @rating.format
-    @cornell_classes = Cornellclass.where("UPPER(prefix) = UPPER(?) AND coursenumber = ?", prefix, coursenumber)
-    respond_with(@rating) unless @cornell_classes.first.nil?    
-    redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?
-
   end
 
   private
