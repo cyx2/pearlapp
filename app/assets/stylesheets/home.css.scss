@@ -15,13 +15,19 @@
 }
 
 #homelogin-grid {
-	margin-top: 15%;
-	width: 100%;
+	
 	opacity: 0.1;
 }
 
 .homelogin-graphic {
-	opacity: 0.75;
+	width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+#homelogin {
+	margin-top: 15%;
+
 }
 
 #homelogin {
