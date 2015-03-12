@@ -42,6 +42,7 @@
       <th>User</th>
       <th>Registration date</th>
       <th>Email</th>
+      <th># Ratings</th>
     </tr>
   </thead>
   <tbody>
@@ -51,6 +52,7 @@
         <td><%= recentuser.name %></td>
         <td><%= recentuser.created_at.to_date %></td>
         <td><%= recentuser.email %></td>
+        <td><%= recentuser.ratings.count %></td>
     <% end %>
   </tbody>
 </table>
