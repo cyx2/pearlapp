@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "coursesjson" => 'cornellclasses#coursesjson'
   get "mostrated" => 'pages#mostrated'
   get "highestrated" => 'pages#highestrated'
+  get "stats" => 'adminpanel#stats'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -177,7 +177,7 @@ class CornellclassesController < ApplicationController
     end
 
     def verify_user
-      redirect_to cornellclasses_path, notice: "You're not authorized to edit classes!" unless current_user.id == 1
+      redirect_to cornellclasses_path, notice: "You're not authorized to edit classes!" unless (user_signed_in? && current_user.id == 1)
     end
 
 

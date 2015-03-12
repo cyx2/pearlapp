@@ -63,7 +63,6 @@
           </li>
           <!-- Right-hand logical nav links -->
           <% if user_signed_in? %>
-            
             <!-- There isn't any validation in this stuff because I'm assuming that people aren't going to be evil -Charlie -->
             <% unless current_user.ratings.count < 2 %>
               <li>

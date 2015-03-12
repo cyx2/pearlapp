@@ -48,7 +48,7 @@ class CornellsubjectsController < ApplicationController
     end
 
     def verify_user
-      redirect_to cornellsubjects_path, notice: "You're not authorized to edit the subjects at Cornell!" unless current_user.id == 1
+      redirect_to cornellsubjects_path, notice: "You're not authorized to edit the subjects at Cornell!" unless (user_signed_in? && current_user.id == 1)
     end
 
     def cornellsubject_params
