@@ -95,14 +95,14 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
-
   config.action_mailer.smtp_settings = {
     address: "smtp.zoho.com",
-    port: 465,
-    authentication: :login,
-    enable_starttls_auto: true,
+    domain: ENV["HELP_DOMAIN"]
     user_name: ENV["HELP_USERNAME"],
     password: ENV["HELP_PASSWORD"],
+    port: 465,
+    authentication: :plain,
+    enable_starttls_auto: true,    
     ssl: true,
     tls: true
   }
