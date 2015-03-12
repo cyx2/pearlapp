@@ -2,7 +2,7 @@
 <% if user_signed_in? %>
 
 
-	<% if current_user.ratings.count < 3 %>
+	<% if current_user.ratings.count < 2 %>
 		<%= render 'pages/newuserPage' %>
 	<% else %>
 		<!-- Class search -->
