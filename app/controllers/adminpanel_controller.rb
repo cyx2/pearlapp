@@ -2,7 +2,7 @@ class AdminpanelController < ApplicationController
 
 	before_action :verify_user
 
-	def mainview
+	def stats
 		@numRatings = Rating.count
 		@numUsers = User.count
 
@@ -16,6 +16,8 @@ class AdminpanelController < ApplicationController
 		@numSignins = @numSignins.to_f / @numUsers.to_f
 
 		@avgRating = Rating.average(:rating)
+
+		@recentUsers = User.order("created_at DESC").last(5)
 
 	end
 

@@ -1,0 +1,56 @@
+<div class="panel panel-default ecenter" style="width: 75%">
+	<h4 class="center">Quick Statistics</h4>
+</div>
+
+<h5 class="center">Rating stats</h5>
+<table class="table table-bordered ecenter" style="width: 50%;">
+	<thead>
+		<th>Category</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Total number of ratings:</td>
+			<td><%= @numRatings %></td>
+		</tr>
+		<tr>
+			<td>Total number of users:</td>
+			<td><%= @numUsers %></td>
+		</tr>
+		<tr>
+			<td>Average ratings per user:</td>
+			<td><%= @avgnumRatings %></td>
+		</tr>
+		<tr>
+			<td>Average sign-ins per user:</td>
+			<td><%= @numSignins %></td>
+		</tr>
+		<tr>
+			<td>Average class rating:</td>
+			<td><%= @avgRating %></td>
+		</tr>
+	</tbody>
+</table>
+
+<hr>
+
+<h5 class="center">Recent user info</h5>
+<table class="table table-bordered ecenter" style="width: 50%;">
+  <thead>
+    <tr>
+    	<th>ID</th>
+      <th>User</th>
+      <th>Registration date</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recentUsers.each do |recentuser| %>
+      <tr>
+      	<td><%= recentuser.id %></td>
+        <td><%= recentuser.name %></td>
+        <td><%= recentuser.created_at.to_date %></td>
+        <td><%= recentuser.email %></td>
+    <% end %>
+  </tbody>
+</table>

@@ -14,6 +14,11 @@ $btn-default-color: #3498db;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.ecenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .homelogin-graphic {
   width: 100%;
   height: auto;
