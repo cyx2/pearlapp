@@ -4,7 +4,7 @@
 		<span class="glyphicon glyphicon-lock"></span>
 	</h1>
 	<hr>
-	<p>Hey!  It looks like you've got <%= current_user.ratings.count %> ratings.  To be fair, we ask that you rate 2 classes before you get access to the site.  Sorry about that!
+	<p>Hey!  It looks like you've got <%= current_user.ratings.count %> <% if current_user.ratings.count == 1 %>rating<% end %><% if current_user.ratings.count == 0 %>ratings<% end %>.  To be fair, we ask that you rate 2 classes before you get access to the site.  Sorry about that!
 	</p>
 	<hr>
 	<%= link_to new_rating_path, :class => "btn btn-default center" do %>			  		
