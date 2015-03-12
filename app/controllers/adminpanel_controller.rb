@@ -17,7 +17,7 @@ class AdminpanelController < ApplicationController
 
 		@avgRating = Rating.average(:rating)
 
-		@recentUsers = User.order("created_at DESC").last(5)
+		@recentUsers = User.last(5)
 
 	end
 
