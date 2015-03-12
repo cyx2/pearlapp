@@ -1,1 +1,31 @@
-hihi
+<h4>Quick Statistics</h4>
+<table class="table table-bordered" style="width: 50%">
+
+	<thead>
+		<th>Category</th>
+		<th></th>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Total number of ratings:</td>
+			<td><%= @numRatings %></td>
+		</tr>
+		<tr>
+			<td>Total number of users:</td>
+			<td><%= @numUsers %></td>
+		</tr>
+		<tr>
+			<td>Average ratings per user:</td>
+			<td><%= @avgnumRatings %></td>
+		</tr>
+		<tr>
+			<td>Average sign-ins per user:</td>
+			<td><%= @numSignins %></td>
+		</tr>
+		<tr>
+			<td>Average class rating:</td>
+			<td><%= @avgRating %></td>
+		</tr>
+	</tbody>
+</table>
