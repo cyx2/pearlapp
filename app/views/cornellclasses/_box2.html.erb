@@ -41,6 +41,61 @@
 
     <div class="row">
 
+      <% if @cornellclass.paperyesno == true %>
+        <div class="col-lg col-md-6 col-sm-6 col-xs-12">
+          Papers/Case Studies:<br>
+                <% 
+          if @cornellclass.paperyesno == true
+            $bubble1 = "filledStar1 circleCenter"
+            $bubble2 = "filledStar0 circleCenterI"
+          else
+            $bubble1 = "filledStar0 circleCenterI"
+            $bubble2 = "filledStar1 circleCenter"
+          end
+          %>
+
+          <div class="<%= $bubble1 %>"> 
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          </div>
+          <div class="<%= $bubble2 %>">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </div>
+        </div>
+        
+        <div class="col-lg col-md-6 col-sm-6 col-xs-12">
+          Paper Difficulty:<br>
+          <div class="progress">                    
+            <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.paperdiff*20.0 %>%"> <%= @cornellclass.paperdiff %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-md-12">
+          Papers/Case Studies:<br>
+                <% 
+          if @cornellclass.paperyesno == true
+            $bubble1 = "filledStar1 circleCenter"
+            $bubble2 = "filledStar0 circleCenterI"
+          else
+            $bubble1 = "filledStar0 circleCenterI"
+            $bubble2 = "filledStar1 circleCenter"
+          end
+          %>
+
+          <div class="<%= $bubble1 %>"> 
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          </div>
+          <div class="<%= $bubble2 %>">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </div>
+        </div>
+      <% end %>
+    </div> <!-- END ROW  -->    
+
+    <hr>
+
+    <div class="row">
+
       <% if @cornellclass.prelimyesno == true %>
         <div class="col-lg col-md-6 col-sm-6 col-xs-12">
           Preliminary Exams:<br>
