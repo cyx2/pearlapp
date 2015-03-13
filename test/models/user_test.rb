@@ -16,6 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  name                   :string
+#  numratings             :integer
 #
 
 require 'test_helper'

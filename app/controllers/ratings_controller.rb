@@ -63,6 +63,8 @@ class RatingsController < ApplicationController
           cornell_class.calclabyesno
           # Numerical calculation
           cornell_class.calculate
+
+          current_user.incNumratings
           
           respond_with(@rating) unless @cornell_classes.nil?    
           redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.nil?
@@ -107,6 +109,8 @@ class RatingsController < ApplicationController
           cornell_class.calclabyesno
           # Numerical calculation
           cornell_class.calculate
+
+          current_user.incNumratings
 
           respond_with(@rating) unless @cornell_classes.first.nil?    
           redirect_to (:back), notice: "No class found with that prefix and number" if @cornell_classes.first.nil?

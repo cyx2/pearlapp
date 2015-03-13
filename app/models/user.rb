@@ -16,6 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  name                   :string
+#  numratings             :integer
 #
 
 class User < ActiveRecord::Base
@@ -31,4 +32,9 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true  
   validates :password, presence: true
+
+  def incNumratings
+    self.numratings = self.ratings.count
+    self.save
+  end
 end
