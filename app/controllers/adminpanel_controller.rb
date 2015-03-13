@@ -25,7 +25,7 @@ class AdminpanelController < ApplicationController
 
 	private
 		def verify_user
-      redirect_to root_path, notice: "You shouldn't try to access this page! Stop!" unless (user_signed_in? && current_user.id == 1)
+      redirect_to root_path, notice: "You shouldn't try to access this page! Stop!" unless ((user_signed_in? && current_user.id == 1) || (user_signed_in? && current_user.id == 6) || (user_signed_in? && current_user.id == 9))
     end
 
 end
