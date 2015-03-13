@@ -43,6 +43,8 @@ class Rating < ActiveRecord::Base
 	
 	validates :rating, :prefix, :course_number, :semester, presence: true		
 
+	validate :verify_user_has_not_already_rated_class
+
 	def showclass
 		Cornellclass.where(coursenumber: self.course_number, prefix: self.prefix)		
 	end
@@ -50,6 +52,12 @@ class Rating < ActiveRecord::Base
 	def format
     self.prefix=self.prefix.upcase
     self.save
+  end
+
+  def verify_user_has_not_already_rated_class
+    if Rating.where("prefix = ? AND course_number = ? AND user_id = ?", :prefix, :course_number, :user_id).present?
+    	errors.add("You've rated this class before!")
+    end
   end
 
 end
