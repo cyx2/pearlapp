@@ -19,6 +19,8 @@ class AdminpanelController < ApplicationController
 
 		@recentUsers = User.order("created_at DESC").first(5)
 
+		@recentRatings = Rating.order("created_at DESC").first(5)
+
 	end
 
 

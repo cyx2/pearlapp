@@ -56,3 +56,26 @@
     <% end %>
   </tbody>
 </table>
+
+<hr>
+
+<h5 class="center">Recent rating info</h5>
+<table class="table table-bordered ecenter" style="width: 50%;">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Class</th>
+      <th>Rating</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recentRatings.each do |recentrating| %>
+      <tr>
+        <td><%= User.find(recentrating.user_id).name %></td>
+        <td><%= recentrating.prefix %><%= recentrating.course_number %></td>
+        <td><%= recentrating.rating %></td>
+        <td><%= recentrating.created_at.to_date %></td>
+    <% end %>
+  </tbody>
+</table>
