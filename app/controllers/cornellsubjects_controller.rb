@@ -1,6 +1,7 @@
 class CornellsubjectsController < ApplicationController
   before_action :set_cornellsubject, only: [:show, :edit, :update, :destroy]
   before_action :verify_user, only: [:new, :show, :edit, :update, :destroy]
+  before_action :verify_signin
 
   respond_to :html
 
@@ -49,6 +50,10 @@ class CornellsubjectsController < ApplicationController
 
     def verify_user
       redirect_to cornellsubjects_path, notice: "You're not authorized to edit the subjects at Cornell!" unless (user_signed_in? && current_user.id == 1)
+    end
+
+    def verify_signin
+      redirect_to root_path, notice: "Please log in first!" unless user_signed_in?
     end
 
     def cornellsubject_params

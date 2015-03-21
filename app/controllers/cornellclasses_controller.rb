@@ -1,6 +1,7 @@
 class CornellclassesController < ApplicationController
   before_action :set_cornellclass, only: [:show, :edit, :update, :destroy]
   before_action :verify_user, only: [:new, :edit, :update, :destroy]
+  before_action :verify_signin
 
   respond_to :html
 
@@ -180,6 +181,9 @@ class CornellclassesController < ApplicationController
       redirect_to cornellclasses_path, notice: "You're not authorized to edit classes!" unless (user_signed_in? && current_user.id == 1)
     end
 
+    def verify_signin
+      redirect_to root_path, notice: "Please log in first!" unless user_signed_in?
+    end
 
     def cornellclass_params
       params.require(:cornellclass).permit(:title, :prefix, :coursenumber, :courseid, :avgrating, 
