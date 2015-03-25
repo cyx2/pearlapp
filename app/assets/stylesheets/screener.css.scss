@@ -1,0 +1,44 @@
+ .output {
+    display: inline;
+    padding : 0.5%;
+    border-style: solid;
+    border-width : 1px;
+    border-color: #6699ff;
+  }
+  .slider {
+    margin-left: 2%;
+    margin-right: 2%;
+    display: inline-block;
+    width : 20%;
+  }
+  .ui-slider {
+    border: none;
+/*    -webkit-box-shadow: inset 0 20px 2px -20px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0 20px 2px -20px rgba(0,0,0,0.5);
+    box-shadow: inset 0 20px 2px -20px rgba(0,0,0,0.5);
+*/
+    -webkit-box-shadow: inset 0 1.5px 3px 0.3px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 0 1.5px 3px 0.3px rgba(0,0,0,0.2);
+    box-shadow: inset 0 1.5px 3px 0.3px rgba(0,0,0,0.2);
+    }
+  .slider .ui-slider-range {
+    background : #99ccff;
+    /*horrizontal offset, vertical offset, blur, and spread radius*/
+/*      -moz-box-shadow:    1px 1px 1px 0.5px #6699ff;
+      -webkit-box-shadow: 1px 1px 1px 0.5px #6699ff;
+      box-shadow:         1px 1px 1px 0.5px #6699ff;
+*/
+    -webkit-box-shadow:  0 1px 0px 0.5px #6699ff;
+    -moz-box-shadow:  0 1px 0px 0.5px #6699ff;
+    box-shadow:  0 1px 0px 0.5px #6699ff;
+
+  }
+  .ui-slider .ui-slider-handle { 
+    display : none;
+    width: 12px; 
+    height: 20px;}
+
+$bar_width : 480px;
+.p-bars {
+  max-width: $bar_width;
+}
