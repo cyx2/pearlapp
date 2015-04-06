@@ -72,22 +72,23 @@ class Cornellclass < ActiveRecord::Base
 	end
 	
   # Boolean avg calculation
-  def calclabyesno
-		@t=self.showratings.where(labreqdyesno: true).count
-		@f=self.showratings.where(labreqdyesno: false).count
+  def calclabyesno		
+		@f=self.showratings.where(labqual: nil).count
+		@t=self.showratings.where.not(labqual: nil).count
 
 		if @t > @f
 			self.labreqdyesno=true
 		elsif @t < @f
 			self.labreqdyesno=false
+			self.labqual=0
 		else
 			self.labreqdyesno=nil
 		end
 		self.save
 	end
 	def calchwyesno
-		@t=self.showratings.where(hwyesno: true).count
-		@f=self.showratings.where(hwyesno: false).count
+		@t=self.showratings.where.not(hwdiff: nil).count
+		@f=self.showratings.where(hwdiff: nil).count
 
 		if @t > @f
 			self.hwyesno=true
@@ -100,21 +101,22 @@ class Cornellclass < ActiveRecord::Base
 		self.save
 	end
 	def calcrecitationreqdyesno
-		@t=self.showratings.where(recitationreqdyesno: true).count
-		@f=self.showratings.where(recitationreqdyesno: false).count
+		@t=self.showratings.where.not(recitationqual: nil).count
+		@f=self.showratings.where(recitationqual: nil).count
 
 		if @t > @f
 			self.recitationreqdyesno=true
 		elsif @t < @f
 			self.recitationreqdyesno=false
+			self.recitationqual=0
 		else
 			self.recitationreqdyesno=nil
 		end
 		self.save
 	end
 	def calcexamyesno
-		@t=self.showratings.where(examyesno: true).count
-		@f=self.showratings.where(examyesno: false).count
+		@t=self.showratings.where.not(examdiff: nil).count
+		@f=self.showratings.where(examdiff: nil).count
 
 		if @t > @f
 			self.examyesno=true
@@ -127,21 +129,22 @@ class Cornellclass < ActiveRecord::Base
 		self.save
 	end
 	def calclecturereqdyesno
-		@t=self.showratings.where(lecturereqdyesno: true).count
-		@f=self.showratings.where(lecturereqdyesno: false).count
+		@t=self.showratings.where.not(lecturequal: nil).count
+		@f=self.showratings.where(lecturequal: nil).count
 
 		if @t > @f
 			self.lecturereqdyesno=true
 		elsif @t < @f
 			self.lecturereqdyesno=false
+			self.lecturequal=0
 		else
 			self.lecturereqdyesno=nil
 		end
 		self.save
 	end
 	def calcprojyesno
-		@t=self.showratings.where(projyesno: true).count
-		@f=self.showratings.where(projyesno: false).count
+		@t=self.showratings.where.not(projdiff: nil).count
+		@f=self.showratings.where(projdiff: nil).count
 
 		if @t > @f
 			self.projyesno=true
@@ -154,8 +157,8 @@ class Cornellclass < ActiveRecord::Base
 		self.save
 	end
 	def calcprelimyesno
-		@t=self.showratings.where(prelimyesno: true).count
-		@f=self.showratings.where(prelimyesno: false).count
+		@t=self.showratings.where.not(prelimdiff: nil).count
+		@f=self.showratings.where(prelimdiff: nil).count
 
 		if @t > @f
 			self.prelimyesno=true
@@ -168,8 +171,8 @@ class Cornellclass < ActiveRecord::Base
 		self.save
 	end
 	def calcpaperyesno
-		@t=self.showratings.where(paperyesno: true).count
-		@f=self.showratings.where(paperyesno: false).count
+		@t=self.showratings.where.not(paperdiff: nil).count
+		@f=self.showratings.where(paperdiff: nil).count
 
 		if @t > @f
 			self.paperyesno=true

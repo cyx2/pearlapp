@@ -181,7 +181,7 @@
               <td><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>     
             </tr>
             <tr>
-              <td><%= f.label 'Homework' %></td>
+              <td><%= f.label 'Assignments' %></td>
               <td></td>
               <td><%= f.radio_button :hwdiff, '1' %></td>
               <td><%= f.radio_button :hwdiff, '2' %></td>
@@ -295,31 +295,6 @@
       <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <table class="table table-hover">
           <tbody>
-            <tr>
-              <td colspan="10" class="center">
-                <h4>Coursework Requirements</h4>
-              </td>
-            </tr>
-            <tr>
-              <td><%= f.label 'Prelims' %></td>
-              <td><%= f.check_box :prelimyesno, class: "checkbox" %></td>
-            </tr>
-            <tr>
-              <td><label for="examyesno">Final Exam</label></td>
-              <td><%= f.check_box :examyesno, class: "checkbox" %></td>
-            </tr>
-            <tr>
-              <td><label for="hwyesno">Graded Homework</label></td>
-              <td><%= f.check_box :hwyesno, class: "checkbox" %></td>
-            </tr>
-            <tr>
-              <td><label for="projyesno">Final Project</label></td>
-              <td><%= f.check_box :projyesno, class: "checkbox" %></td>
-            </tr>
-            <tr>
-              <td><label for="paperyesno">Papers/Case Studies</label></td>
-              <td><%= f.check_box :paperyesno, class: "checkbox" %></td>
-            </tr>
             <tr>
               <td colspan="10" class="center">
                 <h4>Attendance Requirements</h4>
