@@ -19,6 +19,14 @@
 //= require masonry/jquery.masonry
 //= require_tree .
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+
 $(document).ready(function(){
     $("#show-search-toggle").click(function(){
     	$("#show-search-toggle").hide();
@@ -78,11 +86,3 @@ $(document).ready(function(){
     });
 
 });
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
