@@ -1,42 +1,59 @@
-var box;
-var slide;
 var $p;
-var $d;
 var w;
 var wid;
-$(function() {
-  // function mySlide(){
-  //   box = $(".output");
-  //   slide = $(".slider");
+var part;
+var p_rel; 
+$(function () {
 
-  //   box.text('250');
-  //   $( ".slider" ).slider({
-  //   range: "min",
-  //   value: 250,
-  //   min: 100,
-  //   max: 500,
-  //   step : 50,
-  //   slide: function( event, ui ) {
-  //     box.text(ui.value );
-  //   }
-  //   });
-
-
-  //   function fillBox() {
-  //     console.log("called");
-  //     box.text(slide.slider("value"));
-  //   }
-
-  // }
-  // selector on the progress bar
-  $d = $("#btn_enabled");
+  // div surrounding progressbar itself
   $p = $($(".progress")[0]);
   wid = $p.width();
   p_rel = $p.offset(); // p's location on the page
+
+  progressBar($p, wid, p_rel);
+
+  //end progressBar initialization
+
+  //jQuery - UI
+  rangeSlider($(".slider"), $("#amount"));
+});
+
+function rangeSlider($s, $a) {
+  $s.slider({
+    range: true,
+    min: 0,
+    max: 500,
+    values: [ 75, 300 ],
+    slide: function(event, ui) {
+      //TODO: stuff that happens when slide
+    }
+  });
+  $a.val("$" + $s.slider("values", 0) +
+    " - $" + $s.slider("values", 1));
+}
+
+//clicking stuff for the progress bar function
+function progressBar($p, wid, p_rel) {
+  var n = 5;
+  var inc = wid / n;
+  part = [];
+  for (var i = 1; i < 6; i++) {
+    part.push(i * inc); 
+  }
+
+  //TODO: segregate this function
   $p.on("click", function(e) {
-    w = ((e.pageX - p_rel.left) / wid) * 100;
+    //math!! where cursor is in x-direction minus .progress div in x-direction
+    //relative location basically
+    w = (e.pageX - p_rel.left);
+    for (var i = 0; i < part.length; i++) {
+      if (part[i] >= w) {
+        w = part[i];
+        break;
+      } 
+    }
+    w = (w / wid) * 100; //get the percentage ready
     $('.progress-bar').css("width", w + '%');
-    console.log(w);
   });
 
-});
+}
