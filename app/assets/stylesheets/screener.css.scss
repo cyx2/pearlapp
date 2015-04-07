@@ -1,27 +1,33 @@
 
 
-$bar_width : 480px;
+$bar_width : 45%;
 .progress, .progress2 {
   max-width: $bar_width;
 }
 
 .progress2 {
   // height: 30px;
+  margin-bottom: 10%;
 }
 
 //TODO: change height to center properly with
 //changing slider height
+$w : 1.0em;
+$h : 1.7em;
+$h_slide : 1.3em;
 .ui-slider .ui-slider-handle {
   // display: none;
-  width: 1.0em !important; 
-  height: 1.7em !important;
+  width: $w !important; 
+  height: $h !important;
+  margin-top : ($h - $h_slide) / 4;
+  // margin-left: - $w;
 
 } 
 $shadow : 0.1;
 $grey : #f6f6f6;
 $slide_color : #99ccff;
-$blur : 4px;
-$spread : 0.3px;
+$blur : 0.05em;
+$spread : 0.025em;
 .ui-slider {
   background : $grey !important;
   border: none !important;

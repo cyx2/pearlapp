@@ -18,6 +18,7 @@ $(function () {
   rangeSlider($(".slider"), $("#amount"));
 });
 
+//TODO: values
 function rangeSlider($s, $a) {
   $s.slider({
     range: true,
@@ -33,6 +34,8 @@ function rangeSlider($s, $a) {
 }
 
 //clicking stuff for the progress bar function
+//TODO: bug : if zoom in or out, the width is no longer correct
+// maybe use on resize event
 function progressBar($p, wid, p_rel) {
   var n = 5;
   var inc = wid / n;
