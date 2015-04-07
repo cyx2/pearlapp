@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315231139) do
+ActiveRecord::Schema.define(version: 20150227210540) do
 
   create_table "cornellclasses", force: :cascade do |t|
     t.string   "title"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 20150315231139) do
     t.boolean  "paperyesno"
     t.integer  "paperdiff"
     t.text     "moretosay"
+    t.integer  "helpful"
+    t.integer  "unhelpful"
     t.boolean  "labreqdyesno"
     t.integer  "labqual"
     t.integer  "grade"
