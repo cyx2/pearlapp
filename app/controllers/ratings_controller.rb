@@ -15,7 +15,7 @@ class RatingsController < ApplicationController
   end
 
   def userratings
-    @ratings = current_user.ratings
+    @ratings = current_user.ratings.order("created_at DESC")
     respond_with(@ratings)
   end
 
