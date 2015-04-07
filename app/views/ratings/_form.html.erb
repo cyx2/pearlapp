@@ -44,7 +44,7 @@
             <%= current_user.name %>
           </div>
           <div class="field form-inline col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <%= f.label :grade %><br>
+            <label for="grade">Grade Received</label><br>
 
             <%= f.select(:grade, [['Optional', ''], ['A', 4], ['B', 3], ['C', 2], ['D or lower', 1]], {}, { :class => 'form-control', :style => 'width: auto' }) %>
           </div>
