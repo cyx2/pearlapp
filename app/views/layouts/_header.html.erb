@@ -55,12 +55,15 @@
               Home
             <% end %>
           </li>
+          <% if !user_signed_in? %>
           <li>
             <%= link_to teammembers_path do %>
               <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
               Team
             <% end %>
           </li>
+          <% end %>
+
           <!-- Right-hand logical nav links -->
           <% if user_signed_in? %>
             <!-- There isn't any validation in this stuff because I'm assuming that people aren't going to be evil -Charlie -->
