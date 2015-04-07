@@ -21,6 +21,10 @@ class AdminpanelController < ApplicationController
 
 		@recentRatings = Rating.order("created_at DESC").first(5)
 
+		@moreThanOneRating = Cornellclass.where("numratings > ?", 1).count
+
+		@percentageRated = ((@moreThanOneRating.to_f/Cornellclass.all.count.to_f)*100).to_f.round(3)
+
 	end
 
 

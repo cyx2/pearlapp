@@ -12,7 +12,7 @@ class PagesController < ApplicationController
 
       @lastratings=Cornellclass.where("numratings >= ?", 1).order("numratings DESC").take(@c1)
       @userlastratings=current_user.ratings.last(5)
-  		@highestratedclasses=Cornellclass.where("avgrating >= ?", 1).order("avgrating DESC").take(@c2)
+  		@highestratedclasses=Cornellclass.where("avgrating >= ? AND numratings > ?", 1, 1).order("avgrating DESC").take(@c2)
   	end
   end
   
@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   end
 
   def highestrated
-    @cornellclasses=Cornellclass.where("avgrating >= ?", 1).order("avgrating DESC").take(25)
+    @cornellclasses=Cornellclass.where("avgrating >= ? AND numratings > ?", 1, 1).order("avgrating DESC").take(25)
   end
 
 end
