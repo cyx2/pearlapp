@@ -11,7 +11,7 @@ class PagesController < ApplicationController
       end
 
       @lastratings=Cornellclass.where("numratings >= ?", 1).order("numratings DESC").take(@c1)
-      @userlastratings=current_user.ratings.last(5)
+      @userlastratings=current_user.ratings.order("created_at DESC").first(5)
   		@highestratedclasses=Cornellclass.where("avgrating >= ? AND numratings > ?", 1, 1).order("avgrating DESC").take(@c2)
   	end
   end
