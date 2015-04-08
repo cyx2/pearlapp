@@ -46,3 +46,32 @@ $x_off : 0;
   -moz-box-shadow:  $x_off 0.5px 0px 0.5px $range_shadow;
   box-shadow:  $x_off 0.5px 0px 0.5px $range_shadow;
 }
+
+//tick marks attempt
+.sliderTickmarks{
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+    height: 100%;
+    width: 25%;    
+    float: left;
+
+}
+.sliderTickmarks span{
+    position: relative;
+    left: 100%;
+    top: 125%;
+    margin-left: -10px;
+    font-size: 12px;
+    font-weight: normal;
+}
+//nothing to the left of first child/tick
+.ui-slider > div.sliderTickmarks:first-child{
+    border-right: 0;
+    width: 0;
+}
+.ui-slider > div.sliderTickmarks:first-child span{
+    margin-left: 0.2em;
+}
+// .ui-slider > div.sliderTickmarks:last-of-type{
+//      border-right: 0;
+// }

@@ -3,6 +3,7 @@ var w;
 var wid;
 var part;
 var p_rel; 
+//TODO: method headers, input and output parameters + types
 $(function () {
 
   // div surrounding progressbar itself
@@ -26,6 +27,12 @@ function rangeSlider($s, $a) {
     max: 5,
     values: [ 3, 4 ],
     create: function(event, ui) {
+      var ticks  = '<div class="sliderTickmarks "><span>1</span></div>';
+      ticks += '<div class="sliderTickmarks "><span>2</span></div>';
+      ticks += '<div class="sliderTickmarks "><span>3</span></div>';
+      ticks += '<div class="sliderTickmarks "><span>4</span></div>';
+      ticks += '<div class="sliderTickmarks "><span>5</span></div>';
+      $(".ui-slider").prepend(ticks);
       $a.val($s.slider("values", 0) + " to " +
         $s.slider("values", 1));
     },
