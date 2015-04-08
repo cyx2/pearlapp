@@ -22,15 +22,19 @@ $(function () {
 function rangeSlider($s, $a) {
   $s.slider({
     range: true,
-    min: 0,
-    max: 500,
-    values: [ 75, 300 ],
-    slide: function(event, ui) {
-      //TODO: stuff that happens when slide
+    min: 1,
+    max: 5,
+    values: [ 3, 4 ],
+    create: function(event, ui) {
+      $a.val($s.slider("values", 0) + " to " +
+        $s.slider("values", 1));
+    },
+    stop: function(event, ui) {  
+      $a.val($s.slider("values", 0) + " to " +
+        $s.slider("values", 1));
     }
   });
-  $a.val("$" + $s.slider("values", 0) +
-    " - $" + $s.slider("values", 1));
+
 }
 
 //clicking stuff for the progress bar function
