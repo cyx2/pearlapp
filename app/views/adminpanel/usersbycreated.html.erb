@@ -1,0 +1,22 @@
+<h1 class="center">Users By Creation Date</h1>
+<table class="table table-bordered ecenter" style="width: 50%;">
+  <thead>
+    <tr>
+    	<th>ID</th>
+      <th>User</th>
+      <th>Registration date</th>
+      <th>Email</th>
+      <th># Ratings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recentUsers.each do |recentuser| %>
+      <tr>
+      	<td><%= recentuser.id %></td>
+        <td><%= recentuser.name %></td>
+        <td><%= recentuser.created_at.to_date %></td>
+        <td><%= recentuser.email %></td>
+        <td><%= recentuser.ratings.count %></td>
+    <% end %>
+  </tbody>
+</table>

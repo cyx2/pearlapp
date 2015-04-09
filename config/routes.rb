@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "mostrated" => 'pages#mostrated'
   get "highestrated" => 'pages#highestrated'
   get "stats" => 'adminpanel#stats'
+  get "usersbycreated" => 'adminpanel#usersbycreated'
+  get "allusers" => 'adminpanel#allusers'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

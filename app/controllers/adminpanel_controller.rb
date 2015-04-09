@@ -27,6 +27,14 @@ class AdminpanelController < ApplicationController
 
 	end
 
+	def usersbycreated
+		@recentUsers = User.order("created_at DESC")
+	end
+
+	def allusers
+		@allUsers = User.all
+	end
+
 
 
 	private

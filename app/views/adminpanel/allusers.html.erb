@@ -1,0 +1,22 @@
+<h1 class="center">Users By Creation Date</h1>
+<table class="table table-bordered ecenter" style="width: 50%;">
+  <thead>
+    <tr>
+    	<th>ID</th>
+      <th>User</th>
+      <th>Registration date</th>
+      <th>Email</th>
+      <th># Ratings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @allUsers.each do |user| %>
+      <tr>
+      	<td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.created_at.to_date %></td>
+        <td><%= user.email %></td>
+        <td><%= user.ratings.count %></td>
+    <% end %>
+  </tbody>
+</table>
