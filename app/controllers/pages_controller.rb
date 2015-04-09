@@ -27,4 +27,7 @@ class PagesController < ApplicationController
     @cornellclasses=Cornellclass.where("avgrating >= ? AND numratings > ?", 1, 1).order("avgrating DESC").take(25)
   end
 
+  def help
+  end
+
 end

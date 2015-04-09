@@ -101,6 +101,12 @@
                     Your Ratings
                   <% end %>
                 </li>
+                <li>
+                  <%= link_to help_path do %>
+                    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                    Help
+                  <% end %>
+                </li>
                 <% if current_user.id == 1 || current_user.id == 6 || current_user.id == 9 %>
                   <li>
                     <%= link_to stats_path do %>
