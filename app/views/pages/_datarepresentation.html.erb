@@ -1,0 +1,82 @@
+<div class="panel-group" id="accordion1" role="tablist">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+          <h4>What do the bubbles mean?</h4>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
+      <div class="panel-body">
+      	<p>Overall Rating:</p>
+        <div>
+          <%  
+            $i = 3.5
+            $count = 1 
+            %>
+
+            <%    
+          while $count <= $i do %>    
+            <div class="filledStar<%= $count %>">&nbsp</div>
+            <%          $count += 1 
+          end 
+          %>
+
+          <%    
+          $difference = 0.5
+          if($difference >= 0.3 && $difference <= 0.7) 
+            %>
+            <div class="filledHalfL<%= $count %>"></div><div class="filledHalfR0"></div>
+            <% $i = $i + 1;
+          end
+
+          while $i < 5 do 
+            %>
+            <div class="filledStar0">&nbsp</div>
+            <%          $i += 1 
+          end %>
+            <br>
+            <br>
+        </div>
+        <br>
+				<p>
+					The bubbles are one of the ways that we represent our numerical data.  The example above represents and <em>overall rating of 3.5/5</em>.
+				</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
+          <h4>What do the checked and X'ed circles mean?</h4>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel">
+      <div class="panel-body">
+      	<p>Lecture Required:</p>
+        <% 
+        if true == true
+          $bubble1 = "filledStar1 circleCenter"
+          $bubble2 = "filledStar0 circleCenterI"
+        else
+          $bubble1 = "filledStar0 circleCenterI"
+          $bubble2 = "filledStar1 circleCenter"
+        end
+        %>
+
+        <div class="<%= $bubble1 %>"> 
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </div>
+        <div class="<%= $bubble2 %>">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </div>
+        <br><br>
+        <p>
+        	This graphic represents a true or false statement.  In the above example, true is selected, indicating that <em>lecture is required by the course</em>.
+      </div>
+    </div>
+  </div>
+</div>
