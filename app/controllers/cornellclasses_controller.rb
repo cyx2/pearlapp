@@ -1,6 +1,7 @@
 class CornellclassesController < ApplicationController
   before_action :set_cornellclass, only: [:show, :edit, :update, :destroy]
   before_action :verify_user, only: [:new, :edit, :update, :destroy]
+  before_action :verify_signin
 
   respond_to :html
 
@@ -76,7 +77,7 @@ class CornellclassesController < ApplicationController
     subjectdoc= Nokogiri.XML(open("https://courseroster.reg.cornell.edu/courses/roster/SP15/xml/"))
     # Reads each subject and stores it in local variable prefix
 
-    semesterlist = ['FA14', 'SP15']
+    semesterlist = ['FA14', 'SP15', 'FA15']
 
     semesterlist.each do |semester|
 
@@ -99,7 +100,7 @@ class CornellclassesController < ApplicationController
           name = name.tr('"', '')
 
           # if (Cornellclass.where(prefix: subj, coursenumber: num, name: name).count == 0)
-          if (Cornellclass.where(prefix: subj, coursenumber: num).count == 0)
+          if (Cornellclass.where(title: title).count == 0)
             # Creates a cornell class in Cornellclasses table
             Cornellclass.create(:prefix => subj, :coursenumber => num, :instructor => inst, :title => title, :courseid => cid, :semester => semester, :name => name, :credits => credits)
             jsonstring = jsonstring + '"' + name + '",'
@@ -123,18 +124,18 @@ class CornellclassesController < ApplicationController
     c= Cornellclass.where("numratings > ?", 0)
 
     c.all.each do |cornell_class|
-
-      cornell_class.calculate
-
+      # Boolean avg calculation ## Must be above others
+      # because numerical calc functions depend on bools
       cornell_class.calchwyesno
       cornell_class.calcrecitationreqdyesno
       cornell_class.calcexamyesno
       cornell_class.calclecturereqdyesno
       cornell_class.calcprojyesno      
       cornell_class.calcprelimyesno
-      cornell_class.calcpaperyesno
-
-
+      cornell_class.calcpaperyesno 
+      cornell_class.calclabyesno
+      # Numerical calculation
+      cornell_class.calculate
     end
 
 
@@ -170,6 +171,9 @@ class CornellclassesController < ApplicationController
       redirect_to cornellclasses_path, notice: "You're not authorized to edit classes!" unless (user_signed_in? && current_user.id == 1)
     end
 
+    def verify_signin
+      redirect_to root_path, notice: "Please log in first!" unless user_signed_in?
+    end
 
     def cornellclass_params
       params.require(:cornellclass).permit(:title, :prefix, :coursenumber, :courseid, :avgrating, 
