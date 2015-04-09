@@ -59,13 +59,11 @@
               <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="rating[search_text]" placeholder="BEE4500: Bioinstrumentation" autofocus>
             </div>
           </div>
-          <div>
+        <% end %>
+        <div>
           <%= f.label 'Term' %><br>
           <%= f.select(:semester, ['SP15', 'FA14', 'SP14', 'FA13', 'SP13', 'FA12', 'SP12', 'FA11', 'SP11'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
-          </div>  
-        <% elsif !@rating.rating.present? %>
-          <%= f.select(:semester, ['SP15', 'FA14', 'SP14', 'FA13', 'SP13', 'FA12', 'SP12', 'FA11', 'SP11'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
-        <% end %>
+        </div> 
 
         <br><br>
      
