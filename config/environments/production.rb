@@ -91,20 +91,24 @@ Rails.application.configure do
     }  
   }
 
+
+
+  config.action_mailer.default_url_options = { host: 'pearlcourses.com' }
+
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
+
   config.action_mailer.smtp_settings = {
-    address: "smtp.zoho.com",
+    address: “smtp.zoho.com”,
+    port: 587,
     domain: ENV["HELP_DOMAIN"],
+    authentication: “plain”,
+    enable_starttls_auto: true,
     user_name: ENV["HELP_USERNAME"],
-    password: ENV["HELP_PASSWORD"],
-    port: 465,
-    authentication: :plain,
-    enable_starttls_auto: true,    
-    ssl: true,
-    tls: true
+    password: ENV["HELP_PASSWORD"]
   }
 
 end
