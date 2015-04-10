@@ -29,8 +29,7 @@
 			  </div>
 			  
 			  <div class="form-group homelogin-remember">
-			  	<%= f.check_box :remember_me %>
-			  	&nbsp;Remember me
+			  	<%= link_to "Forgot your password?", new_password_path('user') %>
 			  </div>
 			  <div class="form-group homelogin-login">
 	        <%= f.submit "Sign in", class: "btn btn-primary" %>
