@@ -2,34 +2,31 @@
 <% if user_signed_in? %>
 
 
-	<% if 0 == 1 %>
-		<%= render 'pages/newuserPage' %>
-	<% else %>
-		<!-- Class search -->
-		<div class="well well-sm">
-			<div class="center">
-				<h1>Class Search</h1><br>
-			</div>
-			<form id="search-form" class="form-horizontal" method="get" action="search_results">
-			  <div class="form-group">
-			    <label class="col-sm-1 col-sm-offset-1 col-lg-1 col-lg-offset-1 control-label">Course</label>
-			    <div class="col-sm-8 col-lg-8" id="prefetch-mainsearch">
-			      <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="search_text" placeholder="CS 2110: Object-Oriented Programming and Data Structures" autofocus>
-			    </div>
-			  </div>
-				<div class="form-group">
-			    <div class="col-sm-offset-2 col-sm-10">
-			      <button class="btn btn-primary" onclick="document.getElementById("search-form").submit()">
-			      	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-			      	 Search <!-- Courses! -->
-			      </button>
-			    </div>
-			  </div>
-			</form>
+	
+	<!-- Class search -->
+	<div class="well well-sm">
+		<div class="center">
+			<h1>Class Search</h1><br>
 		</div>
-		<!-- renders the dashboard page -->
-		<%= render 'pages/dashboard' %>
-	<% end %>	
+		<form id="search-form" class="form-horizontal" method="get" action="search_results">
+		  <div class="form-group">
+		    <label class="col-sm-1 col-sm-offset-1 col-lg-1 col-lg-offset-1 control-label">Course</label>
+		    <div class="col-sm-8 col-lg-8" id="prefetch-mainsearch">
+		      <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="search_text" placeholder="CS 2110: Object-Oriented Programming and Data Structures" autofocus>
+		    </div>
+		  </div>
+			<div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button class="btn btn-primary" onclick="document.getElementById("search-form").submit()">
+		      	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		      	 Search <!-- Courses! -->
+		      </button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+	<!-- renders the dashboard page -->
+	<%= render 'pages/dashboard' %>
 
 <% else %>
 
