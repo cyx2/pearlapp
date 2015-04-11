@@ -12,10 +12,10 @@ class AdminpanelController < ApplicationController
 			@avgnumRatings += user.ratings.count
 			@numSignins += user.sign_in_count
 		end
-		@avgnumRatings = @avgnumRatings.to_f/@numUsers.to_f
-		@numSignins = @numSignins.to_f / @numUsers.to_f
+		@avgnumRatings = @avgnumRatings.to_f/@numUsers.to_f.round(3)
+		@numSignins = @numSignins.to_f / @numUsers.to_f.round(3)
 
-		@avgRating = Rating.average(:rating)
+		@avgRating = Rating.average(:rating).round(3)
 
 		@recentUsers = User.order("created_at DESC").first(5)
 
