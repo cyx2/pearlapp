@@ -53,19 +53,19 @@ class Cornellclass < ActiveRecord::Base
 
 	def calculate
 		# Quality avg calculation
-		self.avgrating=self.showratings.average(:rating).to_f.round(3)
-		self.profqual=self.showratings.average(:profqual).to_f.round(3)
-		self.taqual=self.showratings.average(:taqual).to_f.round(3)
-		self.lecturequal=self.showratings.average(:lecturequal).to_f.round(3)
-		self.recitationqual=self.showratings.average(:recitationqual).to_f.round(3)
-		self.labqual=self.showratings.average(:labqual).to_f.round(3)
+		self.avgrating=self.showratings.average(:rating).to_f.round(1)
+		self.profqual=self.showratings.average(:profqual).to_f.round(1)
+		self.taqual=self.showratings.average(:taqual).to_f.round(1)
+		self.lecturequal=self.showratings.average(:lecturequal).to_f.round(1)
+		self.recitationqual=self.showratings.average(:recitationqual).to_f.round(1)
+		self.labqual=self.showratings.average(:labqual).to_f.round(1)
 		# Difficulty avg calculation
-		self.hwdiff=self.showratings.average(:hwdiff).to_f.round(3)
-		self.examdiff=self.showratings.average(:examdiff).to_f.round(3)
-		self.materialdiff=self.showratings.average(:materialdiff).to_f.round(3)
-		self.projdiff=self.showratings.average(:projdiff).to_f.round(3)
-		self.prelimdiff=self.showratings.average(:prelimdiff).to_f.round(3)
-		self.paperdiff=self.showratings.average(:paperdiff).to_f.round(3)
+		self.hwdiff=self.showratings.average(:hwdiff).to_f.round(1)
+		self.examdiff=self.showratings.average(:examdiff).to_f.round(1)
+		self.materialdiff=self.showratings.average(:materialdiff).to_f.round(1)
+		self.projdiff=self.showratings.average(:projdiff).to_f.round(1)
+		self.prelimdiff=self.showratings.average(:prelimdiff).to_f.round(1)
+		self.paperdiff=self.showratings.average(:paperdiff).to_f.round(1)
 		# Calculate avg grade
 		self.avggrade=self.showratings.average(:grade).to_f.round(1)
 		self.save
