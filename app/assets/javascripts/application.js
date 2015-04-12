@@ -49,6 +49,12 @@ $(document).ready(function(){
       });
     });
 
+    $('#hasTime').hide()
+    $('#doesHaveTime').click(function () {
+      $('#noTime').fadeToggle('fast')
+      $('#hasTime').fadeToggle('fast')
+    });
+
     // $("#search_text").focusout(function(){
     // if ($("#search_text").val()=="") {
     //     $("#error").addClass("has-error");

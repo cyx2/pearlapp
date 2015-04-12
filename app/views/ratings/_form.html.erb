@@ -59,11 +59,13 @@
               <input type="string" class="form-control typeahead-mainsearch" id="search_text" name="rating[search_text]" placeholder="BEE4500: Bioinstrumentation" autofocus>
             </div>
           </div>
-        <% end %>
-        <div>
+          <div>
           <%= f.label 'Term' %><br>
           <%= f.select(:semester, ['SP15', 'FA14', 'SP14', 'FA13', 'SP13', 'FA12', 'SP12', 'FA11', 'SP11'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
-        </div> 
+          </div>  
+        <% elsif !@rating.rating.present? %>
+          <%= f.select(:semester, ['SP15', 'FA14', 'SP14', 'FA13', 'SP13', 'FA12', 'SP12', 'FA11', 'SP11'], {}, { :class => 'form-control', :style => 'width: auto' }) %>
+        <% end %>
 
         <br><br>
      
@@ -192,252 +194,43 @@
         <!-- More rating categories -->
         <!-- Attendance Requirements -->
 
-        <% if @prefix.present? && Cornellclass.where("prefix = ? AND coursenumber = ?", @prefix, @coursenumber).first.showratings.count > 0 %> 
+        <div>
+
           <div>
-            <div>
-              <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#moreCategories" style="width: 20rem">
-                Have extra time? <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
-              </button>
+            <div class="btn btn-default" style="width: 20rem" id="doesHaveTime">
+              Have extra time? <span class="glyphicon glyphicon-sunglasses"></span>
             </div>
-            <div class="collapse" id="moreCategories">
-              <br>
-              <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">        
-                <table class="table table-hover" style="margin-bottom: 0;">
-                  <tbody>
-                    <tr data-toggle="popover" 
-                        data-content="Level of difficulty is your impression of how difficult the course was in relation to your expectatation.  A higher rating indicates a higher level of difficulty." 
-                        data-trigger="hover"
-                        data-placement="bottom">
-                      <td colspan="10" class="center">
-                        <h4>Level of Difficulty</h4>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td>
-                      <td>1</td>  
-                      <td>2</td> 
-                      <td>3</td> 
-                      <td>4</td> 
-                      <td>5</td>  
-                      <td><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></td>  
-                      <td></td>
-                      <td><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>     
-                    </tr>
-                    <tr>
-                      <td><%= f.label 'Assignments' %></td>
-                      <td></td>
-                      <td><%= f.radio_button :hwdiff, '1' %></td>
-                      <td><%= f.radio_button :hwdiff, '2' %></td>
-                      <td><%= f.radio_button :hwdiff, '3' %></td>
-                      <td><%= f.radio_button :hwdiff, '4' %></td>
-                      <td><%= f.radio_button :hwdiff, '5' %></td>
-                      <td></td>
-                      <td></td>
-                      <td><%= f.radio_button :hwdiff, '' %></td>
-                    </tr>
-                    <tr>
-                      <td><%= f.label 'Prelims' %></td>
-                      <td></td>
-                      <td><%= f.radio_button :prelimdiff, '1' %></td>
-                      <td><%= f.radio_button :prelimdiff, '2' %></td>
-                      <td><%= f.radio_button :prelimdiff, '3' %></td>
-                      <td><%= f.radio_button :prelimdiff, '4' %></td>
-                      <td><%= f.radio_button :prelimdiff, '5' %></td>
-                      <td></td>
-                      <td></td>
-                      <td><%= f.radio_button :prelimdiff, '' %></td>
-                    </tr>
-                    <tr>
-                      <td><label for="examdiff">Final Exam</label></td>
-                      <td></td>
-                      <td><%= f.radio_button :examdiff, '1' %></td>
-                      <td><%= f.radio_button :examdiff, '2' %></td>
-                      <td><%= f.radio_button :examdiff, '3' %></td>
-                      <td><%= f.radio_button :examdiff, '4' %></td>
-                      <td><%= f.radio_button :examdiff, '5' %></td>
-                      <td></td>
-                      <td></td>
-                      <td><%= f.radio_button :examdiff, '' %></td>
-                    </tr>
-                    <tr>
-                      <td><label for="materialdiff">Course Material & Topics</label></td>
-                      <td></td>
-                      <td><%= f.radio_button :materialdiff, '1' %></td>
-                      <td><%= f.radio_button :materialdiff, '2' %></td>
-                      <td><%= f.radio_button :materialdiff, '3' %></td>
-                      <td><%= f.radio_button :materialdiff, '4' %></td>
-                      <td><%= f.radio_button :materialdiff, '5' %></td>
-                      <td></td>
-                      <td></td>
-                      <td><%= f.radio_button :materialdiff, '' %></td>
-                    </tr>
-                    <tr>
-                      <td><label for="projdiff">Final Project</label></td>
-                      <td></td>
-                      <td><%= f.radio_button :projdiff, '1' %></td>
-                      <td><%= f.radio_button :projdiff, '2' %></td>
-                      <td><%= f.radio_button :projdiff, '3' %></td>
-                      <td><%= f.radio_button :projdiff, '4' %></td>
-                      <td><%= f.radio_button :projdiff, '5' %></td>
-                      <td></td>
-                      <td></td>
-                      <td><%= f.radio_button :projdiff, '' %></td>
-                    </tr>
-                    <tr>
-                      <td><label for="paperdiff">Papers/Case Studies</label></td>
-                      <td></td>
-                      <td><%= f.radio_button :paperdiff, '1' %></td>
-                      <td><%= f.radio_button :paperdiff, '2' %></td>
-                      <td><%= f.radio_button :paperdiff, '3' %></td>
-                      <td><%= f.radio_button :paperdiff, '4' %></td>
-                      <td><%= f.radio_button :paperdiff, '5' %></td>
-                      <td></td>
-                      <td></td>
-                      <td><%= f.radio_button :paperdiff, '' %></td>
-                    </tr>            
-                  </tbody>
-                </table>
-              </div>
-              <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <table class="table table-hover">
-                  <tbody>
-                    <tr>
-                      <td colspan="10" class="center">
-                        <h4>Attendance Requirements</h4>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><label for="recitationreqdyesno">Recitation</label></td>
-                      <td><%= f.check_box :recitationreqdyesno, class: "checkbox" %></td>
-                    </tr>
-                    <tr>
-                      <td><label for="labreqdyesno">Lab</label></td>
-                      <td><%= f.check_box :labreqdyesno, class: "checkbox" %></td>
-                    </tr>
-                    <tr>
-                      <td><%= f.label 'Lecture' %></td>
-                      <td><%= f.check_box :lecturereqdyesno, class: "checkbox" %></td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="10" class="center">
-                        <h4>More to say?</h4>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="10" class="center">
-                        <div><%= f.text_area :moretosay, class: "form-control" %></div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-            </div>    
           </div>
-        <% else %>
-          <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">        
-            <table class="table table-hover" style="margin-bottom: 0;">
+
+          <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12" id="noTime">
+            <br>
+            <table class="table table-hover">
               <tbody>
-                <tr data-toggle="popover" 
-                    data-content="Level of difficulty is your impression of how difficult the course was in relation to your expectatation.  A higher rating indicates a higher level of difficulty." 
-                    data-trigger="hover"
-                    data-placement="bottom">
+                <tr>
                   <td colspan="10" class="center">
-                    <h4>Level of Difficulty</h4>
+                    <h4>Coursework Requirements</h4>
                   </td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td>
-                  <td>1</td>  
-                  <td>2</td> 
-                  <td>3</td> 
-                  <td>4</td> 
-                  <td>5</td>  
-                  <td><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></td>  
-                  <td></td>
-                  <td><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>     
-                </tr>
-                <tr>
-                  <td><%= f.label 'Assignments' %></td>
-                  <td></td>
-                  <td><%= f.radio_button :hwdiff, '1' %></td>
-                  <td><%= f.radio_button :hwdiff, '2' %></td>
-                  <td><%= f.radio_button :hwdiff, '3' %></td>
-                  <td><%= f.radio_button :hwdiff, '4' %></td>
-                  <td><%= f.radio_button :hwdiff, '5' %></td>
-                  <td></td>
-                  <td></td>
-                  <td><%= f.radio_button :hwdiff, '' %></td>
-                </tr>
-                <tr>
                   <td><%= f.label 'Prelims' %></td>
-                  <td></td>
-                  <td><%= f.radio_button :prelimdiff, '1' %></td>
-                  <td><%= f.radio_button :prelimdiff, '2' %></td>
-                  <td><%= f.radio_button :prelimdiff, '3' %></td>
-                  <td><%= f.radio_button :prelimdiff, '4' %></td>
-                  <td><%= f.radio_button :prelimdiff, '5' %></td>
-                  <td></td>
-                  <td></td>
-                  <td><%= f.radio_button :prelimdiff, '' %></td>
+                  <td><%= f.check_box :prelimyesno, class: "checkbox" %></td>
                 </tr>
                 <tr>
-                  <td><label for="examdiff">Final Exam</label></td>
-                  <td></td>
-                  <td><%= f.radio_button :examdiff, '1' %></td>
-                  <td><%= f.radio_button :examdiff, '2' %></td>
-                  <td><%= f.radio_button :examdiff, '3' %></td>
-                  <td><%= f.radio_button :examdiff, '4' %></td>
-                  <td><%= f.radio_button :examdiff, '5' %></td>
-                  <td></td>
-                  <td></td>
-                  <td><%= f.radio_button :examdiff, '' %></td>
+                  <td><label for="examyesno">Final Exam</label></td>
+                  <td><%= f.check_box :examyesno, class: "checkbox" %></td>
                 </tr>
                 <tr>
-                  <td><label for="materialdiff">Course Material & Topics</label></td>
-                  <td></td>
-                  <td><%= f.radio_button :materialdiff, '1' %></td>
-                  <td><%= f.radio_button :materialdiff, '2' %></td>
-                  <td><%= f.radio_button :materialdiff, '3' %></td>
-                  <td><%= f.radio_button :materialdiff, '4' %></td>
-                  <td><%= f.radio_button :materialdiff, '5' %></td>
-                  <td></td>
-                  <td></td>
-                  <td><%= f.radio_button :materialdiff, '' %></td>
+                  <td><label for="hwyesno">Graded Homework</label></td>
+                  <td><%= f.check_box :hwyesno, class: "checkbox" %></td>
                 </tr>
                 <tr>
-                  <td><label for="projdiff">Final Project</label></td>
-                  <td></td>
-                  <td><%= f.radio_button :projdiff, '1' %></td>
-                  <td><%= f.radio_button :projdiff, '2' %></td>
-                  <td><%= f.radio_button :projdiff, '3' %></td>
-                  <td><%= f.radio_button :projdiff, '4' %></td>
-                  <td><%= f.radio_button :projdiff, '5' %></td>
-                  <td></td>
-                  <td></td>
-                  <td><%= f.radio_button :projdiff, '' %></td>
+                  <td><label for="projyesno">Final Project</label></td>
+                  <td><%= f.check_box :projyesno, class: "checkbox" %></td>
                 </tr>
                 <tr>
-                  <td><label for="paperdiff">Papers/Case Studies</label></td>
-                  <td></td>
-                  <td><%= f.radio_button :paperdiff, '1' %></td>
-                  <td><%= f.radio_button :paperdiff, '2' %></td>
-                  <td><%= f.radio_button :paperdiff, '3' %></td>
-                  <td><%= f.radio_button :paperdiff, '4' %></td>
-                  <td><%= f.radio_button :paperdiff, '5' %></td>
-                  <td></td>
-                  <td></td>
-                  <td><%= f.radio_button :paperdiff, '' %></td>
-                </tr>            
-              </tbody>
-            </table>
-          </div>
-          <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table class="table table-hover">
-              <tbody>
+                  <td><label for="paperyesno">Papers/Case Studies</label></td>
+                  <td><%= f.check_box :paperyesno, class: "checkbox" %></td>
+                </tr>
                 <tr>
                   <td colspan="10" class="center">
                     <h4>Attendance Requirements</h4>
@@ -468,8 +261,145 @@
                 </tr>
               </tbody>
             </table>
+          </div> 
+
+          <div id="hasTime">
+            <br>
+            <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">        
+              <table class="table table-hover" style="margin-bottom: 0;">
+                <tbody>
+                  <tr data-toggle="popover" 
+                      data-content="Level of difficulty is your impression of how difficult the course was in relation to your expectatation.  A higher rating indicates a higher level of difficulty." 
+                      data-trigger="hover"
+                      data-placement="bottom">
+                    <td colspan="10" class="center">
+                      <h4>Level of Difficulty</h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td>
+                    <td>1</td>  
+                    <td>2</td> 
+                    <td>3</td> 
+                    <td>4</td> 
+                    <td>5</td>  
+                    <td><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></td>  
+                    <td></td>
+                    <td><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>     
+                  </tr>
+                  <tr>
+                    <td><%= f.label 'Assignments' %></td>
+                    <td></td>
+                    <td><%= f.radio_button :hwdiff, '1' %></td>
+                    <td><%= f.radio_button :hwdiff, '2' %></td>
+                    <td><%= f.radio_button :hwdiff, '3' %></td>
+                    <td><%= f.radio_button :hwdiff, '4' %></td>
+                    <td><%= f.radio_button :hwdiff, '5' %></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= f.radio_button :hwdiff, '' %></td>
+                  </tr>
+                  <tr>
+                    <td><%= f.label 'Prelims' %></td>
+                    <td></td>
+                    <td><%= f.radio_button :prelimdiff, '1' %></td>
+                    <td><%= f.radio_button :prelimdiff, '2' %></td>
+                    <td><%= f.radio_button :prelimdiff, '3' %></td>
+                    <td><%= f.radio_button :prelimdiff, '4' %></td>
+                    <td><%= f.radio_button :prelimdiff, '5' %></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= f.radio_button :prelimdiff, '' %></td>
+                  </tr>
+                  <tr>
+                    <td><label for="examdiff">Final Exam</label></td>
+                    <td></td>
+                    <td><%= f.radio_button :examdiff, '1' %></td>
+                    <td><%= f.radio_button :examdiff, '2' %></td>
+                    <td><%= f.radio_button :examdiff, '3' %></td>
+                    <td><%= f.radio_button :examdiff, '4' %></td>
+                    <td><%= f.radio_button :examdiff, '5' %></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= f.radio_button :examdiff, '' %></td>
+                  </tr>
+                  <tr>
+                    <td><label for="materialdiff">Course Material & Topics</label></td>
+                    <td></td>
+                    <td><%= f.radio_button :materialdiff, '1' %></td>
+                    <td><%= f.radio_button :materialdiff, '2' %></td>
+                    <td><%= f.radio_button :materialdiff, '3' %></td>
+                    <td><%= f.radio_button :materialdiff, '4' %></td>
+                    <td><%= f.radio_button :materialdiff, '5' %></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= f.radio_button :materialdiff, '' %></td>
+                  </tr>
+                  <tr>
+                    <td><label for="projdiff">Final Project</label></td>
+                    <td></td>
+                    <td><%= f.radio_button :projdiff, '1' %></td>
+                    <td><%= f.radio_button :projdiff, '2' %></td>
+                    <td><%= f.radio_button :projdiff, '3' %></td>
+                    <td><%= f.radio_button :projdiff, '4' %></td>
+                    <td><%= f.radio_button :projdiff, '5' %></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= f.radio_button :projdiff, '' %></td>
+                  </tr>
+                  <tr>
+                    <td><label for="paperdiff">Papers/Case Studies</label></td>
+                    <td></td>
+                    <td><%= f.radio_button :paperdiff, '1' %></td>
+                    <td><%= f.radio_button :paperdiff, '2' %></td>
+                    <td><%= f.radio_button :paperdiff, '3' %></td>
+                    <td><%= f.radio_button :paperdiff, '4' %></td>
+                    <td><%= f.radio_button :paperdiff, '5' %></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= f.radio_button :paperdiff, '' %></td>
+                  </tr>            
+                </tbody>
+              </table>
+            </div>
+            <div class="table-responsive col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <td colspan="10" class="center">
+                      <h4>Attendance Requirements</h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="recitationreqdyesno">Recitation</label></td>
+                    <td><%= f.check_box :recitationreqdyesno, class: "checkbox" %></td>
+                  </tr>
+                  <tr>
+                    <td><label for="labreqdyesno">Lab</label></td>
+                    <td><%= f.check_box :labreqdyesno, class: "checkbox" %></td>
+                  </tr>
+                  <tr>
+                    <td><%= f.label 'Lecture' %></td>
+                    <td><%= f.check_box :lecturereqdyesno, class: "checkbox" %></td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="10" class="center">
+                      <h4>More to say?</h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="10" class="center">
+                      <div><%= f.text_area :moretosay, class: "form-control" %></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-        <% end %>
+
+        </div>
 
         <hr>
     
