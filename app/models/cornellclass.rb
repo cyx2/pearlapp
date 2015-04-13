@@ -78,20 +78,20 @@ class Cornellclass < ActiveRecord::Base
   	if self.labqual = nil
   		@f=self.showratings.where(labreqdyesno: false).count
 			@t=self.showratings.where(labreqdyesno: true).count
-			if @t > @f
-				self.labreqdyesno=true
-			elsif @t < @f
-				self.labreqdyesno=false
-				self.labqual=0
-			else
-				self.labreqdyesno=nil
-			end
+			
 		# If there is lab quality, then there is lab
   	else
   		@f=self.showratings.where(labqual: nil).count
 			@t=self.showratings.where.not(labqual: nil).count	
 		end
-
+		if @t > @f
+			self.labreqdyesno=true
+		elsif @t < @f
+			self.labreqdyesno=false
+			self.labqual=0
+		else
+			self.labreqdyesno=nil
+		end
 		self.save
 	end
 	def calchwyesno
@@ -99,17 +99,18 @@ class Cornellclass < ActiveRecord::Base
 		if self.hwdiff = nil
   		@f=self.showratings.where(hwyesno: false).count
 			@t=self.showratings.where(hwyesno: true).count
-			if @t > @f
-				self.hwyesno=true
-			elsif @t < @f
-				self.hwyesno=false
-				self.hwdiff=0
-			else
-				self.hwyesno=nil
-			end
+			
   	else
   		@f=self.showratings.where(hwdiff: nil).count
 			@t=self.showratings.where.not(hwdiff: nil).count	
+		end
+		if @t > @f
+			self.hwyesno=true
+		elsif @t < @f
+			self.hwyesno=false
+			self.hwdiff=0
+		else
+			self.hwyesno=nil
 		end
 
 		self.save
@@ -119,17 +120,18 @@ class Cornellclass < ActiveRecord::Base
 		if self.recitationqual = nil
   		@f=self.showratings.where(recitationreqdyesno: false).count
 			@t=self.showratings.where(recitationreqdyesno: true).count
-			if @t > @f
-				self.recitationreqdyesno=true
-			elsif @t < @f
-				self.recitationreqdyesno=false
-				self.recitationqual=0
-			else
-				self.recitationreqdyesno=nil
-			end
+			
   	else
   		@f=self.showratings.where(recitationqual: nil).count
 			@t=self.showratings.where.not(recitationqual: nil).count	
+		end
+		if @t > @f
+			self.recitationreqdyesno=true
+		elsif @t < @f
+			self.recitationreqdyesno=false
+			self.recitationqual=0
+		else
+			self.recitationreqdyesno=nil
 		end
 		self.save
 	end
@@ -138,17 +140,18 @@ class Cornellclass < ActiveRecord::Base
 		if self.examdiff = nil
   		@f=self.showratings.where(examyesno: false).count
 			@t=self.showratings.where(examyesno: true).count
-			if @t > @f
-				self.examyesno=true
-			elsif @t < @f
-				self.examyesno=false
-				self.examdiff=0
-			else
-				self.examyesno=nil
-			end
+			
   	else
   		@f=self.showratings.where(examdiff: nil).count
 			@t=self.showratings.where.not(examdiff: nil).count	
+		end
+		if @t > @f
+			self.examyesno=true
+		elsif @t < @f
+			self.examyesno=false
+			self.examdiff=0
+		else
+			self.examyesno=nil
 		end
 
 		self.save
@@ -158,17 +161,18 @@ class Cornellclass < ActiveRecord::Base
 		if self.lecturequal = nil
   		@f=self.showratings.where(lecturereqdyesno: false).count
 			@t=self.showratings.where(lecturereqdyesno: true).count
-			if @t > @f
-				self.lecturereqdyesno=true
-			elsif @t < @f
-				self.lecturereqdyesno=false
-				self.lecturequal=0
-			else
-				self.lecturereqdyesno=nil
-			end
+			
   	else
   		@f=self.showratings.where(lecturequal: nil).count
 			@t=self.showratings.where.not(lecturequal: nil).count	
+		end
+		if @t > @f
+			self.lecturereqdyesno=true
+		elsif @t < @f
+			self.lecturereqdyesno=false
+			self.lecturequal=0
+		else
+			self.lecturereqdyesno=nil
 		end
 
 		self.save
@@ -178,17 +182,18 @@ class Cornellclass < ActiveRecord::Base
 		if self.projdiff = nil
   		@f=self.showratings.where(projyesno: false).count
 			@t=self.showratings.where(projyesno: true).count
-			if @t > @f
-				self.projyesno=true
-			elsif @t < @f
-				self.projyesno=false
-				self.projdiff=0
-			else
-				self.projyesno=nil
-			end
+			
   	else
   		@f=self.showratings.where(projdiff: nil).count
 			@t=self.showratings.where.not(projdiff: nil).count	
+		end
+		if @t > @f
+			self.projyesno=true
+		elsif @t < @f
+			self.projyesno=false
+			self.projdiff=0
+		else
+			self.projyesno=nil
 		end
 
 		self.save
@@ -198,17 +203,18 @@ class Cornellclass < ActiveRecord::Base
 		if self.prelimdiff = nil
   		@f=self.showratings.where(prelimyesno: false).count
 			@t=self.showratings.where(prelimyesno: true).count
-			if @t > @f
-				self.prelimyesno=true
-			elsif @t < @f
-				self.prelimyesno=false
-				self.prelimdiff=0
-			else
-				self.prelimyesno=nil
-			end
+			
   	else
   		@f=self.showratings.where(prelimdiff: nil).count
 			@t=self.showratings.where.not(prelimdiff: nil).count	
+		end
+		if @t > @f
+			self.prelimyesno=true
+		elsif @t < @f
+			self.prelimyesno=false
+			self.prelimdiff=0
+		else
+			self.prelimyesno=nil
 		end
 
 		self.save
@@ -218,17 +224,19 @@ class Cornellclass < ActiveRecord::Base
 		if self.paperdiff = nil
   		@f=self.showratings.where(paperyesno: false).count
 			@t=self.showratings.where(paperyesno: true).count
-			if @t > @f
-				self.paperyesno=true
-			elsif @t < @f
-				self.paperyesno=false
-				self.paperdiff=0
-			else
-				self.paperyesno=nil
-			end
+			
   	else
   		@f=self.showratings.where(paperdiff: nil).count
 			@t=self.showratings.where.not(paperdiff: nil).count	
+		end
+
+		if @t > @f
+			self.paperyesno=true
+		elsif @t < @f
+			self.paperyesno=false
+			self.paperdiff=0
+		else
+			self.paperyesno=nil
 		end
 
 		self.save
