@@ -29,7 +29,7 @@
         <br>
       </div>
       <div class="col-md-6">
-        <% if @cornellclass.lecturereqdyesno == true %> 
+        <% unless @cornellclass.lecturequal == 0 %> 
           Lecture Quality:<br> 
           <div class="progress">                    
             <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.lecturequal*20.0 %>%;"> <%= @cornellclass.lecturequal %>
@@ -64,7 +64,7 @@
         <br>
       </div>
       <div class="col-md-6">
-        <% if @cornellclass.recitationreqdyesno == true %> 
+        <% unless @cornellclass.recitationqual == 0 %> 
           Recitation Quality:<br> 
           <div class="progress">
             <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.recitationqual*20.0 %>%"> <%= @cornellclass.recitationqual %>
@@ -97,7 +97,7 @@
         <br>
       </div>
       <div class="col-md-6">
-        <% if @cornellclass.labreqdyesno == true %> 
+        <% unless @cornellclass.labqual == 0 %> 
           Lab Quality:<br> 
           <div class="progress">
             <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.labqual*20.0 %>%"> <%= @cornellclass.labqual %>
