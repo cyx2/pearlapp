@@ -88,7 +88,6 @@ class Cornellclass < ActiveRecord::Base
 			self.labreqdyesno=true
 		elsif @t < @f
 			self.labreqdyesno=false
-			self.labqual=0
 		else
 			self.labreqdyesno=nil
 		end
@@ -129,7 +128,6 @@ class Cornellclass < ActiveRecord::Base
 			self.recitationreqdyesno=true
 		elsif @t < @f
 			self.recitationreqdyesno=false
-			self.recitationqual=0
 		else
 			self.recitationreqdyesno=nil
 		end
@@ -170,7 +168,6 @@ class Cornellclass < ActiveRecord::Base
 			self.lecturereqdyesno=true
 		elsif @t < @f
 			self.lecturereqdyesno=false
-			self.lecturequal=0
 		else
 			self.lecturereqdyesno=nil
 		end
