@@ -1,9 +1,5 @@
 <h1 class="center well well-sm">Browsing Cornell Subjects</h1>
 
-<% if user_signed_in? && current_user.id == 1 %>
-  <%= link_to 'Pull Subjects', new_cornellsubject_path, class: "btn btn-default" %>
-<% end %>
-
 <div id="cornellsubjects" class="transitions-enabled">
   <% @cornellsubjects.each do |cornellsubject| %>  	
     <%= link_to "#{cornellsubject.prefix}", findbysubject_path(:prefix => cornellsubject.prefix), class: "cornellsubjectbox btn btn-default" %>
