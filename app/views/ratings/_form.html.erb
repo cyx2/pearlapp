@@ -186,6 +186,16 @@
                 <td></td>
                 <td><%= f.radio_button :labqual, '' %></td>
               </tr>
+              <tr>
+                <td colspan="10" class="center">
+                  <h4>More to say?</h4>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="10" class="center">
+                  <div class="ecenter" style="width:60%"><%= f.text_area :moretosay, class: "form-control" %></div>
+                </td>
+              </tr>
             </tbody>
           </table>
           <br>
@@ -196,8 +206,8 @@
 
         <div>
 
-          <div>
-            <div class="btn btn-default" style="width: 20rem" id="doesHaveTime">
+          <div class="ecenter center">
+            <div class="btn btn-default" style="width: 200px" id="doesHaveTime">
               Have extra time? <span class="glyphicon glyphicon-sunglasses"></span>
             </div>
           </div>
@@ -371,18 +381,7 @@
                   <tr>
                     <td><%= f.label 'Lecture' %></td>
                     <td><%= f.check_box :lecturereqdyesno, class: "checkbox" %></td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="10" class="center">
-                      <h4>More to say?</h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="10" class="center">
-                      <div><%= f.text_area :moretosay, class: "form-control" %></div>
-                    </td>
-                  </tr>
+                  </tr>                  
                 </tbody>
               </table>
             </div>
