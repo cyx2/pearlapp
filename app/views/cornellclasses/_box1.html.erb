@@ -49,41 +49,49 @@
         </p>
       </div>
     </div>
-
-    <hr> 
     
-    <div class="row">
+    <% if @cornellclass.taqual > 0 || @cornellclass.profqual > 0 %>
+      <hr>       
+      <div class="row">
 
-      <% if @cornellclass.taqual > 0 %>
-        <div class="col-md-6">
-          Professor Quality
-          <div class="progress">                    
-            <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
+        <% if @cornellclass.taqual > 0 && @cornellclass.profqual > 0 %>
+          <div class="col-md-6">
+            Professor Quality
+            <div class="progress">                    
+              <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          TA Quality
-          <div class="progress">                    
-            <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.taqual*20.0 %>%;"> <%= @cornellclass.taqual %>
-            </div>
-          </div>          
-
-
-        </div>
-
-      <% else %>
-
-        <div class="col-md-12">
-          Professor Quality
-          <div class="progress">                    
-            <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
+          <div class="col-md-6">
+            TA Quality
+            <div class="progress">                    
+              <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.taqual*20.0 %>%;"> <%= @cornellclass.taqual %>
+              </div>
             </div>
           </div>
-        </div>
 
-      <% end %>
-    </div>
+        <% elsif @cornellclass.profqual > 0 %>
+          <div class="col-md-12">
+            Professor Quality
+            <div class="progress">                    
+              <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.profqual*20.0 %>%;"><%= @cornellclass.profqual %>
+              </div>
+            </div>
+          </div>
+
+        <% elsif @cornellclass.taqual > 0 %>
+          <div class="col-md-12">
+            TA Quality
+            <div class="progress">                    
+              <div class="progress-bar progress-bar-rating" role="progressbar" style="width: <%= @cornellclass.taqual*20.0 %>%;"> <%= @cornellclass.taqual %>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+
+    <% end %>
 
   </div>
 </div>
