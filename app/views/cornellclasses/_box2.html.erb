@@ -243,7 +243,7 @@
       <br><br>
       <div class="col-md-6">
               
-        <% if @cornellclass.examyesno == true && @cornellclass.examyesno != 0 %>   
+        <% if @cornellclass.examyesno == true && @cornellclass.examdiff != 0 %>   
           Final Exam Difficulty:<br>
           <div class="progress">                    
             <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.examdiff*20.0 %>%;"> <%= @cornellclass.examdiff %>
@@ -253,7 +253,7 @@
       </div>
       <div class="col-md-6">
 
-        <% if @cornellclass.projyesno == true && @cornellclass.projyesno != 0 %>   
+        <% if @cornellclass.projyesno == true && @cornellclass.projdiff != 0 %>   
           Final Project Difficulty:<br>
           <div class="progress">                    
             <div class="progress-bar-rating progress-bar" role="progressbar" style="width: <%= @cornellclass.projdiff*20.0 %>%;"> <%= @cornellclass.projdiff %>
