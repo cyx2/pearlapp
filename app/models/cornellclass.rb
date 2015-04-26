@@ -42,6 +42,14 @@ class Cornellclass < ActiveRecord::Base
 
 	def self.calcall
 		Cornellclass.find_each do |c|
+			c.calchwyesno
+      c.calcrecitationreqdyesno
+      c.calcexamyesno
+      c.calclecturereqdyesno
+      c.calcprojyesno      
+      c.calcprelimyesno
+      c.calcpaperyesno 
+      c.calclabyesno
 			c.calculate
 		end
 	end
