@@ -40,6 +40,12 @@
 class Cornellclass < ActiveRecord::Base
 	has_many :users, :through => :ratings
 
+	def self.calcall
+		Cornellclass.find_each do |c|
+			c.calculate
+		end
+	end
+
 	def showratings
 		Rating.where(prefix: self.prefix, course_number: self.coursenumber)
 	end
