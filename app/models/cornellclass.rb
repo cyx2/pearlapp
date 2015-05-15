@@ -89,7 +89,7 @@ class Cornellclass < ActiveRecord::Base
   def calclabyesno
 
   	# If no T/F answer, look at difficulty
-  	if !(self.labreqdyesno = nil)
+  	if (self.labqual = nil)
   		@f=self.showratings.where(labreqdyesno: false).count
 			@t=self.showratings.where(labreqdyesno: true).count
 			
@@ -109,7 +109,7 @@ class Cornellclass < ActiveRecord::Base
 	end
 	def calchwyesno
 		
-		if !(self.hwyesno = nil)
+		if (self.hwdiff = nil)
   		@f=self.showratings.where(hwyesno: false).count
 			@t=self.showratings.where(hwyesno: true).count
 			
@@ -130,7 +130,7 @@ class Cornellclass < ActiveRecord::Base
 	end
 	def calcrecitationreqdyesno
 
-		if !(self.recitationreqdyesno = nil)
+		if (self.recitationqual = nil)
   		@f=self.showratings.where(recitationreqdyesno: false).count
 			@t=self.showratings.where(recitationreqdyesno: true).count
 			
@@ -149,7 +149,7 @@ class Cornellclass < ActiveRecord::Base
 	end
 	def calcexamyesno
 		
-		if !(self.examyesno = nil)
+		if (self.examdiff = nil)
   		@f=self.showratings.where(examyesno: false).count
 			@t=self.showratings.where(examyesno: true).count
 			
@@ -170,7 +170,7 @@ class Cornellclass < ActiveRecord::Base
 	end
 	def calclecturereqdyesno
 		
-		if !(self.lecturereqdyesno = nil)
+		if (self.lecturequal = nil)
   		@f=self.showratings.where(lecturereqdyesno: false).count
 			@t=self.showratings.where(lecturereqdyesno: true).count
 			
@@ -190,7 +190,7 @@ class Cornellclass < ActiveRecord::Base
 	end
 	def calcprojyesno
 		
-		if !(self.projyesno = nil)
+		if (self.projdiff = nil)
   		@f=self.showratings.where(projyesno: false).count
 			@t=self.showratings.where(projyesno: true).count
 			
@@ -211,7 +211,7 @@ class Cornellclass < ActiveRecord::Base
 	end
 	def calcprelimyesno
 		
-		if !(self.prelimyesno = nil)
+		if (self.prelimdiff = nil)
   		@f=self.showratings.where(prelimyesno: false).count
 			@t=self.showratings.where(prelimyesno: true).count			
   	else
@@ -232,7 +232,7 @@ class Cornellclass < ActiveRecord::Base
 	end
 	def calcpaperyesno
 		
-		if !(self.paperyesno = nil)
+		if (self.paperdiff = nil)
   		@f=self.showratings.where(paperyesno: false).count
 			@t=self.showratings.where(paperyesno: true).count
 			
