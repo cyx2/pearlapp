@@ -53,14 +53,7 @@ class RatingsController < ApplicationController
           cornell_class.countratings 
           # Boolean avg calculation ## Must be above others
           # because numerical calc functions depend on bools
-          cornell_class.calchwyesno
-          cornell_class.calcrecitationreqdyesno
-          cornell_class.calcexamyesno
-          cornell_class.calclecturereqdyesno
-          cornell_class.calcprojyesno      
-          cornell_class.calcprelimyesno
-          cornell_class.calcpaperyesno 
-          cornell_class.calclabyesno
+          cornell_class.calcall
           # Numerical calculation
           cornell_class.calculate
           
@@ -97,14 +90,7 @@ class RatingsController < ApplicationController
           cornell_class.countratings 
           # Boolean avg calculation ## Must be above others
           # because numerical calc functions depend on bools
-          cornell_class.calchwyesno
-          cornell_class.calcrecitationreqdyesno
-          cornell_class.calcexamyesno
-          cornell_class.calclecturereqdyesno
-          cornell_class.calcprojyesno      
-          cornell_class.calcprelimyesno
-          cornell_class.calcpaperyesno 
-          cornell_class.calclabyesno
+          cornell_class.calcall
           # Numerical calculation
           cornell_class.calculate
 
